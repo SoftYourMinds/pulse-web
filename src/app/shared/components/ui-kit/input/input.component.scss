@@ -1,0 +1,27 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
+}
+
+label {
+    color: var(--dark-grey-color);
+    margin-bottom: 8px;
+}
+
+input {
+    padding: 15px 20px;
+
+    outline: none;
+    border: none;
+
+    font-size: 16px;
+
+    border: 1px solid var(--light-grey-color);
+    border-radius: 10px;
+
+    &::placeholder {
+        color: var(--dark-grey-color);
+        font-size: 16px;
+    }
+}

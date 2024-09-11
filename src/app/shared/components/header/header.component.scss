@@ -1,0 +1,56 @@
+:host {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 100%;
+    max-width: 1170px;
+    margin: 0 auto;
+}
+
+.right-side {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    column-gap: 40px;
+    width: auto;
+}
+
+ul {
+    display: flex;
+    justify-content: space-between;
+    min-width: 220px;
+    width: 100%;
+
+    li {
+        font-size: 16px;
+        color: var(--accent-color);
+        font-weight: 600;
+
+        &:last-child {
+            color: var(--black-color);
+        }
+
+        a {
+            position: relative;
+
+            &:before {
+                content: "";
+                position: absolute;
+                display: block;
+                height: 2px;
+                width: 0%;
+                background-color: var(--accent-color);
+                transition: all .3s;
+
+                bottom: -8px;
+                text-align: right;
+            }
+
+            &.active:before {
+                width: 100%;
+            }
+        }
+    }
+}
