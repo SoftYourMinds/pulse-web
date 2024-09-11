@@ -7,7 +7,7 @@ import { PulseService } from './shared/services/pulse.service';
     selector: 'app-root',
     template: `
         @if (isLoading) { Loading... } @else {
-        <router-outlet></router-outlet>
+            <router-outlet></router-outlet>
         }
     `,
 })
@@ -31,7 +31,7 @@ export class AppComponent {
         const settings$ = this.pulseService.getSettings();
 
         combineLatest([anonymousUser$, settings$])
-            .pipe(take(2))
+            .pipe(take(1))
             .subscribe((_) => (this.isLoading = false));
     }
 }

@@ -77,14 +77,14 @@ export class ErrorInterceptor implements HttpInterceptor {
                 switchMap((response: any) => {
                     console.log(
                         'this.authenticationService.loginAsAnonymous',
-                        response.body
+                        response
                     );
                     localStorage.setItem(
                         'token',
-                        'Bearer ' + response.body.idToken
+                        'Bearer ' + response.idToken
                     );
                     this.isRefreshing = false;
-                    this.refreshTokenSubject.next(response.body.idToken);
+                    this.refreshTokenSubject.next(response.idToken);
 
                     return next.handle(this.addTokenHeader(request));
                 }),

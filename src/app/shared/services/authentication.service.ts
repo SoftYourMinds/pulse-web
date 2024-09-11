@@ -70,7 +70,7 @@ export class AuthenticationService {
                 map((response: any) => {
                     localStorage.setItem(
                         'anonymous',
-                        response.body.idToken
+                        response.idToken
                     );
                     this.anonymousUser$.next(response.idToken);
                     
