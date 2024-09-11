@@ -1,12 +1,16 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { provideHttpClient } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularSvgIconModule } from 'angular-svg-icon';
+import { environment } from '../environments/environment.development';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app.routing';
 import { HeaderComponent } from './shared/components/header/header.component';
+import { ErrorInterceptor } from './shared/helpers/interceptors/error.interceptor';
+import { JwtInterceptor } from './shared/helpers/interceptors/jwt.interceptor';
+import { API_URL, MAPBOX_ACCESS_TOKEN } from './shared/tokens/tokens';
 
 @NgModule({
     declarations: [AppComponent],
@@ -16,8 +20,27 @@ import { HeaderComponent } from './shared/components/header/header.component';
         BrowserAnimationsModule,
         HeaderComponent,
         AngularSvgIconModule.forRoot(),
+        HttpClientModule,
     ],
-    providers: [provideHttpClient()],
+    providers: [
+        // provideHttpClient(
+        //     withInterceptors([JwtInterceptor, ErrorInterceptor])
+        // ) // * must be functions
+        {
+            provide: API_URL,
+            useValue: environment.apiUrl,
+        },
+        {
+            provide: MAPBOX_ACCESS_TOKEN,
+            useValue: environment.mapboxToken,
+        },
+        { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+        { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+        // {
+        //     provide: MAPBOX_STYLE,
+        //     useValue: environment.style,
+        // },
+    ],
     bootstrap: [AppComponent],
 })
 export class AppModule {}

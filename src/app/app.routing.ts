@@ -11,7 +11,7 @@ const routes: Routes = [
 @NgModule({
     imports: [
         RouterModule.forRoot(routes, {
-            enableViewTransitions: true,
+            // enableViewTransitions: true,
         }),
     ],
     exports: [RouterModule],

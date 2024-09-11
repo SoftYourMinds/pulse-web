@@ -1,10 +1,29 @@
-import { Component } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
+import { first } from 'rxjs';
+import { IPulse } from '../../../../../../shared/interfaces';
+import { PulseService } from '../../../../../../shared/services/pulse.service';
 
 @Component({
-  selector: 'app-top-pulses',
-  templateUrl: './top-pulses.component.html',
-  styleUrl: './top-pulses.component.scss'
+    selector: 'app-top-pulses',
+    templateUrl: './top-pulses.component.html',
+    styleUrl: './top-pulses.component.scss',
 })
-export class TopPulsesComponent {
+export class TopPulsesComponent implements OnInit {
+    public pulses: IPulse[] = [];
 
+    private readonly pulseService: PulseService = inject(PulseService);
+
+    public ngOnInit(): void {
+        this.setTop3Pulses();
+    }
+
+    private setTop3Pulses(): void {
+        this.pulseService
+            .get()
+            .pipe(first())
+            .subscribe((pulses) => {
+                pulses.length = 3;
+                this.pulses = pulses;
+            });
+    }
 }
