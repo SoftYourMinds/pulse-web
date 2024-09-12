@@ -41,14 +41,26 @@ export class PulseService {
 
     public getSettings(): Observable<ISettings> {
         return this.http.get<ISettings>(`${this.apiUrl}/settings`).pipe(
-            tap(
-                (settings) => {
-                    this.blobUrlPrefix = settings.blobUrlPrefix;
-                    this.minVoteInterval = settings.minVoteInterval;
-                    this.appStoreUrl = settings.appStoreUrl;
-                    this.googlePlayUrl = settings.googlePlayUrl;
-                }
-            )
+            tap((settings) => {
+                this.blobUrlPrefix = settings.blobUrlPrefix;
+                this.minVoteInterval = settings.minVoteInterval;
+                this.appStoreUrl = settings.appStoreUrl;
+                this.googlePlayUrl = settings.googlePlayUrl;
+            })
         );
+    }
+
+    public test(
+        latitude: any,
+        longitude: any,
+        latitude2: any,
+        longitude2: any
+    ) {
+        this.http
+            .get(
+                this.apiUrl +
+                    `/map/top?NE.latitude=${latitude}&NE.longitude=${longitude}&SW.latitude=${latitude2}&SW.longitude=${longitude2}`
+            )
+            .subscribe((d) => console.log(d));
     }
 }

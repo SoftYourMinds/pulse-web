@@ -2,9 +2,8 @@
     class="map-container"
     [style]="mapboxStylesUrl"
     [center]="[longitude, latitude]"
-    [fitBounds]="fitBounds"
     [interactive]="true"
-    [zoom]="[5]"
+    [zoom]="[3]"
     (load)="onMapLoad($event)">
     <!-- <mgl-layer 
         id="heatmap-layer" 
