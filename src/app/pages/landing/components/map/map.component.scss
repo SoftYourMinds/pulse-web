@@ -1,0 +1,11 @@
+.map-container {
+    height: 400px;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 20px;
+    cursor: grab;
+}
+
+::ng-deep .mapboxgl-control-container {
+    display: none;
+}

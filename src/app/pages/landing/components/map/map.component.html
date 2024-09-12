@@ -1,1 +1,31 @@
-<p>map works!</p>
+<mgl-map
+    class="map-container"
+    [style]="mapboxStylesUrl"
+    [center]="[longitude, latitude]"
+    [fitBounds]="fitBounds"
+    [interactive]="true"
+    [zoom]="[5]"
+    (load)="onMapLoad($event)">
+    <!-- <mgl-layer 
+        id="heatmap-layer" 
+        type="heatmap" 
+        [source]="{
+            type: 'geojson',
+            data: heatmapData
+        }" 
+        [paint]="{
+            'heatmap-weight': 0.5,
+            'heatmap-intensity': 1,
+            'heatmap-radius': 20,
+            'heatmap-opacity': 0.7
+        }">
+    </mgl-layer> -->
+
+    @for (marker of markers; track marker) {
+        <mgl-marker [lngLat]="[marker.longitude, marker.latitude]">
+            <img
+                [src]="marker.icon"
+                alt="icon" />
+        </mgl-marker>
+    }
+</mgl-map>

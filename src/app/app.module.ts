@@ -10,7 +10,7 @@ import { AppRoutingModule } from './app.routing';
 import { HeaderComponent } from './shared/components/header/header.component';
 import { ErrorInterceptor } from './shared/helpers/interceptors/error.interceptor';
 import { JwtInterceptor } from './shared/helpers/interceptors/jwt.interceptor';
-import { API_URL, MAPBOX_ACCESS_TOKEN } from './shared/tokens/tokens';
+import { API_URL, MAPBOX_ACCESS_TOKEN, MAPBOX_STYLE } from './shared/tokens/tokens';
 
 @NgModule({
     declarations: [AppComponent],
@@ -34,12 +34,12 @@ import { API_URL, MAPBOX_ACCESS_TOKEN } from './shared/tokens/tokens';
             provide: MAPBOX_ACCESS_TOKEN,
             useValue: environment.mapboxToken,
         },
+        {
+            provide: MAPBOX_STYLE,
+            useValue: environment.mapStyleUrl,
+        },
         { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
         { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
-        // {
-        //     provide: MAPBOX_STYLE,
-        //     useValue: environment.style,
-        // },
     ],
     bootstrap: [AppComponent],
 })

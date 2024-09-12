@@ -20,6 +20,8 @@
     "@angular/router": "^18.2.0",
     "angular-svg-icon": "^18.0.2",
     "jwt-decode": "^4.0.0",
+    "mapbox-gl": "^2.15.0",
+    "ngx-mapbox-gl": "^11.0.1",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.10"

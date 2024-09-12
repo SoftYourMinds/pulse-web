@@ -2,6 +2,8 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
 import { SvgIconComponent } from 'angular-svg-icon';
+import { NgxMapboxGLModule } from 'ngx-mapbox-gl';
+import { environment } from '../../../environments/environment.development';
 import { HeaderComponent } from '../../shared/components/header/header.component';
 import { TopPulseCardComponent } from '../../shared/components/pulses/top-pulse/top-pulse-card.component';
 import { PrimaryButtonComponent } from '../../shared/components/ui-kit/buttons/primary-button/primary-button.component';
@@ -34,7 +36,10 @@ import { LandingRoutingModule } from './landing.routing';
         HeaderComponent,
         SvgIconComponent,
         LoadImgPathDirective,
-        TopPulseCardComponent
+        TopPulseCardComponent,
+        NgxMapboxGLModule.withConfig({
+            accessToken: environment.mapboxToken,
+        }),
     ],
 })
 export class LandingModule {}
