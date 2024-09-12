@@ -1,4 +1,4 @@
-import { Component, inject, Input, OnInit } from '@angular/core';
+import { Component, HostBinding, inject, Input, OnInit } from '@angular/core';
 import mapboxgl from 'mapbox-gl';
 import { PulseService } from '../../../../shared/services/pulse.service';
 import { MAPBOX_STYLE } from '../../../../shared/tokens/tokens';
@@ -10,6 +10,10 @@ import { MAPBOX_STYLE } from '../../../../shared/tokens/tokens';
 })
 export class MapComponent implements OnInit {
     @Input() isPreview: boolean = false;
+
+    @HostBinding('class.full-map') get isFullMap() {
+        return !this.isPreview;
+    }
 
     public readonly mapboxStylesUrl: string = inject(MAPBOX_STYLE);
 
@@ -42,7 +46,6 @@ export class MapComponent implements OnInit {
 
     public ngOnInit(): void {
         if (this.isPreview) {
-            
         }
     }
 
