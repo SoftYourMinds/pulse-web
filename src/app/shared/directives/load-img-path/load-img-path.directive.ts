@@ -37,7 +37,7 @@ export class LoadImgPathDirective implements OnInit, AfterViewInit {
 
         const prefix = this.pulseService.blobUrlPrefix;
         const fullSrc = this.elementRef.nativeElement.src;
-        console.log(fullSrc);
+
         const src = new URL(fullSrc).pathname;
 
         this.elementRef.nativeElement.src = prefix + src;

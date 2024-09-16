@@ -50,17 +50,16 @@ export class PulseService {
         );
     }
 
-    public test(
-        latitude: any,
-        longitude: any,
-        latitude2: any,
-        longitude2: any
+    public getH3PulsesForMap(
+        NElatitude: number,
+        NElongitude: number,
+        SWlatitude: number,
+        SWlongitude: number,
+        resolution: number = 1
     ) {
-        this.http
-            .get(
-                this.apiUrl +
-                    `/map/top?NE.latitude=${latitude}&NE.longitude=${longitude}&SW.latitude=${latitude2}&SW.longitude=${longitude2}`
-            )
-            .subscribe((d) => console.log(d));
+        return this.http.get(
+            this.apiUrl +
+                `/map/top?NE.latitude=${NElatitude}&NE.longitude=${NElongitude}&SW.latitude=${SWlatitude}&SW.longitude=${SWlongitude}&resolution=${resolution}`
+        );
     }
 }

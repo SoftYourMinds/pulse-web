@@ -1,10 +1,12 @@
 <mgl-map
     class="map-container"
     [style]="mapboxStylesUrl"
-    [center]="[longitude, latitude]"
+    [center]="center"
     [interactive]="true"
-    [zoom]="[3]"
-    (load)="onMapLoad($event)">
+    [zoom]="[3.5]"
+    (load)="onMapLoad($event)"
+    (zoomEnd)="handleZoomEnd()"
+    (moveEnd)="handleMoveEnd()">
     <!-- <mgl-layer 
         id="heatmap-layer" 
         type="heatmap" 
@@ -20,11 +22,12 @@
         }">
     </mgl-layer> -->
 
-    @for (marker of markers; track marker) {
-        <mgl-marker [lngLat]="[marker.longitude, marker.latitude]">
+    @for (marker of markers; track marker.h3Index) {
+        <mgl-marker [lngLat]="[marker.lng, marker.lat]">
             <img
                 [src]="marker.icon"
-                alt="icon" />
+                alt="icon" 
+                appLoadImgPath/>
         </mgl-marker>
     }
 </mgl-map>
