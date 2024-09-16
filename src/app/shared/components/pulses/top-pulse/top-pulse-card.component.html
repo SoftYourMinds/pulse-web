@@ -10,17 +10,17 @@
         <div>
             <span class="title">Pulses</span>
             <svg-icon src="assets/svg/pulse.svg" />
-            <span class="count">3</span>
+            <span class="count">{{ pulse.stats.totalVotes | formatNumber }}</span>
         </div>
         <div>
             <span class="title">Fans</span>
             <svg-icon src="assets/svg/fans.svg" />
-            <span class="count">5235</span>
+            <span class="count">{{ pulse.stats.totalUniqueUsers | formatNumber }}</span>
         </div>
         <div>
             <span class="title">Last 24 h</span>
             <svg-icon src="assets/svg/heatmap.svg" />
-            <span class="count">2</span>
+            <span class="count">{{ pulse.stats.lastDayVotes | formatNumber }}</span>
         </div>
     </div>
 </div>
