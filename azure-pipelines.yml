@@ -27,11 +27,11 @@ steps:
        dist/go-pulse-webclient/**
        public/**
     targetFolder: '$(Build.ArtifactStagingDirectory)'
-  displayName: 'Copy project files'
+  displayName: 'Copy dist files'
 
 - task: PublishPipelineArtifact@1
   inputs:
     artifactName: pulsewebapp
     targetPath: '$(Build.ArtifactStagingDirectory)'
     publishLocation: 'pipeline'
-  displayName: 'Publish npm artifact'
+  displayName: 'Publish build artifacts'
