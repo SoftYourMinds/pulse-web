@@ -24,7 +24,7 @@ steps:
   inputs:
     sourceFolder: '$(Build.SourcesDirectory)'
     contents: |
-       dist/go-pulse-webclient/**
+       dist/go-pulse-webclient/browser/**
        public/**
     targetFolder: '$(Build.ArtifactStagingDirectory)'
   displayName: 'Copy dist files'
