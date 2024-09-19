@@ -1,1 +1,11 @@
-<p>pulses works!</p>
+<div class="wrap">
+    <app-input-search 
+        [isLoading]="isLoading"
+        (handleValueChange)="onSearchValueChange($event)">
+    </app-input-search>
+    <div class="wrap__large-pulses">
+        @for (pulse of pulses; track pulse.id) {
+            <app-large-pulse [pulse]="pulse"></app-large-pulse>
+        }
+    </div>
+</div>

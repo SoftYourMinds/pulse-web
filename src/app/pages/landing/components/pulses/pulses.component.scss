@@ -1,0 +1,25 @@
+:host {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.wrap {
+    background: linear-gradient(
+        267.31deg, 
+        rgba(119, 0, 238, 0.04) 1.01%, 
+        rgba(119, 0, 238, 0.04) 99.02%
+    );
+
+    border-radius: 20px;
+    max-width: 1030px;
+    width: 100%;
+
+    padding: 50px;
+
+    &__large-pulses {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+}

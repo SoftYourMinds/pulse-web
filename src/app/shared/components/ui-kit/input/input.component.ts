@@ -15,7 +15,9 @@ import {
     FormsModule,
     NG_VALUE_ACCESSOR,
 } from '@angular/forms';
+import { SvgIconComponent } from 'angular-svg-icon';
 import { BehaviorSubject } from 'rxjs';
+import { SpinnerComponent } from '../spinner/spinner.component';
 
 export const APP_UI_INPUT_ACCESSOR = {
     provide: NG_VALUE_ACCESSOR,
@@ -26,7 +28,7 @@ export const APP_UI_INPUT_ACCESSOR = {
 @Component({
     selector: 'app-input',
     standalone: true,
-    imports: [FormsModule],
+    imports: [FormsModule, SvgIconComponent, SpinnerComponent],
     providers: [APP_UI_INPUT_ACCESSOR],
     templateUrl: './input.component.html',
     styleUrl: './input.component.scss',
@@ -36,17 +38,20 @@ export class InputComponent
 {
     @Input() public id: string;
     @Input() public name: string;
+    @Input() public svg: string;
     @Input() public label: string = '';
     @Input() public hasErrorClass: boolean;
     @Input() public placeholder: string = '';
     @Input() public required: boolean = false;
+    @Input() public isLoading: boolean = false;
     @Input() public inputType: string = 'text';
     @Input() public autocomplete: string | boolean;
     @Input() public preventBrowserAutofill: boolean;
 
-    @Output() public emitFocus: EventEmitter<any> = new EventEmitter<any>();
-    @Output() public emitBlur: EventEmitter<any> = new EventEmitter<any>();
-    @Output() public emitAutofill: EventEmitter<any> = new EventEmitter<any>();
+    @Output() public emitBlur: EventEmitter<any> = new EventEmitter();
+    @Output() public emitFocus: EventEmitter<any> = new EventEmitter();
+    @Output() public onInput: EventEmitter<any> = new EventEmitter();
+    @Output() public emitAutofill: EventEmitter<any> = new EventEmitter();
 
     @ViewChild('inputRef', { static: true }) public inputRef: ElementRef;
 

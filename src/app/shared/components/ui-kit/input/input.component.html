@@ -3,6 +3,11 @@
         {{ label }}
     </label>
 }
+@if (svg) {
+    <div class="svg">
+        <svg-icon [src]="'assets/svg/' + svg + '.svg'"></svg-icon>
+    </div>
+}
 <input
     [attr.id]="id"
     [attr.name]="name"
@@ -19,5 +24,10 @@
     (focus)="emitFocus.emit(); isOnFocus = true"
     (blur)="emitBlur.emit(); isOnFocus = false"
     (emitAutofill)="onAutoFill($event)"
+    (input)="onInput.emit($event)"
     #inputRef
     appInputAutofill />
+
+@if (isLoading) {
+    <app-spinner></app-spinner>
+}
