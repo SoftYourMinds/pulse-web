@@ -98,12 +98,13 @@ export class MapComponent implements OnInit {
     private addMarkersAndUpdateH3Polygons(h3PulsesData: any): void {
         const geojsonData: any = this.convertH3ToGeoJSON(h3PulsesData);
         (this.map.getSource('hexagons') as any).setData(geojsonData);
-        this.map.setPaintProperty('hexagons', 'fill-opacity', 0.15);
+        this.map?.setPaintProperty('hexagons', 'fill-opacity', 0.15);
+
         this.addMarkersToMap(h3PulsesData);
     }
 
     private updateH3Pulses(): void {
-        this.map.setPaintProperty('hexagons', 'fill-opacity', 0);
+        this.map?.setPaintProperty('hexagons', 'fill-opacity', 0);
         this.addH3PolygonsToMap();
 
         const { _ne, _sw } = this.map.getBounds();
@@ -115,8 +116,8 @@ export class MapComponent implements OnInit {
             .subscribe((h3PulsesData) => this.h3Pulses$.next(h3PulsesData));
     }
 
-    private getResolutionBasedOnMapZoom(): number {
-        const zoom = this.map.getZoom();
+    public getResolutionBasedOnMapZoom(): number {
+        const zoom = this.map?.getZoom();
 
         const zoomResolutionMap: { [key: number]: number } = {
             0: 1,
@@ -129,7 +130,7 @@ export class MapComponent implements OnInit {
             7: 4,
             8: 4,
             9: 5,
-            10: 7,
+            10: 6,
             11: 7,
             12: 8,
             13: 9,
@@ -203,8 +204,8 @@ export class MapComponent implements OnInit {
         });
     }
 
-    private getStepBasedOnZoom(): number {
-        const zoom = this.map.getZoom();
+    public getStepBasedOnZoom(): number {
+        const zoom = this.map?.getZoom();
         if (zoom < 4) return 1;
         if (zoom < 5) return 0.5;
         if (zoom < 7) return 0.15;
@@ -229,7 +230,7 @@ export class MapComponent implements OnInit {
             }
         }
 
-        return [...new Set(hexagons)]; // Remove duplicate hexagons
+        return [...new Set(hexagons)];
     }
 
     private h3ToPolygonFeature(hex: string): GeoJSON.Feature<GeoJSON.Polygon> {
