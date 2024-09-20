@@ -19,6 +19,8 @@ export class MapComponent implements OnInit {
         return !this.isPreview;
     }
 
+    public isHideDebugger: boolean = false;
+
     public markers: any = [];
     public readonly mapboxStylesUrl: string = inject(MAPBOX_STYLE);
     public center: [number, number] = [-100.661, 37.7749];

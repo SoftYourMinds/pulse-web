@@ -33,50 +33,59 @@
     }
 </mgl-map>
 
-<div class="debugger">
-    <div>
-        <span>Zoom</span>
-        <span>{{ map?.getZoom() | number: '0.1-4' }}</span>
+<div class="debugger" [class.hidden]="isHideDebugger">
+    <div class="hide" (click)="isHideDebugger = !isHideDebugger">
+        @if (isHideDebugger) {
+            Show
+        } @else {
+            Hide
+        }
     </div>
-    <div>
-        <span>Resolution</span>
-        <span>{{ getResolutionBasedOnMapZoom() }}</span>
-    </div>
-    <div>
-        <span>Steps for h3 cells</span>
-        <span>{{ getStepBasedOnZoom() }}</span>
-    </div>
-    <div>
-        <span>Opacity for cells</span>
-        <span>0.15</span>
-    </div>
-    <div>
-        <span>Count of markers</span>
-        <span>{{ markers.length }}</span>
-    </div>
-    <div>
-        <span>Cells border width</span>
-        <span>1.5</span>
-    </div>
-    <div>
-        <span>Version of h3-js</span>
-        <span>^3.3.0</span>
-    </div>
-    <div>
-        <span>Is for preview map</span>
-        <span>{{ !isFullMap }}</span>
-    </div>
-    <div>
-        <span>Center (lng/lat)</span>
-        <span>
-            {{ 
-                map?.getCenter()?.lng | number: '0.1-2'
-            }} /
-            {{
-                map?.getCenter()?.lat | number: '0.1-2'
-            }}
-        </span>
-    </div>
+    @if (!isHideDebugger) {
+        <div>
+            <span>Zoom</span>
+            <span>{{ map?.getZoom() | number: '0.1-4' }}</span>
+        </div>
+        <div>
+            <span>Resolution</span>
+            <span>{{ getResolutionBasedOnMapZoom() }}</span>
+        </div>
+        <div>
+            <span>Steps for h3 cells</span>
+            <span>{{ getStepBasedOnZoom() }}</span>
+        </div>
+        <div>
+            <span>Opacity for cells</span>
+            <span>0.15</span>
+        </div>
+        <div>
+            <span>Count of markers</span>
+            <span>{{ markers.length }}</span>
+        </div>
+        <div>
+            <span>Cells border width</span>
+            <span>1.5</span>
+        </div>
+        <div>
+            <span>Version of h3-js</span>
+            <span>^3.3.0</span>
+        </div>
+        <div>
+            <span>Is for preview map</span>
+            <span>{{ !isFullMap }}</span>
+        </div>
+        <div>
+            <span>Center (lng/lat)</span>
+            <span>
+                {{ 
+                    map?.getCenter()?.lng | number: '0.1-2'
+                }} /
+                {{
+                    map?.getCenter()?.lat | number: '0.1-2'
+                }}
+            </span>
+        </div>
+    }
 </div>
 
 <div
