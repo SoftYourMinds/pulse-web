@@ -3,7 +3,8 @@
     [style]="mapboxStylesUrl"
     [center]="center"
     [interactive]="true"
-    [zoom]="[3.5]"
+    [zoom]="[2.8]"
+    [minZoom]="2.8"
     (load)="onMapLoad($event)"
     (zoomEnd)="handleZoomEnd()"
     (moveEnd)="handleMoveEnd()">
