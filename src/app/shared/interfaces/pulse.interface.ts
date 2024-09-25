@@ -11,6 +11,7 @@ export interface IPulse {
     endsAt: string;
     location: Location;
     stats: Stats;
+    picture: string;
 }
 
 interface Author {

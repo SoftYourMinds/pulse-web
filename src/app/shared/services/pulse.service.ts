@@ -39,6 +39,10 @@ export class PulseService {
         return this.http.get<IPulse[]>(`${this.apiUrl}/topics` + paramUrl);
     }
 
+    public getById(id: string | number): Observable<IPulse> {
+        return this.http.get<IPulse>(`${this.apiUrl}/topics/${id}`);
+    }
+
     public getSettings(): Observable<ISettings> {
         return this.http.get<ISettings>(`${this.apiUrl}/settings`).pipe(
             tap((settings) => {

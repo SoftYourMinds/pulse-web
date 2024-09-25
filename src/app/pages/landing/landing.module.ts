@@ -13,10 +13,12 @@ import { SecondaryButtonComponent } from '../../shared/components/ui-kit/buttons
 import { InputComponent } from '../../shared/components/ui-kit/input/input.component';
 import { SpinnerComponent } from '../../shared/components/ui-kit/spinner/spinner.component';
 import { LoadImgPathDirective } from '../../shared/directives/load-img-path/load-img-path.directive';
+import { FormatNumberPipe } from '../../shared/pipes/format-number.pipe';
 import { MainBannerComponent } from './components/main/components/main-banner/main-banner.component';
 import { TopPulsesComponent } from './components/main/components/top-pulses/top-pulses.component';
 import { MainComponent } from './components/main/main.component';
 import { MapComponent } from './components/map/map.component';
+import { PulsePageComponent } from './components/pulse-page/pulse-page.component';
 import { InputSearchComponent } from './components/pulses/components/input-search/input-search.component';
 import { PromoteAdsComponent } from './components/pulses/components/promote-ads/promote-ads.component';
 import { PulsesComponent } from './components/pulses/pulses.component';
@@ -33,6 +35,7 @@ import { LandingRoutingModule } from './landing.routing';
         TopPulsesComponent,
         InputSearchComponent,
         PromoteAdsComponent,
+        PulsePageComponent,
     ],
     imports: [
         CommonModule,
@@ -47,6 +50,7 @@ import { LandingRoutingModule } from './landing.routing';
         LargePulseComponent,
         FormsModule,
         SpinnerComponent,
+        FormatNumberPipe,
         NgxMapboxGLModule.withConfig({
             accessToken: environment.mapboxToken,
         }),

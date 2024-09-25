@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component, HostListener, inject, Input } from '@angular/core';
+import { Router } from '@angular/router';
 import { SvgIconComponent } from 'angular-svg-icon';
 import { LoadImgPathDirective } from '../../../directives/load-img-path/load-img-path.directive';
 import { IPulse } from '../../../interfaces';
@@ -13,4 +14,11 @@ import { FormatNumberPipe } from '../../../pipes/format-number.pipe';
 })
 export class TopPulseCardComponent {
     @Input() public pulse: IPulse;
+
+    private readonly router: Router = inject(Router);
+
+    @HostListener('click')
+    public onPulseClick(): void {
+        this.router.navigateByUrl(`pulse/${this.pulse.id}`);
+    }
 }
