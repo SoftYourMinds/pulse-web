@@ -43,6 +43,25 @@ export class PulseService {
         return this.http.get<IPulse>(`${this.apiUrl}/topics/${id}`);
     }
 
+    public getMapVotes(
+        NElatitude: number,
+        NElongitude: number,
+        SWlatitude: number,
+        SWlongitude: number,
+        resolution: number = 1,
+        topicId?: number
+    ): Observable<{
+        [key: string]: number
+    }> {
+        return this.http.get<{
+            [key: string]: number;
+        }>(
+            this.apiUrl +
+                `/map/votes?NE.latitude=${NElatitude}&NE.longitude=${NElongitude}&SW.latitude=${SWlatitude}&SW.longitude=${SWlongitude}&resolution=${resolution}` +
+                (topicId ? `&topicId=${topicId}` : '')
+        );
+    }
+
     public getSettings(): Observable<ISettings> {
         return this.http.get<ISettings>(`${this.apiUrl}/settings`).pipe(
             tap((settings) => {

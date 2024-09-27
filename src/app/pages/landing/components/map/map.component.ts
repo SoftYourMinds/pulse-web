@@ -2,7 +2,8 @@ import { Component, DestroyRef, HostBinding, inject, Input, OnInit } from '@angu
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import * as h3 from 'h3-js';
 import mapboxgl from 'mapbox-gl';
-import { first, Subject } from 'rxjs';
+import { filter, first, Subject } from 'rxjs';
+import { HeatmapService } from '../../../../shared/services/heatmap.service';
 import { PulseService } from '../../../../shared/services/pulse.service';
 import { MAPBOX_STYLE } from '../../../../shared/tokens/tokens';
 
@@ -12,7 +13,9 @@ import { MAPBOX_STYLE } from '../../../../shared/tokens/tokens';
     styleUrl: './map.component.scss',
 })
 export class MapComponent implements OnInit {
+    @Input() public pulseId: number;
     @Input() public isPreview: boolean = false;
+    @Input() public hasHeatmap: boolean = true;
 
     @HostBinding('class.full-map')
     public get isFullMap() {
@@ -24,24 +27,25 @@ export class MapComponent implements OnInit {
     public markers: any = [];
     public readonly mapboxStylesUrl: string = inject(MAPBOX_STYLE);
     public center: [number, number] = [-100.661, 37.7749];
-    public heatmapData = {
-        type: 'FeatureCollection',
-        features: [
-            {
-                type: 'Feature',
-                geometry: { type: 'Point', coordinates: [-120.661, 37.7749] },
-                properties: { value: 10 },
-            },
-        ],
-    };
 
     public map: mapboxgl.Map;
+
     private readonly h3Pulses$: Subject<any> = new Subject();
+    private readonly heatMapData$: Subject<{ [key: string]: number }> =
+        new Subject();
+
     private readonly destroyed: DestroyRef = inject(DestroyRef);
     private readonly pulseService: PulseService = inject(PulseService);
+    private readonly heatmapService: HeatmapService = inject(HeatmapService);
 
     public ngOnInit(): void {
         // if (this.isPreview) {}
+
+        this.subscribeOnDataH3Pulses();
+        this.subscribeOnDataListHeatmap();
+    }
+
+    private subscribeOnDataH3Pulses(): void {
         this.h3Pulses$
             .pipe(takeUntilDestroyed(this.destroyed))
             .subscribe(this.addMarkersAndUpdateH3Polygons.bind(this));
@@ -49,15 +53,29 @@ export class MapComponent implements OnInit {
 
     public onMapLoad(map: mapboxgl.Map) {
         this.map = map;
+        console.log('Map', this.map);
+
+        this.map.dragRotate?.disable();
+        this.map.touchZoomRotate.disableRotation();
+
+        this.heatmapService.addSourceToMap(this.map);
+        this.heatmapService.addHeatmapToMap();
 
         this.addInitialLayersAndSourcesToDisplayData();
         this.addH3PolygonsToMap();
         this.updateH3Pulses();
+        this.updateHeatmapForMap();
     }
 
-    public handleZoomEnd = () => this.updateH3Pulses();
+    public handleZoomEnd = () => {
+        this.updateH3Pulses();
+        this.updateHeatmapForMap();
+    };
 
-    public handleMoveEnd = () => this.updateH3Pulses();
+    public handleMoveEnd = () => {
+        this.updateH3Pulses();
+        this.updateHeatmapForMap();
+    };
 
     private addInitialLayersAndSourcesToDisplayData(): void {
         const sourceId = 'h3-polygons';
@@ -81,7 +99,7 @@ export class MapComponent implements OnInit {
             layout: {},
             paint: {
                 'fill-color': '#7700EE',
-                'fill-opacity': 0.15,
+                'fill-opacity': 0, // 0.15
             },
         });
 
@@ -100,7 +118,7 @@ export class MapComponent implements OnInit {
     private addMarkersAndUpdateH3Polygons(h3PulsesData: any): void {
         const geojsonData: any = this.convertH3ToGeoJSON(h3PulsesData);
         (this.map.getSource('hexagons') as any).setData(geojsonData);
-        this.map?.setPaintProperty('hexagons', 'fill-opacity', 0.15);
+        // this.map?.setPaintProperty('hexagons', 'fill-opacity', 0.15);
 
         this.addMarkersToMap(h3PulsesData);
     }
@@ -114,8 +132,82 @@ export class MapComponent implements OnInit {
 
         this.pulseService
             .getH3PulsesForMap(_ne.lat, _ne.lng, _sw.lat, _sw.lng, resolution)
-            .pipe(first())
+            .pipe(first(), filter(() => !this.pulseId))
             .subscribe((h3PulsesData) => this.h3Pulses$.next(h3PulsesData));
+    }
+
+    private updateHeatmapForMap(): void {
+        const { _ne, _sw } = this.map.getBounds();
+        const resolution = this.getResolutionBasedOnMapZoom();
+
+        this.pulseService
+            .getMapVotes(
+                _ne.lat,
+                _ne.lng,
+                _sw.lat,
+                _sw.lng,
+                resolution,
+                this.pulseId
+            )
+            .pipe(
+                first(),
+                filter(() => this.hasHeatmap)
+            )
+            .subscribe((votes) => this.heatMapData$.next(votes));
+    }
+
+    private subscribeOnDataListHeatmap(): void {
+        this.heatMapData$
+            .pipe(takeUntilDestroyed(this.destroyed))
+            .subscribe((heatmap: { [key: string]: number }) => {
+                const updatedHeatmapData = Object.keys(heatmap).map(
+                    (key: string) => ({
+                        coords: h3.h3ToGeo(key),
+                        value: heatmap[key],
+                    })
+                );
+
+                const heatmapFeatures = updatedHeatmapData.map(
+                    ({ coords, value }) => ({
+                        type: 'Feature',
+                        properties: {
+                            value: value,
+                        },
+                        geometry: {
+                            type: 'Point',
+                            coordinates: [coords[1], coords[0]],
+                        },
+                    })
+                );
+
+                const heatmapGeoJSON = {
+                    type: 'FeatureCollection',
+                    features: heatmapFeatures,
+                };
+
+                // const difIntensity = heatmap.resolution / heatmap.cellRadius;
+                // const difIntensity = this.getResolutionBasedOnMapZoom() / 0.5;
+                // let intensity = difIntensity < 0.5 ? 0.5 : difIntensity;
+                let intensity = this.map.getZoom() > 12 ? 1 : 3;
+
+                this.map.setPaintProperty(
+                    'vibes-heat',
+                    'heatmap-intensity',
+                    intensity
+                );
+
+                const heatmapRadius = this.calculateHeatmapRadius(
+                    this.map.getZoom()
+                );
+
+                this.map.setPaintProperty(
+                    'vibes-heat',
+                    'heatmap-radius',
+                    heatmapRadius
+                );
+
+                this.heatmapService.heatmapData.setData(heatmapGeoJSON);
+            });
     }
 
     public getResolutionBasedOnMapZoom(): number {
@@ -237,6 +329,7 @@ export class MapComponent implements OnInit {
 
     private h3ToPolygonFeature(hex: string): GeoJSON.Feature<GeoJSON.Polygon> {
         const boundary = h3.h3ToGeoBoundary(hex, true);
+        console.log(boundary)
         return {
             type: 'Feature',
             geometry: {
@@ -245,5 +338,28 @@ export class MapComponent implements OnInit {
             },
             properties: {},
         };
+    }
+
+    private setDefaultMapSize = () => this.map.resize();
+
+    private calculateHeatmapRadius(zoom: number) {
+        const radiusMap = [
+            { zoom: 0, radius: 100 },
+            { zoom: 5, radius: 100 },
+            { zoom: 10, radius: 120 },
+            { zoom: 15, radius: 140 },
+            { zoom: 20, radius: 100 },
+        ];
+
+        let radius = 100;
+        for (const entry of radiusMap) {
+            if (zoom >= entry.zoom) {
+                radius = entry.radius;
+            } else {
+                break;
+            }
+        }
+
+        return radius;
     }
 }

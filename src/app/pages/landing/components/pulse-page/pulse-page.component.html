@@ -78,6 +78,10 @@
                 [src]="pulse.picture" 
                 [alt]="pulse.title" 
                 appLoadImgPath>
+
+            <app-map
+                [pulseId]="pulse.id"
+                [hasHeatmap]="true" />
         </div>
     </div>
 }

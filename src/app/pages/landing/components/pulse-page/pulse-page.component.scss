@@ -163,4 +163,12 @@
             margin-top: 20px;
         }
     }
+
+    ::ng-deep .map-container {
+        height: 368px;
+    }
+
+    app-map {
+        margin-bottom: 48px;
+    }
 }
