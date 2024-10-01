@@ -1,7 +1,10 @@
 <h2>Top 3 Pulses in last 24 hours</h2>
 
 <div class="pulses">
-    @for (pulse of pulses; track pulse.id) {
-        <app-top-pulse-card [pulse]="pulse"></app-top-pulse-card>
+    @for (pulse of pulses; track pulse.id; let i = $index) {
+        <app-top-pulse-card 
+            [pulse]="pulse"
+            [index]="i + 1">
+        </app-top-pulse-card>
     }
 </div>

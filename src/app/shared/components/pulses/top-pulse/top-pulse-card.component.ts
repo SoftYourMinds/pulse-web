@@ -14,6 +14,7 @@ import { FormatNumberPipe } from '../../../pipes/format-number.pipe';
 })
 export class TopPulseCardComponent {
     @Input() public pulse: IPulse;
+    @Input() public index: number;
 
     private readonly router: Router = inject(Router);
 
