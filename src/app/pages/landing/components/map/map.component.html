@@ -85,6 +85,24 @@
                 }}
             </span>
         </div>
+
+        <div>
+            <span>Toggle h3 cells</span>
+            <span>
+                <app-secondary-button (handleClick)="toggleH3CellsVisibility()">
+                    {{ isToShowH3 ? 'Off' : 'On' }}
+                </app-secondary-button>
+            </span>
+        </div>
+
+        <div>
+            <span>Toggle heatmap</span>
+            <span>
+                <app-secondary-button (handleClick)="toggleHeatmapVisibility()">
+                    {{ isToShowHeatmap ? 'Off' : 'On' }}
+                </app-secondary-button>
+            </span>
+        </div>
     }
 </div>
 

@@ -29,6 +29,8 @@ export class MapComponent implements OnInit {
     public center: [number, number] = [-100.661, 37.7749];
 
     public map: mapboxgl.Map;
+    public isToShowH3: boolean = true;
+    public isToShowHeatmap: boolean = true;
 
     private readonly h3Pulses$: Subject<any> = new Subject();
     private readonly heatMapData$: Subject<{ [key: string]: number }> =
@@ -43,6 +45,24 @@ export class MapComponent implements OnInit {
 
         this.subscribeOnDataH3Pulses();
         this.subscribeOnDataListHeatmap();
+    }
+
+    public toggleH3CellsVisibility(): void {
+        let lineWidth = 1.5;
+        if (this.isToShowH3) lineWidth = 0;
+
+        this.map?.setPaintProperty('h3-polygons-layer', 'line-width', lineWidth);
+
+        this.isToShowH3 = !this.isToShowH3;
+    }
+
+    public toggleHeatmapVisibility(): void {
+        let opacity = this.heatmapService.heatmapStyles['heatmap-opacity'];
+        if (this.isToShowHeatmap) opacity = 0;
+        
+        this.map.setPaintProperty('vibes-heat', 'heatmap-opacity', opacity);
+
+        this.isToShowHeatmap = !this.isToShowHeatmap;
     }
 
     private subscribeOnDataH3Pulses(): void {
@@ -132,7 +152,10 @@ export class MapComponent implements OnInit {
 
         this.pulseService
             .getH3PulsesForMap(_ne.lat, _ne.lng, _sw.lat, _sw.lng, resolution)
-            .pipe(first(), filter(() => !this.pulseId))
+            .pipe(
+                first(),
+                filter(() => !this.pulseId)
+            )
             .subscribe((h3PulsesData) => this.h3Pulses$.next(h3PulsesData));
     }
 
@@ -329,7 +352,6 @@ export class MapComponent implements OnInit {
 
     private h3ToPolygonFeature(hex: string): GeoJSON.Feature<GeoJSON.Polygon> {
         const boundary = h3.h3ToGeoBoundary(hex, true);
-        console.log(boundary)
         return {
             type: 'Feature',
             geometry: {
