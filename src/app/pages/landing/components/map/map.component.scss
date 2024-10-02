@@ -91,6 +91,12 @@
 
     z-index: 1;
 
+    .restricted {
+        opacity: 0.5;
+        position: absolute;
+        right: 85px;
+    }
+
     ::ng-deep {
         .primary-button {
             padding: 5px 22px;

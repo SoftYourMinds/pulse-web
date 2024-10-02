@@ -2,7 +2,7 @@ import { Component, DestroyRef, HostBinding, inject, Input, OnInit } from '@angu
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import * as h3 from 'h3-js';
 import mapboxgl from 'mapbox-gl';
-import { filter, first, Subject } from 'rxjs';
+import { filter, first, Subject, tap } from 'rxjs';
 import { HeatmapService } from '../../../../shared/services/heatmap.service';
 import { PulseService } from '../../../../shared/services/pulse.service';
 import { MAPBOX_STYLE } from '../../../../shared/tokens/tokens';
@@ -29,6 +29,7 @@ export class MapComponent implements OnInit {
 
     public map: mapboxgl.Map;
     public isToShowH3: boolean = true;
+    public heatmapDataPointsCount: number = 0;
     public readonly pulseService: PulseService = inject(PulseService);
 
     private readonly h3Pulses$: Subject<any> = new Subject();
@@ -186,7 +187,12 @@ export class MapComponent implements OnInit {
             )
             .pipe(
                 first(),
-                filter(() => this.isToShowHeatmap)
+                filter(() => this.isToShowHeatmap),
+                tap(
+                    (heatmap) =>
+                        (this.heatmapDataPointsCount =
+                            Object.keys(heatmap).length)
+                )
             )
             .subscribe((votes) => this.heatMapData$.next(votes));
     }
@@ -230,7 +236,7 @@ export class MapComponent implements OnInit {
                 this.map.setPaintProperty(
                     'vibes-heat',
                     'heatmap-intensity',
-                    this.heatmapIntensity
+                    +this.heatmapIntensity
                 );
 
                 const heatmapRadius = this.calculateHeatmapRadius(
