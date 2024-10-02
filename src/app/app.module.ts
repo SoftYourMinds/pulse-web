@@ -10,7 +10,7 @@ import { AppRoutingModule } from './app.routing';
 import { HeaderComponent } from './shared/components/header/header.component';
 import { ErrorInterceptor } from './shared/helpers/interceptors/error.interceptor';
 import { JwtInterceptor } from './shared/helpers/interceptors/jwt.interceptor';
-import { API_URL, MAPBOX_ACCESS_TOKEN, MAPBOX_STYLE } from './shared/tokens/tokens';
+import { API_URL, FIREBASE_CONFIG, MAPBOX_ACCESS_TOKEN, MAPBOX_STYLE } from './shared/tokens/tokens';
 
 @NgModule({
     declarations: [AppComponent],
@@ -37,6 +37,10 @@ import { API_URL, MAPBOX_ACCESS_TOKEN, MAPBOX_STYLE } from './shared/tokens/toke
         {
             provide: MAPBOX_STYLE,
             useValue: environment.mapStyleUrl,
+        },
+        {
+            provide: FIREBASE_CONFIG,
+            useValue: environment.firebaseConfig,
         },
         { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
         { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },

@@ -73,34 +73,34 @@ export class ErrorInterceptor implements HttpInterceptor {
             this.isRefreshing = true;
             this.refreshTokenSubject.next(null);
 
-            return this.authenticationService.loginAsAnonymous().pipe(
-                switchMap((response: any) => {
-                    console.log(
-                        'this.authenticationService.loginAsAnonymous',
-                        response
-                    );
-                    localStorage.setItem(
-                        'token',
-                        'Bearer ' + response.idToken
-                    );
-                    this.isRefreshing = false;
-                    this.refreshTokenSubject.next(response.idToken);
+            return this.authenticationService
+                .loginAsAnonymousThroughTheFirebase()
+                .pipe(
+                    switchMap(({ user }: any) => {
+                        console.log(
+                            'this.authenticationService.loginAsAnonymousThroughTheFirebase',
+                            user
+                        );
+                        const accessToken = user.accessToken;
+                        localStorage.setItem('token', 'Bearer ' + accessToken);
+                        this.isRefreshing = false;
+                        this.refreshTokenSubject.next(accessToken);
 
-                    return next.handle(this.addTokenHeader(request));
-                }),
-                catchError((err) => {
-                    // this.snackBar.open('You need to login', 'Close', {
-                    //     duration: 3500,
-                    //     horizontalPosition: 'center',
-                    //     verticalPosition: 'bottom',
-                    // });
-                    this.isRefreshing = false;
-                    console.log('log out');
-                    this.authenticationService.logout();
-                    location.reload();
-                    return throwError(() => err);
-                })
-            );
+                        return next.handle(this.addTokenHeader(request));
+                    }),
+                    catchError((err) => {
+                        // this.snackBar.open('You need to login', 'Close', {
+                        //     duration: 3500,
+                        //     horizontalPosition: 'center',
+                        //     verticalPosition: 'bottom',
+                        // });
+                        this.isRefreshing = false;
+                        console.log('log out');
+                        this.authenticationService.logout();
+                        location.reload();
+                        return throwError(() => err);
+                    })
+                );
         }
         return this.refreshTokenSubject.pipe(
             filter((token) => token !== null),

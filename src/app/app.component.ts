@@ -27,7 +27,7 @@ export class AppComponent {
     private sendInitialQueries(): void {
         this.isLoading = true;
 
-        const anonymousUser$ = this.authenticationService.loginAsAnonymous();
+        const anonymousUser$ = this.authenticationService.loginAsAnonymousThroughTheFirebase();
         const settings$ = this.pulseService.getSettings();
 
         combineLatest([anonymousUser$, settings$])

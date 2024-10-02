@@ -1,9 +1,12 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Inject, Injectable, Optional } from '@angular/core';
+import { initializeApp } from 'firebase/app';
+import { getAuth, signInAnonymously, UserCredential } from 'firebase/auth';
 import { jwtDecode, JwtPayload } from 'jwt-decode';
-import { BehaviorSubject, Observable, of } from 'rxjs';
+import { BehaviorSubject, from, Observable, of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
-import { API_URL } from '../tokens/tokens';
+import { IFirebaseConfig } from '../interfaces';
+import { API_URL, FIREBASE_CONFIG } from '../tokens/tokens';
 
 @Injectable({
     providedIn: 'root',
@@ -18,8 +21,11 @@ export class AuthenticationService {
 
     constructor (
         private readonly http: HttpClient,
-        @Optional() @Inject(API_URL) private readonly apiUrl: string
+        @Optional() @Inject(API_URL) private readonly apiUrl: string,
+        @Inject(FIREBASE_CONFIG) private readonly firebaseConfig: IFirebaseConfig,
     ) {
+        this.initFirebaseAppWithConfig();
+
         this.anonymousUser$ = new BehaviorSubject(
             localStorage.getItem('anonymous')
         );
@@ -32,6 +38,10 @@ export class AuthenticationService {
             this.isAuthenticatedUser$.asObservable();
     }
 
+    private initFirebaseAppWithConfig(): void {
+        const app = initializeApp(this.firebaseConfig);
+    } 
+
     public get anonymousUserValue(): string | null {
         return this.anonymousUser$.value;
     }
@@ -40,7 +50,29 @@ export class AuthenticationService {
         return this.isAuthenticatedUser$.value;
     }
 
-    loginAsAnonymous(): Observable<any> {
+    public loginAsAnonymousThroughTheFirebase(): Observable<UserCredential> {
+        const auth = getAuth();
+        
+        return from(signInAnonymously(auth)).pipe(
+            catchError((error: any) => {
+                console.log(error);
+                throw new Error(error.message);
+            }),
+            map((response: UserCredential | any) => {
+                const accessToken = response.user.accessToken;
+
+                localStorage.setItem('anonymous', accessToken);
+                this.anonymousUser$.next(accessToken);
+
+                return response;
+            })
+        );
+    }
+
+    /**
+     * @deprecated
+     */
+    public loginAsAnonymous(): Observable<any> {
         const generateId = () => {
             let code = Math.random().toString(36).substr(2, 9).toUpperCase();
             for (let x = 0; x < 5; x++) {
