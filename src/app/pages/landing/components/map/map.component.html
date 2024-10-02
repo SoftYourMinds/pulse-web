@@ -103,6 +103,27 @@
                 </app-secondary-button>
             </span>
         </div>
+
+        <div>
+            <span>Heatmap depth</span>
+            <span>
+                <app-input 
+                    [(ngModel)]="pulseService.currentHeatmapDepth"
+                    (onInput)="onChangeHeatmapSettings()"
+                    max="3"
+                    min="1"
+                    inputType="number" />
+            </span>
+        </div>
+
+        <div>
+            <span>Heatmap Intensity</span>
+            <span>
+                <app-input 
+                    [(ngModel)]="heatmapIntensity"
+                    (onInput)="onChangeHeatmapSettings()"/>
+            </span>
+        </div>
     }
 </div>
 

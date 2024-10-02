@@ -15,14 +15,13 @@ import { MAPBOX_STYLE } from '../../../../shared/tokens/tokens';
 export class MapComponent implements OnInit {
     @Input() public pulseId: number;
     @Input() public isPreview: boolean = false;
-    @Input() public hasHeatmap: boolean = true;
+    @Input() public isToShowHeatmap: boolean = true;
+    @Input() public isHideDebugger: boolean = false;
 
     @HostBinding('class.full-map')
     public get isFullMap() {
         return !this.isPreview;
     }
-
-    public isHideDebugger: boolean = false;
 
     public markers: any = [];
     public readonly mapboxStylesUrl: string = inject(MAPBOX_STYLE);
@@ -30,14 +29,13 @@ export class MapComponent implements OnInit {
 
     public map: mapboxgl.Map;
     public isToShowH3: boolean = true;
-    public isToShowHeatmap: boolean = true;
+    public readonly pulseService: PulseService = inject(PulseService);
 
     private readonly h3Pulses$: Subject<any> = new Subject();
     private readonly heatMapData$: Subject<{ [key: string]: number }> =
         new Subject();
 
     private readonly destroyed: DestroyRef = inject(DestroyRef);
-    private readonly pulseService: PulseService = inject(PulseService);
     private readonly heatmapService: HeatmapService = inject(HeatmapService);
 
     public ngOnInit(): void {
@@ -47,11 +45,25 @@ export class MapComponent implements OnInit {
         this.subscribeOnDataListHeatmap();
     }
 
+    public onChangeHeatmapSettings(): void {
+        this.map.setPaintProperty(
+            'vibes-heat',
+            'heatmap-intensity',
+            +this.heatmapIntensity
+        );
+
+        this.updateHeatmapForMap();
+    }
+
     public toggleH3CellsVisibility(): void {
         let lineWidth = 1.5;
         if (this.isToShowH3) lineWidth = 0;
 
-        this.map?.setPaintProperty('h3-polygons-layer', 'line-width', lineWidth);
+        this.map?.setPaintProperty(
+            'h3-polygons-layer',
+            'line-width',
+            lineWidth
+        );
 
         this.isToShowH3 = !this.isToShowH3;
     }
@@ -59,7 +71,7 @@ export class MapComponent implements OnInit {
     public toggleHeatmapVisibility(): void {
         let opacity = this.heatmapService.heatmapStyles['heatmap-opacity'];
         if (this.isToShowHeatmap) opacity = 0;
-        
+
         this.map.setPaintProperty('vibes-heat', 'heatmap-opacity', opacity);
 
         this.isToShowHeatmap = !this.isToShowHeatmap;
@@ -169,16 +181,17 @@ export class MapComponent implements OnInit {
                 _ne.lng,
                 _sw.lat,
                 _sw.lng,
-                resolution,
+                resolution > 9 ? 7 : resolution,
                 this.pulseId
             )
             .pipe(
                 first(),
-                filter(() => this.hasHeatmap)
+                filter(() => this.isToShowHeatmap)
             )
             .subscribe((votes) => this.heatMapData$.next(votes));
     }
 
+    public heatmapIntensity: number = 0.1;
     private subscribeOnDataListHeatmap(): void {
         this.heatMapData$
             .pipe(takeUntilDestroyed(this.destroyed))
@@ -211,12 +224,13 @@ export class MapComponent implements OnInit {
                 // const difIntensity = heatmap.resolution / heatmap.cellRadius;
                 // const difIntensity = this.getResolutionBasedOnMapZoom() / 0.5;
                 // let intensity = difIntensity < 0.5 ? 0.5 : difIntensity;
-                let intensity = this.map.getZoom() > 12 ? 1 : 3;
+                // let intensity = this.map.getZoom() > 12 ? 1 : 3;
+                // this.heatmapIntensity = intensity;
 
                 this.map.setPaintProperty(
                     'vibes-heat',
                     'heatmap-intensity',
-                    intensity
+                    this.heatmapIntensity
                 );
 
                 const heatmapRadius = this.calculateHeatmapRadius(

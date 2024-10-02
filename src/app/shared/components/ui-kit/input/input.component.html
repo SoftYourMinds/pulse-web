@@ -20,6 +20,8 @@
     [disabled]="disabled"
     [placeholder]="placeholder"
     [required]="required"
+    [min]="min"
+    [max]="max"
     [type]="inputType === 'password' ? isPasswordVisible ? 'text' : 'password' : inputType"
     (focus)="emitFocus.emit(); isOnFocus = true"
     (blur)="emitBlur.emit(); isOnFocus = false"

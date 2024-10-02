@@ -91,8 +91,16 @@
 
     z-index: 1;
 
-    ::ng-deep .primary-button {
-        padding: 5px 22px;
+    ::ng-deep {
+        .primary-button {
+            padding: 5px 22px;
+        }
+
+        input {
+            padding: 3px 10px;
+            width: 64px;
+            text-align: center;
+        }
     }
 
     &.hidden {
