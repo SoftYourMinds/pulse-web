@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { combineLatest, take } from 'rxjs';
-import { AuthenticationService } from './shared/services/authentication.service';
-import { PulseService } from './shared/services/pulse.service';
+import { AuthenticationService } from './shared/services/api/authentication.service';
+import { PulseService } from './shared/services/api/pulse.service';
 
 @Component({
     selector: 'app-root',

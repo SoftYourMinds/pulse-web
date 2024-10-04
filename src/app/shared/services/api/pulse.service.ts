@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { map, Observable, tap } from 'rxjs';
-import { IPulse, ISettings } from '../interfaces';
-import { API_URL } from '../tokens/tokens';
+import { IPulse, ISettings } from '../../interfaces';
+import { API_URL } from '../../tokens/tokens';
 
 @Injectable({
     providedIn: 'root',

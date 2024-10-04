@@ -5,8 +5,8 @@ import { getAuth, signInAnonymously, UserCredential } from 'firebase/auth';
 import { jwtDecode, JwtPayload } from 'jwt-decode';
 import { BehaviorSubject, from, Observable, of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
-import { IFirebaseConfig } from '../interfaces';
-import { API_URL, FIREBASE_CONFIG } from '../tokens/tokens';
+import { IFirebaseConfig } from '../../interfaces';
+import { API_URL, FIREBASE_CONFIG } from '../../tokens/tokens';
 
 @Injectable({
     providedIn: 'root',

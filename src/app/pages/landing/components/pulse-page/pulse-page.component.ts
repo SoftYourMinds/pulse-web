@@ -2,7 +2,7 @@ import { Component, ElementRef, inject, OnInit, ViewChild } from '@angular/core'
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { first, take } from 'rxjs';
 import { IPulse } from '../../../../shared/interfaces';
-import { PulseService } from '../../../../shared/services/pulse.service';
+import { PulseService } from '../../../../shared/services/api/pulse.service';
 
 @Component({
     selector: 'app-pulse-page',

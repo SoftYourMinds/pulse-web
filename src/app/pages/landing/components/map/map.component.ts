@@ -3,8 +3,8 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import * as h3 from 'h3-js';
 import mapboxgl from 'mapbox-gl';
 import { filter, first, Subject, tap } from 'rxjs';
-import { HeatmapService } from '../../../../shared/services/heatmap.service';
-import { PulseService } from '../../../../shared/services/pulse.service';
+import { HeatmapService } from '../../../../shared/services/core/heatmap.service';
+import { PulseService } from '../../../../shared/services/api/pulse.service';
 import { MAPBOX_STYLE } from '../../../../shared/tokens/tokens';
 
 @Component({
