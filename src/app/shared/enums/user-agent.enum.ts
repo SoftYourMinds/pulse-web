@@ -1,5 +1,5 @@
 
-export enum UserAgentEnum {
+export enum PlatformEnum {
     iOS = "iOS",
     Android = "Android",
     Desktop = "Desktop",

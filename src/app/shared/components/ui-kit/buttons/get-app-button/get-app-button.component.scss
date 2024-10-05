@@ -1,0 +1,57 @@
+:host {
+    display: block;
+}
+
+button {
+    max-width: 295px;
+    height: 48px;
+    box-shadow: 0px 3px 10px 0px #00000026;
+    background: var(--white-color);
+    
+    transition: all .2s;
+    display: flex;
+    gap: 10px;
+    overflow: hidden;
+    cursor: pointer;
+
+    span {
+        @include link-16px-black;
+        text-overflow: ellipsis; 
+    }
+
+    svg-icon {
+        animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) infinite both;
+        animation-delay: 3s; /* Repeat every 2 seconds */
+    }
+}
+
+button:hover {
+
+    background: var(--accent-color);
+
+    svg-icon {
+        fill: white;
+    }
+
+    span {
+        color: white;
+    }
+}
+
+@keyframes shake {
+    10%, 90% {
+      transform: translate3d(-1px, 0, 0);
+    }
+  
+    20%, 80% {
+      transform: translate3d(2px, 0, 0);
+    }
+  
+    30%, 50%, 70% {
+      transform: translate3d(-4px, 0, 0);
+    }
+  
+    40%, 60% {
+      transform: translate3d(4px, 0, 0);
+    }
+  }

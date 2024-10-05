@@ -1,1 +1,13 @@
-<p>get-app-button works!</p>
+
+<button (click)="onClick()" appRippleEffect>
+
+    @if (platformService.value === "iOS") {
+        <svg-icon src="assets/svg/g-play.svg" />
+        <span> Get it on Google Play </span>
+    } 
+    @else {
+        <svg-icon src="assets/svg/a-store.svg" />
+        <span> Download on the App Store </span>
+    }
+
+</button>
