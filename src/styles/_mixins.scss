@@ -40,3 +40,11 @@
     font-weight: 400;
     line-height: 16.71px;
 }
+
+@mixin text-12px {
+    //styleName: Text 12px;
+    font-family: "SFProText", sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 14.32px;
+}

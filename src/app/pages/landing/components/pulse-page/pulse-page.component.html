@@ -4,7 +4,7 @@
             <img
                 class="pulse__header-logo"
                 [src]="pulse.icon"
-                alt="trump"
+                alt="pulse icon"
                 appLoadImgPath>
             <div class="pulse__header-title">
                 <h2>{{ pulse.title }}</h2>
@@ -16,22 +16,25 @@
         </div>
     
         <div class="pulse__stats">
-            <div>
-                <span class="pulse__stats-title">Fans</span>
-                <svg-icon src="assets/svg/fans.svg" />
-                <span class="pulse__stats-count">{{ pulse.stats.totalUniqueUsers | formatNumber }}</span>
+
+            <div class="pulse__stats-wrap">
+                <div>
+                    <span class="pulse__stats-title">Fans</span>
+                    <svg-icon src="assets/svg/fans.svg" />
+                    <span class="pulse__stats-count">{{ pulse.stats.totalUniqueUsers | formatNumber }}</span>
+                </div>
+                <div>
+                    <span class="pulse__stats-title">Lifetime</span>
+                    <svg-icon src="assets/svg/pulse.svg" />
+                    <span class="pulse__stats-count">{{ pulse.stats.totalVotes | formatNumber }}</span>
+                </div>
+                <div>
+                    <span class="pulse__stats-title">24 hours</span>
+                    <svg-icon src="assets/svg/pulse_time_icon.svg" />
+                    <span class="pulse__stats-count">{{ pulse.stats.lastDayVotes | formatNumber }}</span>
+                </div>
             </div>
-            <div>
-                <span class="pulse__stats-title">Lifetime</span>
-                <svg-icon src="assets/svg/pulse.svg" />
-                <span class="pulse__stats-count">{{ pulse.stats.totalVotes | formatNumber }}</span>
-            </div>
-            <div>
-                <span class="pulse__stats-title">24 hours</span>
-                <svg-icon src="assets/svg/hour.svg" />
-                <span class="pulse__stats-count">{{ pulse.stats.lastDayVotes | formatNumber }}</span>
-            </div>
-    
+
             <app-primary-button 
                 class="pulse__stats-button"
                 openGetAppPopup >
@@ -40,6 +43,8 @@
                 <svg-icon src="assets/svg/heart.svg" heartBeatAnimation />
             </app-primary-button>
         </div>
+
+        <hr class="divider">
     
         <div class="pulse__info">
             <div class="pulse__info-description">
@@ -75,15 +80,18 @@
             <div class="pulse__info-activity">
                 Active from Sept 10, 2024, to Sept 13, 2024
             </div>
-    
-            <img 
-                [src]="pulse.picture" 
-                [alt]="pulse.title" 
-                appLoadImgPath>
+            
+            <div class="pulse__info-map">
+                <img 
+                    [src]="pulse.picture" 
+                    [alt]="pulse.title" 
+                    appLoadImgPath>
 
-            <app-map
-                [pulseId]="pulse.id"
-                [isToShowHeatmap]="true" />
+                <app-map
+                    [pulseId]="pulse.id"
+                    [isToShowHeatmap]="true" />
+            </div>
+            
         </div>
     </div>
 }
