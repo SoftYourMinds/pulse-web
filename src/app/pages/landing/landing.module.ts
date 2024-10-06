@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 
 import { FormsModule } from '@angular/forms';
 import { SvgIconComponent } from 'angular-svg-icon';
@@ -25,6 +25,8 @@ import { PromoteAdsComponent } from './components/pulses/components/promote-ads/
 import { PulsesComponent } from './components/pulses/pulses.component';
 import { LandingComponent } from './landing.component';
 import { LandingRoutingModule } from './landing.routing';
+import { OpenGetAppPopupDirective } from '../../shared/components/popups/get-app-popup/open-get-app-popup.directive';
+import { HeartBeatDirective } from '../../shared/animations/heart-beat.directive';
 
 @NgModule({
     declarations: [
@@ -53,9 +55,14 @@ import { LandingRoutingModule } from './landing.routing';
         FormsModule,
         SpinnerComponent,
         FormatNumberPipe,
+        
+        OpenGetAppPopupDirective,
+        HeartBeatDirective,
+
         NgxMapboxGLModule.withConfig({
             accessToken: environment.mapboxToken,
         }),
     ],
+    schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
 export class LandingModule {}

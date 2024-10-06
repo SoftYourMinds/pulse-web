@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
@@ -12,6 +12,7 @@ import { ErrorInterceptor } from './shared/helpers/interceptors/error.intercepto
 import { JwtInterceptor } from './shared/helpers/interceptors/jwt.interceptor';
 import { API_URL, FIREBASE_CONFIG, MAPBOX_ACCESS_TOKEN, MAPBOX_STYLE } from './shared/tokens/tokens';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { MaterialModule } from './shared/modules/material.module';
 
 @NgModule({
     declarations: [AppComponent],
@@ -19,6 +20,7 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
         BrowserModule,
         AppRoutingModule,
         BrowserAnimationsModule,
+        MaterialModule,
         HeaderComponent,
         AngularSvgIconModule.forRoot(),
         HttpClientModule,
@@ -46,6 +48,9 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
         { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
         { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
         provideAnimationsAsync(),
+    ],
+    schemas: [
+        CUSTOM_ELEMENTS_SCHEMA,
     ],
     bootstrap: [AppComponent],
 })

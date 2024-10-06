@@ -32,10 +32,12 @@
                 <span class="pulse__stats-count">{{ pulse.stats.lastDayVotes | formatNumber }}</span>
             </div>
     
-            <app-primary-button class="pulse__stats-button">
+            <app-primary-button 
+                class="pulse__stats-button"
+                openGetAppPopup >
                 <svg-icon src="assets/svg/heart.svg" />
                 <span>Tap to Pulse</span>
-                <svg-icon src="assets/svg/heart.svg" />
+                <svg-icon src="assets/svg/heart.svg" heartBeatAnimation />
             </app-primary-button>
         </div>
     

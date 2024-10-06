@@ -11,7 +11,7 @@ import { SvgIconComponent } from 'angular-svg-icon';
   ],
   template: `
     <button (click)="onClick()">
-      <svg-icon src="assets/svg/add.svg" />
+      <svg-icon src="assets/svg/close.svg" />
     </button>
   `,
   styles: `
