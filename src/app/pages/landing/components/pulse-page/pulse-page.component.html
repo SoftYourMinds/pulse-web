@@ -81,15 +81,25 @@
                 Active from Sept 10, 2024, to Sept 13, 2024
             </div>
             
-            <div class="pulse__info-map">
+            <div class="pulse__info-media">
                 <img 
                     [src]="pulse.picture" 
                     [alt]="pulse.title" 
                     appLoadImgPath>
 
-                <app-map
-                    [pulseId]="pulse.id"
-                    [isToShowHeatmap]="true" />
+                <div class="pulse__info-media__map">
+
+                    <div class="pulse__info-media__map-clickbait">
+                        <svg-icon src="assets/svg/time-icon-large.svg" />
+                        <h3>View Heatmap</h3>
+                    </div>
+
+                    <app-map
+                        [pulseId]="pulse.id"
+                        [isToShowHeatmap]="true" 
+                        [isHideDebugger]="true"/>
+                </div>
+                
             </div>
             
         </div>
