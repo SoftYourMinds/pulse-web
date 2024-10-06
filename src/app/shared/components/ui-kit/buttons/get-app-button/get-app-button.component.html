@@ -2,11 +2,11 @@
 <button (click)="onClick()" appRippleEffect>
 
     @if (platformService.value === "iOS") {
-        <svg-icon src="assets/svg/g-play.svg" />
+        <svg-icon src="assets/svg/g-play.svg" @shake />
         <span> Get it on Google Play </span>
     } 
     @else {
-        <svg-icon src="assets/svg/a-store.svg" />
+        <svg-icon src="assets/svg/a-store.svg" @shake />
         <span> Download on the App Store </span>
     }
 

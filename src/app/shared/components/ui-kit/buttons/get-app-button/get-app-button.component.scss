@@ -15,19 +15,16 @@ button {
     cursor: pointer;
 
     span {
-        @include link-16px-black;
+        @include Link-16px;
         text-overflow: ellipsis; 
     }
 
-    svg-icon {
-        animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) infinite both;
-        animation-delay: 3s; /* Repeat every 2 seconds */
-    }
 }
 
 button:hover {
 
     background: var(--accent-color);
+    box-shadow: none;
 
     svg-icon {
         fill: white;
@@ -37,21 +34,3 @@ button:hover {
         color: white;
     }
 }
-
-@keyframes shake {
-    10%, 90% {
-      transform: translate3d(-1px, 0, 0);
-    }
-  
-    20%, 80% {
-      transform: translate3d(2px, 0, 0);
-    }
-  
-    30%, 50%, 70% {
-      transform: translate3d(-4px, 0, 0);
-    }
-  
-    40%, 60% {
-      transform: translate3d(4px, 0, 0);
-    }
-  }

@@ -1,6 +1,7 @@
 @import url('./_reset.scss');
 @import url('./_fonts.scss');
 @import url('./_variables.scss');
+@import url('./_text.scss');
 @import 'mapbox-gl/dist/mapbox-gl.css';
 
 body {
@@ -53,37 +54,6 @@ h3 {
     font-size: 20px;
     font-weight: 600;
 }
-
-@mixin title-32px-black {
-    //styleName: Title 32px;
-    font-family: SF Pro Text;
-    font-size: 32px;
-    font-weight: 600;
-    line-height: 38.19px;
-    text-align: center;
-    color: var(--black-color);
-}
-
-@mixin link-16px-black {
-    //styleName: Link 16px;
-    font-family: SF Pro Text;
-    font-size: 16px;
-    font-weight: 600;
-    line-height: 19.09px;
-    text-align: left;
-    color: var(--black-color);
-}
-
-@mixin link-16px-white {
-    //styleName: Link 16px;
-    font-family: SF Pro Text;
-    font-size: 16px;
-    font-weight: 600;
-    line-height: 19.09px;
-    text-align: left;
-    color: var(--white-color);
-}
-
 
 /** Ripple
 ======================== */
