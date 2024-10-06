@@ -1,6 +1,8 @@
 <div id="popup">
 
-    <app-close-button />
+    <app-close-button 
+        id="close"
+        (handleClick)="onCloseDialog()" />
 
     <svg-icon id="heart" src="assets/svg/heart64.svg" @heartBeat />
 

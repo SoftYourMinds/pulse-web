@@ -11,6 +11,7 @@ import { HeaderComponent } from './shared/components/header/header.component';
 import { ErrorInterceptor } from './shared/helpers/interceptors/error.interceptor';
 import { JwtInterceptor } from './shared/helpers/interceptors/jwt.interceptor';
 import { API_URL, FIREBASE_CONFIG, MAPBOX_ACCESS_TOKEN, MAPBOX_STYLE } from './shared/tokens/tokens';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 @NgModule({
     declarations: [AppComponent],
@@ -44,6 +45,7 @@ import { API_URL, FIREBASE_CONFIG, MAPBOX_ACCESS_TOKEN, MAPBOX_STYLE } from './s
         },
         { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
         { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+        provideAnimationsAsync(),
     ],
     bootstrap: [AppComponent],
 })
