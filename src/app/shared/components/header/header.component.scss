@@ -1,8 +1,15 @@
 :host {
+    display: block;
+    padding: 30px 20px;
+}
+
+header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-
+    margin: 0 auto;
+    
+    height: 40px;
     width: 100%;
     max-width: 1170px;
     margin: 0 auto;
@@ -53,4 +60,141 @@ ul {
             }
         }
     }
+}
+
+.mobile {
+    display: none;
+}
+
+@media (max-width: 650px) {
+
+    :host {
+        width: 100%;
+        height: 80px;
+        padding: 0;
+    }
+
+    .desktop {
+        display: none;
+    }
+
+    .mobile {
+        position: relative;
+        padding: 0;
+        height: 79px;
+        display: flex;
+        z-index: 1002;
+        box-shadow: 0px 1px 0px 0px rgba(131, 134, 165, 0.2);
+
+
+        &__top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+            width: 100%;
+            padding: 0 20px;
+           
+        }
+
+        &__dropdown {
+            position: absolute;
+            z-index: 1000;
+            width: calc(100%);
+            height: calc(100vh - 80px);
+            top: 80px;
+            overflow: hidden;
+
+            //close
+            user-select: none;
+            pointer-events: none;
+
+            //open
+            &.active {
+                user-select: all;
+                pointer-events: all;
+            }    
+
+            &-container {
+                width: 100%;
+                height: 100%;
+                transform: translateY(100vh);
+                background: var(--white-color);
+                
+                transition: all .3s;
+
+                opacity: .5;
+                
+                &.active {
+                    transform: translateY(0vh);
+                    opacity: 1;
+                }
+                
+                .right-side {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    flex-direction: column;
+                    gap: 24px;
+                    height: 100%;
+                    padding-bottom: 50px;
+                                        
+                    ul {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        flex-direction: column;
+                        min-width: 220px;
+                        width: 100%;
+                        gap: 32px;
+
+                        user-select: none;
+                    
+                        li {
+                            font-size: 16px;
+                            color: var(--black-color);
+                            font-weight: 600;
+                    
+                            &:first-child{
+                                color: var(--accent-color);
+                            }
+
+                            &:nth-child(2){
+                                color: var(--accent-color);
+                            }
+                    
+                            a {
+                                position: relative;
+                    
+                                &:before {
+                                    content: "";
+                                    position: absolute;
+                                    display: block;
+                                    height: 2px;
+                                    width: 0%;
+                                    background-color: var(--accent-color);
+                                    transition: all .3s;
+                    
+                                    bottom: -8px;
+                                    text-align: right;
+                                }
+                    
+                                &.active:before {
+                                    width: 100%;
+                                }
+                            }
+                        }
+                    }
+
+                    app-primary-button::ng-deep button {
+                        height: 48px;
+                        width: calc(100vw - 40px);
+                        max-width: 335px;
+                    } 
+
+                }
+            }
+        }
+    }
+
 }
