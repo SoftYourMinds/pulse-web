@@ -4,7 +4,7 @@ import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { SvgIconComponent } from 'angular-svg-icon';
 import { NgxMapboxGLModule } from 'ngx-mapbox-gl';
-import { environment } from '../../../environments/environment.development';
+import { environment } from '../../../environments/environment';
 import { FooterComponent } from '../../shared/components/footer/footer.component';
 import { HeaderComponent } from '../../shared/components/header/header.component';
 import { LargePulseComponent } from '../../shared/components/pulses/large-pulse/large-pulse.component';
