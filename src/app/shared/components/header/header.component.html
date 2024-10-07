@@ -48,23 +48,29 @@
 
     <div class="mobile__top-bar">
 
+        
+        
         <a class="logo"
+            (click)="closeDropdown()"
             routerLink="/">
             <svg-icon src="assets/svg/logo-mobile.svg" ></svg-icon>
         </a>
 
-
-        <app-burger-button (handleClick)="toggleDropdown()" />
+        <app-burger-button 
+            [isOpen]="isMobileDropdown" 
+            (click)="toggleDropdown()" />
     
     </div>
 
     <div class="mobile__dropdown"
+        (click)="deligateCloseDropdown($event)"
         [ngClass]="{'active': isMobileDropdown}">
 
         <div class="mobile__dropdown-container"
             [ngClass]="{'active': isMobileDropdown}">
 
-            <div class="right-side">
+            <div class="right-side"
+                [ngClass]="{'active': isMobileDropdown}">
                 
                 <div></div>
 
@@ -92,14 +98,14 @@
                     </li>
                     <li>
                         <a 
-                            routerLink="/map"
+                            routerLink="/Terms"
                             routerLinkActive="active">
                             Terms of Use
                         </a>
                     </li>
                     <li>
                         <a 
-                            routerLink="/map"
+                            routerLink="/Policy"
                             routerLinkActive="active">
                             Privacy Policy
                         </a>

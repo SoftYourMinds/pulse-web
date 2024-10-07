@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-burger-button',
@@ -9,12 +9,12 @@ import { Component, EventEmitter, Output } from '@angular/core';
   styleUrl: './burger-button.component.scss'
 })
 export class BurgerButtonComponent {
+    @Input() isOpen: boolean = false;
     @Output() handleClick: EventEmitter<void> = new EventEmitter<void>;
 
-    public isOpen: boolean = false;
 
     public onClick(): void {
-      this.isOpen = !this.isOpen;
-      this.handleClick.emit();
+    //   this.isOpen = !this.isOpen;
+    //   this.handleClick.emit(); 
     }
 }

@@ -23,6 +23,10 @@ import { CommonModule } from '@angular/common';
 export class HeaderComponent {
     public isMobileDropdown: boolean = false;
 
+    ngAfterViewInit(): void {
+        
+    }
+
     public toggleDropdown(): void {
         this.isMobileDropdown = !this.isMobileDropdown;
         if(this.isMobileDropdown) this.disableDocumentScroll();
@@ -30,11 +34,28 @@ export class HeaderComponent {
     }
 
     private disableDocumentScroll(): void {
+        window.scrollTo(0, 0);
         document.body.style.overflow = 'hidden';
     }
 
     private enableDocumentScroll(): void {
         document.body.style.overflow = 'scroll';
+    }
+
+    public deligateCloseDropdown(event: Event) {
+        const targetElement = event.target as HTMLElement;
+        
+        // Check if the click occurred on an anchor tag (logo or menu links)
+        if (targetElement.tagName === 'A') {
+          this.isMobileDropdown = false;
+          this.enableDocumentScroll();
+        }
+    }
+
+    public closeDropdown() {
+        if(!this.isMobileDropdown) return
+        this.isMobileDropdown = false;
+        this.enableDocumentScroll();
     }
 
  }
