@@ -5,6 +5,10 @@ import { MapComponent } from './components/map/map.component';
 import { PulsePageComponent } from './components/pulse-page/pulse-page.component';
 import { PulsesComponent } from './components/pulses/pulses.component';
 import { LandingComponent } from './landing.component';
+import { AppRoutes } from '../../shared/enums/app-routes.enum';
+import { FooterGuard } from '../../shared/guards/footer.guard';
+import { FooterCleanupGuard } from '../../shared/guards/footerCleanup.guard';
+import { MapPageComponent } from './components/map-page/map-page.component';
 
 const routes: Routes = [
     {
@@ -12,22 +16,25 @@ const routes: Routes = [
         component: LandingComponent,
         children: [
             {
-                path: '',
+                path: AppRoutes.HOME,
                 component: MainComponent,
                 // data: { animation: 'openClosePage' },
             },
             {
-                path: 'map',
-                component: MapComponent,
+                path: AppRoutes.MAP,
+                component: MapPageComponent,
+                canActivate: [FooterGuard],
+                canDeactivate: [FooterCleanupGuard],
+                
                 // data: { animation: 'openClosePage' },
             },
             {
-                path: 'pulses',
+                path: AppRoutes.PULSES,
                 component: PulsesComponent,
                 // data: { animation: 'openClosePage' },
             },
             {
-                path: 'pulse/:id',
+                path: AppRoutes.PULSE,
                 component: PulsePageComponent,
                 // data: { animation: 'openClosePage' },
             },

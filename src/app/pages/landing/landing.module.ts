@@ -28,6 +28,7 @@ import { LandingRoutingModule } from './landing.routing';
 import { OpenGetAppPopupDirective } from '../../shared/components/popups/get-app-popup/open-get-app-popup.directive';
 import { HeartBeatDirective } from '../../shared/animations/heart-beat.directive';
 import { GetAppButtonComponent } from '../../shared/components/ui-kit/buttons/get-app-button/get-app-button.component';
+import { MapPageComponent } from './components/map-page/map-page.component';
 
 @NgModule({
     declarations: [
@@ -40,6 +41,7 @@ import { GetAppButtonComponent } from '../../shared/components/ui-kit/buttons/ge
         InputSearchComponent,
         PromoteAdsComponent,
         PulsePageComponent,
+        MapPageComponent,
     ],
     imports: [
         CommonModule,

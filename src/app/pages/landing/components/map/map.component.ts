@@ -18,6 +18,7 @@ export class MapComponent implements OnInit {
     @Input() public isToShowHeatmap: boolean = true;
     @Input() public isHideDebugger: boolean = false;
 
+
     @HostBinding('class.full-map')
     public get isFullMap() {
         return !this.isPreview;
@@ -41,10 +42,10 @@ export class MapComponent implements OnInit {
 
     public ngOnInit(): void {
         // if (this.isPreview) {}
-
         this.subscribeOnDataH3Pulses();
         this.subscribeOnDataListHeatmap();
     }
+
 
     public onChangeHeatmapSettings(): void {
         this.map.setPaintProperty(
@@ -404,4 +405,5 @@ export class MapComponent implements OnInit {
 
         return radius;
     }
+
 }
