@@ -147,14 +147,17 @@ ul {
                     transition: all .3s linear;
                     transition-delay: .2s;
 
-                    background-color: white;
+                    background-color: var(--white-color);
 
-                    scale: 1.1;
+                    scale: 1.2;
+                    transform-origin: top;
                     opacity: 0;
+                    transform: translateY(-50vh);
 
                     &.active {
                         opacity: 1;
                         scale: 1;
+                        transform: translateY(0px);
                     }
                                         
                     ul {

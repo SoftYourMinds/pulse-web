@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { SvgIconComponent } from 'angular-svg-icon';
 import { PrimaryButtonComponent } from '../ui-kit/buttons/primary-button/primary-button.component';
@@ -53,6 +53,12 @@ export class HeaderComponent {
         if(!this.isMobileDropdown) return
         this.isMobileDropdown = false;
         this.enableDocumentScroll();
+    }
+
+    @HostListener('window:scroll', [])
+    onScroll(): void {
+        if(this.isMobileDropdown) this.closeDropdown();
+        else return;
     }
 
  }
