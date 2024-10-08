@@ -34,12 +34,12 @@ export class HeaderComponent {
     }
 
     private disableDocumentScroll(): void {
-        // setTimeout(() => window.scrollTo(0,0), 100);
-        document.body.style.overflow = 'hidden';
+        setTimeout(() => window.scrollTo(0,0), 100);
+        document.body.classList.add('no-scroll');
     }
 
     private enableDocumentScroll(): void {
-        document.body.style.overflow = 'scroll';
+        document.body.classList.remove('no-scroll')
     }
 
     public deligateCloseDropdown(event: Event) {
