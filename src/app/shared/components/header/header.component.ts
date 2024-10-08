@@ -23,9 +23,6 @@ import { CommonModule } from '@angular/common';
 export class HeaderComponent {
     public isMobileDropdown: boolean = false;
 
-    ngAfterViewInit(): void {
-        
-    }
 
     public toggleDropdown(): void {
         this.isMobileDropdown = !this.isMobileDropdown;
@@ -34,7 +31,7 @@ export class HeaderComponent {
     }
 
     private disableDocumentScroll(): void {
-        window.scrollTo(0, 0);
+        setTimeout(() => window.scrollTo(0,0), 100);
         document.body.style.overflow = 'hidden';
     }
 
