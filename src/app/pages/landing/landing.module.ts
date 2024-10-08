@@ -27,6 +27,7 @@ import { LandingComponent } from './landing.component';
 import { LandingRoutingModule } from './landing.routing';
 import { OpenGetAppPopupDirective } from '../../shared/components/popups/get-app-popup/open-get-app-popup.directive';
 import { HeartBeatDirective } from '../../shared/animations/heart-beat.directive';
+import { GetAppButtonComponent } from '../../shared/components/ui-kit/buttons/get-app-button/get-app-button.component';
 
 @NgModule({
     declarations: [
@@ -58,6 +59,7 @@ import { HeartBeatDirective } from '../../shared/animations/heart-beat.directive
         
         OpenGetAppPopupDirective,
         HeartBeatDirective,
+        GetAppButtonComponent,
 
         NgxMapboxGLModule.withConfig({
             accessToken: environment.mapboxToken,
