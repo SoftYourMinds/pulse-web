@@ -60,3 +60,9 @@ h3 {
     font-size: 20px;
     font-weight: 600;
 }
+
+.no-scroll {
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+}

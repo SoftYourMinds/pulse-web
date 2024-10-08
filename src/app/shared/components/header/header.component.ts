@@ -26,12 +26,15 @@ export class HeaderComponent {
 
     public toggleDropdown(): void {
         this.isMobileDropdown = !this.isMobileDropdown;
-        if(this.isMobileDropdown) this.disableDocumentScroll();
+        if(this.isMobileDropdown) {
+            this.scrollToTop();
+            this.disableDocumentScroll();
+        }
         else this.enableDocumentScroll(); 
     }
 
     private disableDocumentScroll(): void {
-        setTimeout(() => window.scrollTo(0,0), 100);
+        // setTimeout(() => window.scrollTo(0,0), 100);
         document.body.style.overflow = 'hidden';
     }
 
@@ -55,10 +58,17 @@ export class HeaderComponent {
         this.enableDocumentScroll();
     }
 
-    @HostListener('window:scroll', [])
-    onScroll(): void {
-        if(this.isMobileDropdown) this.closeDropdown();
-        else return;
+    // @HostListener('window:scroll', [])
+    // onScroll(): void {
+    //     if(this.isMobileDropdown) this.closeDropdown();
+    //     else return;
+    // }
+
+    public scrollToTop(): void {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth',
+        });
     }
 
  }
