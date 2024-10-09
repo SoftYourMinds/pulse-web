@@ -3,8 +3,8 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import * as h3 from 'h3-js';
 import mapboxgl from 'mapbox-gl';
 import { filter, first, Subject, tap } from 'rxjs';
-import { HeatmapService } from '../../../../shared/services/core/heatmap.service';
 import { PulseService } from '../../../../shared/services/api/pulse.service';
+import { HeatmapService } from '../../../../shared/services/core/heatmap.service';
 import { MAPBOX_STYLE } from '../../../../shared/tokens/tokens';
 
 @Component({
@@ -32,6 +32,7 @@ export class MapComponent implements OnInit {
     public isToShowH3: boolean = true;
     public heatmapDataPointsCount: number = 0;
     public readonly pulseService: PulseService = inject(PulseService);
+    public isToShoDebugger: string | null = localStorage.getItem('show-debugger');
 
     private readonly h3Pulses$: Subject<any> = new Subject();
     private readonly heatMapData$: Subject<{ [key: string]: number }> =
