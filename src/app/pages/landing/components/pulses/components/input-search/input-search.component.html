@@ -5,6 +5,9 @@
     (onInput)="handleInputChange($event)">
 </app-input>
 
-<button>
-    <svg-icon src="assets/svg/add.svg" style="height: 22px;" />
-</button>
+@if(isAddIcon) {
+    <button>
+        <svg-icon src="assets/svg/add.svg" style="height: 22px;" />
+    </button>
+   
+}

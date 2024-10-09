@@ -129,4 +129,5 @@ export class PulseService {
                 `/map/top?NE.latitude=${NElatitude}&NE.longitude=${NElongitude}&SW.latitude=${SWlatitude}&SW.longitude=${SWlongitude}&resolution=${resolution}`
         );
     }
+  
 }

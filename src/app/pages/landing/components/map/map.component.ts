@@ -6,6 +6,8 @@ import { filter, first, Subject, tap } from 'rxjs';
 import { HeatmapService } from '../../../../shared/services/core/heatmap.service';
 import { PulseService } from '../../../../shared/services/api/pulse.service';
 import { MAPBOX_STYLE } from '../../../../shared/tokens/tokens';
+import { MapService } from 'ngx-mapbox-gl';
+import { MapLocationService } from '../../../../shared/services/core/map-location.service';
 
 @Component({
     selector: 'app-map',
@@ -18,6 +20,9 @@ export class MapComponent implements OnInit {
     @Input() public isToShowHeatmap: boolean = true;
     @Input() public isHideDebugger: boolean = false;
 
+    @Input() public isSearch: boolean = false;
+    @Input() public isZoomButton: boolean = false;
+    @Input() public isLocationName: boolean = false;
 
     @HostBinding('class.full-map')
     public get isFullMap() {
@@ -39,6 +44,11 @@ export class MapComponent implements OnInit {
 
     private readonly destroyed: DestroyRef = inject(DestroyRef);
     private readonly heatmapService: HeatmapService = inject(HeatmapService);
+
+
+    constructor(
+        public mapLocationService: MapLocationService,
+    ) {}
 
     public ngOnInit(): void {
         // if (this.isPreview) {}
@@ -195,7 +205,11 @@ export class MapComponent implements OnInit {
                             Object.keys(heatmap).length)
                 )
             )
-            .subscribe((votes) => this.heatMapData$.next(votes));
+            .subscribe((votes) => { 
+                this.heatMapData$.next(votes)
+
+                this.updateCurrentLocationAreaName();
+            });
     }
 
     public heatmapIntensity: number = 0.1;
@@ -405,5 +419,18 @@ export class MapComponent implements OnInit {
 
         return radius;
     }
+
+
+    private updateCurrentLocationAreaName() {
+        const coordinates = this.mapLocationService.getMapCoordinatesWebClient(this.map);
+        this.mapLocationService.getLocationFilter(
+            coordinates,
+            this.map.getBounds().toArray()
+        );
+        // console.log(this.mapLocationService.mapLocationFilter)    
+    }
+
+
+    
 
 }

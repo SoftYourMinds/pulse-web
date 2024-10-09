@@ -33,7 +33,8 @@
     }
 </mgl-map>
 
-<div class="debugger" [class.hidden]="isHideDebugger">
+
+<!-- <div class="debugger" [class.hidden]="isHideDebugger">
     <div class="hide" (click)="isHideDebugger = !isHideDebugger">
         @if (isHideDebugger) {
             Show
@@ -131,7 +132,43 @@
             </span>
         </div>
     }
-</div>
+</div> -->
+
+
+<!-- FEATURES -->
+
+@if (isSearch) {
+
+    <app-input-search 
+        id="search" 
+        [isAddIcon]="false"  />
+}
+
+
+@if (isLocationName) {
+
+    <div id="map-area-name">
+        <svg-icon [src]="'assets/svg/location.svg'"/>
+        <h3>{{ mapLocationService.mapLocationFilter }}</h3>
+    </div>
+}
+
+@if (isZoomButton) {
+
+    <div class="zoom-button">
+
+        <button class="zoom-button__icon">
+            <svg-icon src="assets/svg/zoom-plus-icon.svg" />
+        </button>
+
+        <button class="zoom-button__icon">
+            <svg-icon src="assets/svg/zoom-minus-icon.svg" />
+        </button>
+        
+    </div>
+}
+
+
 
 <!-- <div
     class="extend"
