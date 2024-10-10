@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { map, Observable, tap } from 'rxjs';
+import { first, map, Observable, tap } from 'rxjs';
 import { IPulse, ISettings } from '../../interfaces';
 import { API_URL } from '../../tokens/tokens';
 
@@ -14,9 +14,14 @@ export class PulseService {
     public minVoteInterval: number;
     public latestAppVersionNumber: number;
     public currentHeatmapDepth: number = 3;
+    public actualTopicsImageKeyMap: { [key: string]: string } = { };
 
     private readonly apiUrl: string = inject(API_URL);
     private readonly http: HttpClient = inject(HttpClient);
+
+    constructor() {
+        this.get().pipe(first()).subscribe();
+    }
 
     public get(
         params: {
@@ -37,7 +42,19 @@ export class PulseService {
             }
         });
 
-        return this.http.get<IPulse[]>(`${this.apiUrl}/topics` + paramUrl);
+        return this.http
+            .get<IPulse[]>(`${this.apiUrl}/topics` + paramUrl)
+            .pipe(
+                tap((pulses) =>
+                    pulses.forEach(
+                        (pulse) =>{
+                            console.log(pulse);
+                            (
+                                this.actualTopicsImageKeyMap[pulse.id] = pulse.icon
+                            )}
+                    )
+                )
+            );
     }
 
     public getById(id: string | number): Observable<IPulse> {
@@ -54,6 +71,7 @@ export class PulseService {
     ): Observable<{
         [key: string]: number;
     }> {
+        console.log('resolution', resolution);
         return this.http
             .get<Array<{ id: string; votes: number; children: any }>>(
                 this.apiUrl +
@@ -124,9 +142,28 @@ export class PulseService {
         SWlongitude: number,
         resolution: number = 1
     ) {
+        if (resolution >= 8) resolution = 7;
         return this.http.get(
             this.apiUrl +
-                `/map/top?NE.latitude=${NElatitude}&NE.longitude=${NElongitude}&SW.latitude=${SWlatitude}&SW.longitude=${SWlongitude}&resolution=${resolution}`
-        );
+                `/map?NE.latitude=${NElatitude}&NE.longitude=${NElongitude}&SW.latitude=${SWlatitude}&SW.longitude=${SWlongitude}&resolution=${resolution}`
+        ).pipe(map((response: any) => {
+            const objH3Pulses = {};
+            response.forEach(
+                (res: { id: string; topics: any, votes: number }) => {
+                    const maxVotesOfTopicId = 
+                        Object.entries(res.topics)
+                            .sort((a: any, b: any) => a[1] - b[1])
+                            .pop()![0];
+
+                    // @ts-ignore
+                    objH3Pulses[res.id] = {
+                        topicId: maxVotesOfTopicId,
+                        icon: this.actualTopicsImageKeyMap[maxVotesOfTopicId],
+                        votes: res.votes,
+                    };
+                }
+            );
+            return objH3Pulses;
+        }))
     }
 }

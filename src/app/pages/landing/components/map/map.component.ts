@@ -103,8 +103,8 @@ export class MapComponent implements OnInit {
     }
 
     public handleZoomEnd = () => {
-        this.updateH3Pulses();
-        this.updateHeatmapForMap();
+        // this.updateH3Pulses();
+        // this.updateHeatmapForMap();
     };
 
     public handleMoveEnd = () => {
