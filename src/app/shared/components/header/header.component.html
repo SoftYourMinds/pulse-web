@@ -1,35 +1,129 @@
-<a
-    class="logo"
-    routerLink="/">
-    <svg-icon src="assets/svg/logo.svg" />
-</a>
 
-<div class="right-side">
-    <ul>
-        <li>
-            <a 
-                routerLink="/map"
-                routerLinkActive="active">
-                Map
-            </a>
-        </li>
-        <li>
-            <a 
-                routerLink="/pulses"
-                routerLinkActive="active">
-                Pulses
-            </a>
-        </li>
-        <li>
-            <a 
-                routerLink="/login"
-                routerLinkActive="active">
-                Sign In
-            </a>
-        </li>
-    </ul>
+<header class="desktop">
 
-    <app-primary-button>
-        Download App
-    </app-primary-button>
-</div>
+    <a
+        class="logo"
+        routerLink="/">
+        <svg-icon src="assets/svg/logo.svg" />
+    </a>
+
+    <div class="right-side">
+        <ul>
+            <li>
+                <a 
+                    routerLink="/map"
+                    routerLinkActive="active">
+                    Map
+                </a>
+            </li>
+            <li>
+                <a 
+                    routerLink="/pulses"
+                    routerLinkActive="active">
+                    Pulses
+                </a>
+            </li>
+            <li>
+                <a 
+                    routerLink="/login"
+                    routerLinkActive="active"
+                    openComingSoonPopup>
+                    Sign In
+                </a>
+            </li>
+        </ul>
+
+       
+
+        <app-primary-button>
+            Download App
+        </app-primary-button>
+
+    </div>
+
+</header>
+
+<!-- MOBILE DESIGN -->
+
+<header class="mobile">
+
+    <div class="mobile__top-bar">
+        
+        <a class="logo"
+            (click)="closeDropdown()"
+            routerLink="/">
+            <svg-icon src="assets/svg/logo-mobile.svg" ></svg-icon>
+        </a>
+
+        <app-burger-button 
+            [isOpen]="isMobileDropdown" 
+            (click)="toggleDropdown()" />
+    
+    </div>
+
+    <div class="mobile__dropdown"
+        (click)="deligateCloseDropdown($event)"
+        [ngClass]="{'active': isMobileDropdown}">
+
+        <div class="mobile__dropdown-container"
+            [ngClass]="{'active': isMobileDropdown}">
+
+            <div class="right-side"
+                [ngClass]="{'active': isMobileDropdown}">
+                
+                <div></div>
+
+                <ul [ngClass]="{'scale': !isMobileDropdown}">
+                    <li>
+                        <a 
+                            routerLink="/map"
+                            routerLinkActive="active">
+                            Map
+                        </a>
+                    </li>
+                    <li>
+                        <a 
+                            routerLink="/pulses"
+                            routerLinkActive="active">
+                            Pulses
+                        </a>
+                    </li>
+                    <li>
+                        <a 
+                            routerLink="/login"
+                            routerLinkActive="active"
+                            openComingSoonPopup>
+                            Sign In
+                        </a>
+                    </li>
+                    <li>
+                        <a 
+                            routerLink="/Terms"
+                            routerLinkActive="active">
+                            Terms of Use
+                        </a>
+                    </li>
+                    <li>
+                        <a 
+                            routerLink="/Policy"
+                            routerLinkActive="active">
+                            Privacy Policy
+                        </a>
+                    </li>
+                </ul>
+        
+                <app-primary-button 
+                    [ngClass]="{'scale': !isMobileDropdown}">
+                    Download App
+                </app-primary-button>
+        
+            </div>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+

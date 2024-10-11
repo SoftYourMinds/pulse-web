@@ -1,0 +1,53 @@
+@keyframes heartBeatAdvanced {
+    0% {
+        transform: scale(1);
+        opacity: 1; /* Fully visible */
+    }
+    10% {
+        transform: scale(1.1);
+        opacity: 1; /* Fully visible */
+    }
+    20% {
+        opacity: 0.95; /* Slightly less visible */
+    }
+    30% {
+        opacity: 0.9; /* Even less visible */
+    }
+    40% {
+        opacity: 0.85; /* Slightly dimmer */
+    }
+    50% {
+        opacity: 0.9; /* Back to less visible */
+    }
+    60% {
+        opacity: 0.95; /* Slightly less visible */
+    }
+    70% {
+        opacity: 1; /* Fully visible again */
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1; /* Fully visible */
+    }
+}
+
+.heart-beat-advanced {
+    animation: heartBeatAdvanced 1s ease-in-out infinite; /* Reduced duration for faster animation */
+}
+
+
+@keyframes heartBeat {
+    0% {
+        transform: scale(1);
+    }
+    10% {
+        transform: scale(1.15);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.heart-beat {
+    animation: heartBeat 1s ease-in-out infinite; /* You can adjust the duration here */
+}

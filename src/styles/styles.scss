@@ -1,13 +1,25 @@
 @import url('./_reset.scss');
 @import url('./_fonts.scss');
 @import url('./_variables.scss');
+@import url('./_materials.scss');
+@import url('./animations/index.scss');
 @import 'mapbox-gl/dist/mapbox-gl.css';
+
+*, html {
+    scroll-behavior: smooth;
+}
+
+html {
+    height: 100%;
+}
 
 body {
     font-family: 'SFProText', sans-serif;
-    padding: 30px 35px;
+    height: 100%;
+    // padding: 30px 35px;
     color: var(--black-color);
     font-size: 16px;
+    scroll-behavior: smooth;
 }
 
 /* width */
@@ -54,33 +66,15 @@ h3 {
     font-weight: 600;
 }
 
-
-/** Ripple
-======================== */
-.ripple-effect {
-    position: relative;
+.no-scroll {
     overflow: hidden;
+    position: fixed;
+    width: 100%;
 }
 
-.ripple-anim {
-    position: absolute;
-    width: 2px;
-    height: 2px;
-    border-radius: 50%;
-    animation: rippleEffect 5s ease-in-out;
-    pointer-events: none;
+@media screen and (max-width: 800px) {
+    .hide-footer  app-footer {
+        display: none;
+    }    
 }
 
-@keyframes rippleEffect {
-    0% {
-        transform: scale(1);
-    }
-
-    100% {
-        opacity: 0;
-        transform: scale(var(--scale));
-    }
-}
-
-/** END Ripple
-======================== */

@@ -1,7 +1,10 @@
+@use '../../../../../styles/mixins' as *;
+
 :host {
     display: flex;
     justify-content: center;
     position: relative;
+    // padding: 0 20px;
 }
 
 .map-container {
@@ -11,7 +14,6 @@
     overflow: hidden;
     border-radius: 20px;
     cursor: grab;
-    margin-top: 30px;
 }
 
 ::ng-deep .mapboxgl-control-container {
@@ -79,6 +81,7 @@
     bottom: 0;
     right: 0;
     // pointer-events: none;
+    transform: translate(-10px, -10px);
 
     padding: 15px;
 
@@ -146,5 +149,124 @@
     text-align: center;
     padding: 0 !important;
 
+
     cursor: pointer;
 }
+
+
+// FEATRURES: 
+
+    /*   SEARCH INPUT   */
+
+    #search::ng-deep input {
+        box-shadow: 0px 3px 10px 0px rgba(0, 0, 0, 0.15);
+        margin: 0;
+        height: 48px;
+    }
+
+    #search::ng-deep app-input {
+        margin: 0;
+    }
+
+    #search {
+        margin-bottom: 0px;
+        width: 300px;
+        max-width: 300px;
+        width: 100%;
+        position: absolute;
+        z-index: 1;
+        top: 30px;
+        left: 30px;
+    }
+
+
+    @media screen and (max-width: 500px) {
+        #search {
+            left: 50%;
+            top: 20px;
+            transform: translateX(-50%);
+            width: 100%;
+            max-width: 100%;
+            padding: 0 20px;
+        }
+    }
+
+    
+    /* LOCATION NAME / AREA NAME */
+
+    #map-area-name {
+        position: absolute;
+        bottom: 30px;
+        left: 30px;
+        display: flex;
+        gap: 12px;
+        align-items: center;
+        justify-content: center;
+
+        h3 {
+            @include title-20px;
+            font-weight: 400;
+            color: var(--white-color);
+            text-shadow: 0px 0px 6px rgba(0, 0, 0, 0.35);
+        }
+
+
+    }
+
+    @media screen and (max-width: 500px) {
+        
+        #map-area-name {
+            bottom: 20px;
+            left: 20px; 
+        }
+
+        h3 { @include text-16px;}
+    }
+
+    /* ZOOM BUTTONS  */
+
+    .zoom-button {
+        position: absolute;
+        right: 30px;
+        bottom: 30px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+        &__icon {
+            transition: all .2s;
+            position: relative;
+            background: white;
+            border-radius: 50%;
+            width: 26px;
+            height: 26px;
+            box-shadow: 0px 3px 10px 0px #00000026;
+
+            
+            &::after, &::before {
+                content: "";
+                position: absolute;
+                z-index: 1  ;
+                width: 14px;
+                height: 2px;
+                border-radius: 1px;
+                background: #8386A5;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+
+            cursor: pointer;
+        }
+        
+        &__icon:first-child::after {
+            height: 14px;
+            width: 2px;
+        }
+
+        &__icon:active {
+            scale: .8;
+        }
+        
+    }
+

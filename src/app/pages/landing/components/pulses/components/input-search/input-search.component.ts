@@ -10,6 +10,8 @@ export class InputSearchComponent implements OnInit {
     @Input() 
     public isLoading: boolean = false;
 
+    @Input() isAddIcon: boolean = true;
+
     @Output() 
     public handleValueChange: EventEmitter<string> =new EventEmitter();
 

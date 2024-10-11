@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 
 import { FormsModule } from '@angular/forms';
 import { SvgIconComponent } from 'angular-svg-icon';
@@ -25,6 +25,11 @@ import { PromoteAdsComponent } from './components/pulses/components/promote-ads/
 import { PulsesComponent } from './components/pulses/pulses.component';
 import { LandingComponent } from './landing.component';
 import { LandingRoutingModule } from './landing.routing';
+import { OpenGetAppPopupDirective } from '../../shared/components/popups/get-app-popup/open-get-app-popup.directive';
+import { HeartBeatDirective } from '../../shared/animations/heart-beat.directive';
+import { GetAppButtonComponent } from '../../shared/components/ui-kit/buttons/get-app-button/get-app-button.component';
+import { MapPageComponent } from './components/map-page/map-page.component';
+import { ComingSoonPopupDirective } from '../../shared/components/popups/comming-soon-popup/coming-soon-popup.directive';
 
 @NgModule({
     declarations: [
@@ -37,6 +42,8 @@ import { LandingRoutingModule } from './landing.routing';
         InputSearchComponent,
         PromoteAdsComponent,
         PulsePageComponent,
+        MapPageComponent,
+        
     ],
     imports: [
         CommonModule,
@@ -53,9 +60,16 @@ import { LandingRoutingModule } from './landing.routing';
         FormsModule,
         SpinnerComponent,
         FormatNumberPipe,
+        
+        OpenGetAppPopupDirective,
+        HeartBeatDirective,
+        GetAppButtonComponent,
+        ComingSoonPopupDirective,
+        
         NgxMapboxGLModule.withConfig({
             accessToken: environment.mapboxToken,
         }),
     ],
+    schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
 export class LandingModule {}

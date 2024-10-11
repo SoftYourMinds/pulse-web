@@ -3,8 +3,13 @@
     [style]="mapboxStylesUrl"
     [center]="center"
     [interactive]="true"
+    [maxBounds]="[
+        [-164, -85],
+        [163, 85]
+    ]"
     [zoom]="[2.8]"
     [minZoom]="2.8"
+    [maxZoom]="12.5"
     (load)="onMapLoad($event)"
     (zoomEnd)="handleZoomEnd()"
     (moveEnd)="handleMoveEnd()">
@@ -32,6 +37,7 @@
         </mgl-marker>
     }
 </mgl-map>
+
 
 <div class="debugger" [class.hidden]="isHideDebugger">
     <div class="hide" (click)="isHideDebugger = !isHideDebugger">
@@ -133,8 +139,41 @@
     }
 </div>
 
-<div
+
+<!-- FEATURES -->
+
+@if (isSearch) {
+
+    <app-input-search 
+        id="search" 
+        [isAddIcon]="false" 
+        openComingSoonPopup />
+}
+
+
+@if (isLocationName) {
+
+    <div id="map-area-name">
+        <svg-icon [src]="'assets/svg/location.svg'"/>
+        <h3>{{ mapLocationService.mapLocationFilter }}</h3>
+    </div>
+}
+
+@if (isZoomButton) {
+
+    <div class="zoom-button">
+
+        <button class="zoom-button__icon"
+            (click)="zoomMapClick('+')"></button>
+
+        <button class="zoom-button__icon"
+            (click)="zoomMapClick('-')"></button>
+        
+    </div>
+}
+
+<!-- <div
     class="extend"
     routerLink="/map">
     <svg-icon src="assets/svg/extend.svg" />
-</div>
+</div> -->

@@ -1,14 +1,17 @@
 :host {
+    display: block;
+    padding: 20px;
+    box-shadow: 0px -1px 0px 0px #8386A533;
+}
+
+footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin: 0 auto;
 
     width: 100%;
     max-width: 1170px;
-    margin: 0 auto;
-    padding-top: 24px;
-    margin-top: 48px;
-    box-shadow: 0px -1px 0px 0px #8386A533;
 
 }
 
@@ -55,5 +58,14 @@ ul {
                 width: 100%;
             }
         }
+    }
+}
+
+
+@media screen and (max-width: 500px) {
+    footer {
+        gap: 24px;
+        justify-content: center;
+        flex-direction: column;
     }
 }

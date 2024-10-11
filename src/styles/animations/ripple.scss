@@ -1,0 +1,29 @@
+/** Ripple
+======================== */
+.ripple-effect {
+    position: relative;
+    overflow: hidden;
+}
+
+.ripple-anim {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    border-radius: 50%;
+    animation: rippleEffect 5s ease-in-out;
+    pointer-events: none;
+}
+
+@keyframes rippleEffect {
+    0% {
+        transform: scale(1);
+    }
+
+    100% {
+        opacity: 0;
+        transform: scale(var(--scale));
+    }
+}
+
+/** END Ripple
+======================== */

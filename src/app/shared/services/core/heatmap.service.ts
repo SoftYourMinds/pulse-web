@@ -275,4 +275,6 @@ export class HeatmapService {
             }
         );
     }
+
+        
 }

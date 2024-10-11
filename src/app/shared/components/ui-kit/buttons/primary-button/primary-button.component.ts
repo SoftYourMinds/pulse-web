@@ -4,7 +4,9 @@ import { RippleEffectDirective } from '../../../../directives/ripple-effect';
 @Component({
     selector: 'app-primary-button',
     standalone: true,
-    imports: [RippleEffectDirective],
+    imports: [
+        RippleEffectDirective,
+    ],
     templateUrl: './primary-button.component.html',
     styleUrl: './primary-button.component.scss',
 })

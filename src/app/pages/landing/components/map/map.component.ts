@@ -3,8 +3,9 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import * as h3 from 'h3-js';
 import mapboxgl from 'mapbox-gl';
 import { filter, first, Subject, tap } from 'rxjs';
-import { HeatmapService } from '../../../../shared/services/heatmap.service';
-import { PulseService } from '../../../../shared/services/pulse.service';
+import { PulseService } from '../../../../shared/services/api/pulse.service';
+import { HeatmapService } from '../../../../shared/services/core/heatmap.service';
+import { MapLocationService } from '../../../../shared/services/core/map-location.service';
 import { MAPBOX_STYLE } from '../../../../shared/tokens/tokens';
 
 @Component({
@@ -17,6 +18,10 @@ export class MapComponent implements OnInit {
     @Input() public isPreview: boolean = false;
     @Input() public isToShowHeatmap: boolean = true;
     @Input() public isHideDebugger: boolean = false;
+
+    @Input() public isSearch: boolean = false;
+    @Input() public isZoomButton: boolean = false;
+    @Input() public isLocationName: boolean = false;
 
     @HostBinding('class.full-map')
     public get isFullMap() {
@@ -31,6 +36,7 @@ export class MapComponent implements OnInit {
     public isToShowH3: boolean = true;
     public heatmapDataPointsCount: number = 0;
     public readonly pulseService: PulseService = inject(PulseService);
+    public isToShoDebugger: string | null = localStorage.getItem('show-debugger');
 
     private readonly h3Pulses$: Subject<any> = new Subject();
     private readonly heatMapData$: Subject<{ [key: string]: number }> =
@@ -39,12 +45,17 @@ export class MapComponent implements OnInit {
     private readonly destroyed: DestroyRef = inject(DestroyRef);
     private readonly heatmapService: HeatmapService = inject(HeatmapService);
 
+
+    constructor(
+        public mapLocationService: MapLocationService,
+    ) {}
+
     public ngOnInit(): void {
         // if (this.isPreview) {}
-
         this.subscribeOnDataH3Pulses();
         this.subscribeOnDataListHeatmap();
     }
+
 
     public onChangeHeatmapSettings(): void {
         this.map.setPaintProperty(
@@ -101,8 +112,8 @@ export class MapComponent implements OnInit {
     }
 
     public handleZoomEnd = () => {
-        this.updateH3Pulses();
-        this.updateHeatmapForMap();
+        // this.updateH3Pulses();
+        // this.updateHeatmapForMap();
     };
 
     public handleMoveEnd = () => {
@@ -194,7 +205,11 @@ export class MapComponent implements OnInit {
                             Object.keys(heatmap).length)
                 )
             )
-            .subscribe((votes) => this.heatMapData$.next(votes));
+            .subscribe((votes) => { 
+                this.heatMapData$.next(votes)
+
+                this.updateCurrentLocationAreaName();
+            });
     }
 
     public heatmapIntensity: number = 0.1;
@@ -269,13 +284,13 @@ export class MapComponent implements OnInit {
             9: 5,
             10: 6,
             11: 7,
-            12: 8,
-            13: 9,
-            14: 10,
-            15: 11,
+            12: 7,
+            13: 7,
+            14: 7,
+            15: 7,
         };
 
-        return zoomResolutionMap[Math.floor(zoom)] || 11;
+        return zoomResolutionMap[Math.floor(zoom)] || 7;
     }
 
     private convertH3ToGeoJSON(data: any) {
@@ -404,4 +419,34 @@ export class MapComponent implements OnInit {
 
         return radius;
     }
+
+
+    private updateCurrentLocationAreaName() {
+        const coordinates = this.mapLocationService.getMapCoordinatesWebClient(this.map);
+        this.mapLocationService.getLocationFilter(
+            coordinates,
+            this.map.getBounds().toArray()
+        );
+        // console.log(this.mapLocationService.mapLocationFilter)    
+    }
+
+
+    public zoomMapClick(sign: "+" | "-"): void {
+        let minZoom = this.map.getMinZoom();
+        let maxZoom = this.map.getMaxZoom();
+        let currentZoom = this.map.getZoom();
+        
+        if(sign === '+' && currentZoom < maxZoom) {
+            this.map.setZoom(currentZoom + 2); // Zoom in (increase zoom level)
+        } 
+        if(sign === '-' && currentZoom > minZoom) {
+            this.map.setZoom(currentZoom - 2); // Zoom out (decrease zoom level)
+        }
+        
+        return;
+    }
+
+
+    
+
 }

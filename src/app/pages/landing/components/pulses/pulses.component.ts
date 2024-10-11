@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { first } from 'rxjs';
 import { IPulse } from '../../../../shared/interfaces';
-import { PulseService } from '../../../../shared/services/pulse.service';
+import { PulseService } from '../../../../shared/services/api/pulse.service';
 
 @Component({
     selector: 'app-pulses',

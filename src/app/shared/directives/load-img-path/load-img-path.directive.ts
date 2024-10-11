@@ -1,5 +1,5 @@
 import { AfterViewInit, Directive, ElementRef, inject, OnInit, Renderer2 } from '@angular/core';
-import { PulseService } from '../../services/pulse.service';
+import { PulseService } from '../../services/api/pulse.service';
 
 @Directive({
     selector: '[appLoadImgPath]',

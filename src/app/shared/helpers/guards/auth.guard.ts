@@ -8,7 +8,7 @@ import {
 } from '@angular/router';
 import { JwtPayload, jwtDecode } from 'jwt-decode';
 import { Observable } from 'rxjs';
-import { AuthenticationService } from '../../services/authentication.service';
+import { AuthenticationService } from '../../services/api/authentication.service';
 
 @Injectable({
     providedIn: 'root',

@@ -1,9 +1,12 @@
+@use '../../../../../styles/mixins' as *;
+
 :host {
     display: block;
     padding: 24px 20px;
     min-height: 195px;
     max-width: 323px;
     width: 100%;
+    cursor: pointer;
 
     border-radius: 10px;
 
@@ -28,6 +31,7 @@
     width: 80px;
     height: 80px;
     min-width: 80px;
+    min-height: 80px;
 
     border: 1px solid var(--light-grey-color);
     border-radius: 8px;
@@ -43,6 +47,7 @@
 .stats {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     width: 100%;
 
     font-size: 14px;
@@ -93,12 +98,27 @@
 
 .bottom {
 
+    h3 {
+        @include title-20px;
+    }
+
     div {
         display: flex;
         align-items: center;
         gap: 9px;
+        @include text-14px;
         color: var(--dark-grey-color);
 
-        margin-top: 7px;
+        margin-top: 8px;
+
+        svg-icon {
+            display: flex;
+        }
     }
+}
+
+@media screen and (max-width: 500px) {
+
+
+    
 }

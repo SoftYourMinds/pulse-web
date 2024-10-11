@@ -9,7 +9,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, throwError } from 'rxjs';
 import { catchError, filter, switchMap, take } from 'rxjs/operators';
 // import {MatSnackBar} from '@angular/material/snack-bar';
-import { AuthenticationService } from '../../services/authentication.service';
+import { AuthenticationService } from '../../services/api/authentication.service';
 
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {
