@@ -51,8 +51,9 @@
                 <div 
                     class="pulse__info-description-text"
                     [class.pulse__info-description-text--read-more]="isReadMore"
-                    #description>
-                    {{ pulse.description }}
+                    #description
+                    [innerHTML]="pulse.description">
+                    
                 </div>
                 @if (!isReadMore) {
                     <div 
@@ -67,7 +68,7 @@
                     <div>{{ keyword }}</div>
                 }
             </div>
-    
+<!--     
             <div class="pulse__info-links">
                 <svg-icon src="assets/svg/link.svg" />
                 Official team website
@@ -75,7 +76,7 @@
             <div class="pulse__info-links">
                 <svg-icon src="assets/svg/link.svg" />
                 Game schedule
-            </div>
+            </div> -->
     
             <div class="pulse__info-activity">
                 Active from Sept 10, 2024, to Sept 13, 2024
