@@ -5,7 +5,13 @@ const versionFilePath = "src/assets/data/version.ts";
 let version = { major: 1, minor: 0, patch: 0 };
 
 if (fs.existsSync(versionFilePath)) {
-    version = JSON.parse(fs.readFileSync(versionFilePath, "utf8"));
+    const fileContent = fs.readFileSync(versionFilePath, "utf8");
+
+    const versionMatch = fileContent.match(/export const version = (\{.*\});/);
+
+    if (versionMatch && versionMatch[1]) {
+        version = JSON.parse(versionMatch[1]);
+    }
 }
 
 let commitCount;
@@ -23,6 +29,11 @@ if (commitCount >= 100 && version.patch === 0) {
     version.patch = 0;
 }
 
-fs.writeFileSync(versionFilePath, 'export const version = ' + JSON.stringify(version, null, 2));
+const newVersionContent = `export const version = ${JSON.stringify(
+    version,
+    null,
+    2
+)};`;
+fs.writeFileSync(versionFilePath, newVersionContent);
 
 console.log(`New version: ${version.major}.${version.minor}.${version.patch}`);
