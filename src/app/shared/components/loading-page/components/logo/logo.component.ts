@@ -28,9 +28,8 @@ export class LogoComponent implements AfterViewInit {
     this.loadingService.isLoadingObservable.subscribe((val) => {
         if(val) return;
         this.stopLogoAnimation();
-        this.hostWidth = '320px';
+        this.hostWidth = '320px'; // finish slide name animation
     })
-    // setTimeout(()=> this.stopLogoAnimation(), 3000);
   }
 
   private initLogoAnimation(): Function {

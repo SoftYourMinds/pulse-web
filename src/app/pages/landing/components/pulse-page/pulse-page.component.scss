@@ -277,6 +277,7 @@
 
         app-primary-button::ng-deep button {
             width: 100% !important;
+            gap: unset !important;
         }
 
 }
