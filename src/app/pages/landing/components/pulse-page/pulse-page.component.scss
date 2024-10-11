@@ -4,7 +4,7 @@
     display: flex;
     justify-content: center;
     width: 100%;
-    margin-top: 48px;
+    padding: 48px 20px;
 }
 
 .pulse {
@@ -119,6 +119,8 @@
     }
 
     &__info {
+
+
         &-description {
             &-text {
 
@@ -190,20 +192,20 @@
 
             display: flex;
             flex: 1 1 auto;
-            column-gap: 20px;
+            gap: 20px;
             height: 180px;
             margin-top: 20px;
 
             img {
                 height: auto;
                 border-radius: 10px;
-                max-width: 275px;
+                min-width: 275px;
             }
 
             &__map {
                 position: relative;
                 width: 100%;
-                max-width: 275px;
+                min-width: 275px;
                 cursor: pointer;
 
                 &-clickbait {
@@ -227,9 +229,10 @@
                 }
                 
                 app-map {
-                    filter: blur(.9px);
+                    pointer-events: none;
                     width: 100%;
                     height: 100%;
+                    cursor: pointer;
                 }
             }
 
@@ -244,5 +247,36 @@
         height: 180px;
         margin-top: 0px !important;
     }
+
+}
+
+@media screen and (max-width: 650px) {
+
+    .pulse__info-media img {
+        max-width: 100%;
+
+    }
+
+    .pulse__info-media {
+        flex-direction: column;
+        gap: 20px;
+        height: auto;
+    }
+
+    app-map::ng-deep .map-container {
+        height: auto;
+        margin-top: 0px !important;
+    }
+}
+
+@media screen and (max-width: 400px) {
+        app-primary-button {
+            display: block;
+            width: 100%;    
+        } 
+
+        app-primary-button::ng-deep button {
+            width: 100% !important;
+        }
 
 }
