@@ -67,7 +67,7 @@ export class AppComponent {
                     setTimeout(() => {
                         this.isLoading = false
                     }, 1000);
-                }, 1000);
+                }, 2000);
                 
             });
     }

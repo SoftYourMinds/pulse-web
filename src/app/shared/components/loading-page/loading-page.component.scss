@@ -1,6 +1,8 @@
 :host {
     width: 100vw;
     height: 100vh;
+
+    position: fixed;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -10,7 +12,8 @@
     backdrop-filter: opacity(.1);
     background-size: cover;
     background-position: center center;
+    background-color: white;
     
-    
+
 }
 
