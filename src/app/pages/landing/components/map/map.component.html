@@ -3,8 +3,13 @@
     [style]="mapboxStylesUrl"
     [center]="center"
     [interactive]="true"
+    [maxBounds]="[
+        [-164, -85],
+        [163, 85]
+    ]"
     [zoom]="[2.8]"
     [minZoom]="2.8"
+    [maxZoom]="12.5"
     (load)="onMapLoad($event)"
     (zoomEnd)="handleZoomEnd()"
     (moveEnd)="handleMoveEnd()">
@@ -34,7 +39,7 @@
 </mgl-map>
 
 
-<!-- <div class="debugger" [class.hidden]="isHideDebugger">
+<div class="debugger" [class.hidden]="isHideDebugger">
     <div class="hide" (click)="isHideDebugger = !isHideDebugger">
         @if (isHideDebugger) {
             Show
@@ -132,7 +137,7 @@
             </span>
         </div>
     }
-</div> -->
+</div>
 
 
 <!-- FEATURES -->
