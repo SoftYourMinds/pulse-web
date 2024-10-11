@@ -220,6 +220,50 @@
         }
     }
 
+    /* ZOOM BUTTONS  */
 
+    .zoom-button {
+        position: absolute;
+        right: 30px;
+        bottom: 30px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
 
+        &__icon {
+            transition: all .2s;
+            position: relative;
+            background: white;
+            border-radius: 50%;
+            width: 26px;
+            height: 26px;
+            box-shadow: 0px 3px 10px 0px #00000026;
+
+            
+            &::after, &::before {
+                content: "";
+                position: absolute;
+                z-index: 1  ;
+                width: 14px;
+                height: 2px;
+                border-radius: 1px;
+                background: #8386A5;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+
+            cursor: pointer;
+        }
+        
+        &__icon:first-child::after {
+            height: 14px;
+            width: 2px;
+        }
+
+        &__icon:active {
+            scale: .8;
+        }
+        
+    }
 

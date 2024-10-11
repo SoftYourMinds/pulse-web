@@ -432,6 +432,22 @@ export class MapComponent implements OnInit {
     }
 
 
+    public zoomMapClick(sign: "+" | "-"): void {
+        let minZoom = this.map.getMinZoom();
+        let maxZoom = this.map.getMaxZoom();
+        let currentZoom = this.map.getZoom();
+        
+        if(sign === '+' && currentZoom < maxZoom) {
+            this.map.setZoom(currentZoom + 2); // Zoom in (increase zoom level)
+        } 
+        if(sign === '-' && currentZoom > minZoom) {
+            this.map.setZoom(currentZoom - 2); // Zoom out (decrease zoom level)
+        }
+        
+        return;
+    }
+
+
     
 
 }

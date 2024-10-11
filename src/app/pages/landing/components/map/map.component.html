@@ -158,13 +158,11 @@
 
     <div class="zoom-button">
 
-        <button class="zoom-button__icon">
-            <svg-icon src="assets/svg/zoom-plus-icon.svg" />
-        </button>
+        <button class="zoom-button__icon"
+            (click)="zoomMapClick('+')"></button>
 
-        <button class="zoom-button__icon">
-            <svg-icon src="assets/svg/zoom-minus-icon.svg" />
-        </button>
+        <button class="zoom-button__icon"
+            (click)="zoomMapClick('-')"></button>
         
     </div>
 }
