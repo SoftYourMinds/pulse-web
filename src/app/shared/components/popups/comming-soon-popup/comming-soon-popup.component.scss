@@ -1,0 +1,15 @@
+@import url('../get-app-popup/get-app-popup.component.scss');
+
+#popup {
+    background: white;
+}
+
+#icon::ng-deep svg {
+    width: 90px;
+    height: 90px;
+    margin-bottom: 24px;
+}
+
+p {
+    max-width: 400px;
+}
