@@ -1,6 +1,6 @@
 import { Component, ElementRef, inject, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
-import { first, take } from 'rxjs';
+import { catchError, first, of, take } from 'rxjs';
 import { IPulse } from '../../../../shared/interfaces';
 import { PulseService } from '../../../../shared/services/api/pulse.service';
 
@@ -34,13 +34,13 @@ export class PulsePageComponent implements OnInit {
     }
 
     private handlePulseUrlIdListener(data: ParamMap): void {
-        const id = +data.get('id')!;
+        const id = data.get('id')!;
 
-        if (!id || 'number' !== typeof id) {
-            console.error('Invalid pulse ID');
-            this.router.navigateByUrl('/');
-            return;
-        }
+        // if (!id || 'number' !== typeof id) {
+        //     console.error('Invalid pulse ID');
+        //     this.router.navigateByUrl('/');
+        //     return;
+        // }
 
         this.getPulseById(id);
     }
@@ -48,7 +48,13 @@ export class PulsePageComponent implements OnInit {
     private getPulseById(id: string | number): void {
         this.pulseService
             .getById(id)
-            .pipe(first())
+            .pipe(
+                first(), 
+                catchError((error) => {
+                    this.router.navigateByUrl('/');
+                    return of(error);
+                })
+            )
             .subscribe((pulse) => {
                 this.pulse = pulse;
                 this.determineIfNeedToRemoveShowMoreButton();

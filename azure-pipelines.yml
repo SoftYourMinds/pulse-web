@@ -4,7 +4,7 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
 
 trigger:
-- master
+- release
 
 pool:
   vmImage: ubuntu-latest
@@ -17,15 +17,15 @@ steps:
 
 - script: |
     npm install
-    npm run build:dev
+    npm run build
   displayName: 'npm install and build'
 
 - task: CopyFiles@2
   inputs:
     sourceFolder: '$(Build.SourcesDirectory)'
     contents: |
-       dist/go-pulse-webclient/browser/**
-       public/**
+        dist/go-pulse-webclient/browser/**
+        public/**
     targetFolder: '$(Build.ArtifactStagingDirectory)'
   displayName: 'Copy dist files'
 

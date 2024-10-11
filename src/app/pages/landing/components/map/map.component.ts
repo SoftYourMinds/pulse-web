@@ -5,9 +5,8 @@ import mapboxgl from 'mapbox-gl';
 import { filter, first, Subject, tap } from 'rxjs';
 import { PulseService } from '../../../../shared/services/api/pulse.service';
 import { HeatmapService } from '../../../../shared/services/core/heatmap.service';
-import { MAPBOX_STYLE } from '../../../../shared/tokens/tokens';
-import { MapService } from 'ngx-mapbox-gl';
 import { MapLocationService } from '../../../../shared/services/core/map-location.service';
+import { MAPBOX_STYLE } from '../../../../shared/tokens/tokens';
 
 @Component({
     selector: 'app-map',
@@ -285,13 +284,13 @@ export class MapComponent implements OnInit {
             9: 5,
             10: 6,
             11: 7,
-            12: 8,
-            13: 9,
-            14: 10,
-            15: 11,
+            12: 7,
+            13: 7,
+            14: 7,
+            15: 7,
         };
 
-        return zoomResolutionMap[Math.floor(zoom)] || 11;
+        return zoomResolutionMap[Math.floor(zoom)] || 7;
     }
 
     private convertH3ToGeoJSON(data: any) {
