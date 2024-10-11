@@ -14,7 +14,7 @@ export class PulseService {
     public minVoteInterval: number;
     public latestAppVersionNumber: number;
     public currentHeatmapDepth: number = 3;
-    public actualTopicsImageKeyMap: { [key: string]: string } = { };
+    public actualTopicsImageKeyMap: { [key: string]: string } = {};
 
     private readonly apiUrl: string = inject(API_URL);
     private readonly http: HttpClient = inject(HttpClient);
@@ -42,19 +42,14 @@ export class PulseService {
             }
         });
 
-        return this.http
-            .get<IPulse[]>(`${this.apiUrl}/topics` + paramUrl)
-            .pipe(
-                tap((pulses) =>
-                    pulses.forEach(
-                        (pulse) =>{
-                            console.log(pulse);
-                            (
-                                this.actualTopicsImageKeyMap[pulse.id] = pulse.icon
-                            )}
-                    )
-                )
-            );
+        return this.http.get<IPulse[]>(`${this.apiUrl}/topics` + paramUrl).pipe(
+            tap((pulses) =>
+                pulses.forEach((pulse) => {
+                    console.log(pulse);
+                    this.actualTopicsImageKeyMap[pulse.id] = pulse.icon;
+                })
+            )
+        );
     }
 
     public getById(id: string | number): Observable<IPulse> {
@@ -143,28 +138,32 @@ export class PulseService {
         resolution: number = 1
     ) {
         if (resolution >= 8) resolution = 7;
-        return this.http.get(
-            this.apiUrl +
-                `/map?NE.latitude=${NElatitude}&NE.longitude=${NElongitude}&SW.latitude=${SWlatitude}&SW.longitude=${SWlongitude}&resolution=${resolution}`
-        ).pipe(map((response: any) => {
-            const objH3Pulses = {};
-            response.forEach(
-                (res: { id: string; topics: any, votes: number }) => {
-                    const maxVotesOfTopicId = 
-                        Object.entries(res.topics)
-                            .sort((a: any, b: any) => a[1] - b[1])
-                            .pop()![0];
+        return this.http
+            .get(
+                this.apiUrl +
+                    `/map?NE.latitude=${NElatitude}&NE.longitude=${NElongitude}&SW.latitude=${SWlatitude}&SW.longitude=${SWlongitude}&resolution=${resolution}`
+            )
+            .pipe(
+                map((response: any) => {
+                    const objH3Pulses = {};
+                    response.forEach(
+                        (res: { id: string; topics: any; votes: number }) => {
+                            const maxVotesOfTopicId = Object.entries(res.topics)
+                                .sort((a: any, b: any) => a[1] - b[1])
+                                .pop()![0];
 
-                    // @ts-ignore
-                    objH3Pulses[res.id] = {
-                        topicId: maxVotesOfTopicId,
-                        icon: this.actualTopicsImageKeyMap[maxVotesOfTopicId],
-                        votes: res.votes,
-                    };
-                }
+                            // @ts-ignore
+                            objH3Pulses[res.id] = {
+                                topicId: maxVotesOfTopicId,
+                                icon: this.actualTopicsImageKeyMap[
+                                    maxVotesOfTopicId
+                                ],
+                                votes: res.votes,
+                            };
+                        }
+                    );
+                    return objH3Pulses;
+                })
             );
-            return objH3Pulses;
-        }))
     }
-  
 }
