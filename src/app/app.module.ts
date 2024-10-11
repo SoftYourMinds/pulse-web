@@ -13,6 +13,7 @@ import { JwtInterceptor } from './shared/helpers/interceptors/jwt.interceptor';
 import { API_URL, FIREBASE_CONFIG, MAPBOX_ACCESS_TOKEN, MAPBOX_STYLE } from './shared/tokens/tokens';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { MaterialModule } from './shared/modules/material.module';
+import { LoadingPageComponent } from './shared/components/loading-page/loading-page.component';
 
 @NgModule({
     declarations: [AppComponent],
@@ -24,6 +25,7 @@ import { MaterialModule } from './shared/modules/material.module';
         HeaderComponent,
         AngularSvgIconModule.forRoot(),
         HttpClientModule,
+        LoadingPageComponent,
     ],
     providers: [
         // provideHttpClient(
