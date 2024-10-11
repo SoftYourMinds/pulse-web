@@ -5,6 +5,7 @@ import { PrimaryButtonComponent } from '../ui-kit/buttons/primary-button/primary
 import { BurgerButtonComponent } from '../ui-kit/buttons/burger-button/burger-button.component';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { ComingSoonPopupDirective } from '../popups/comming-soon-popup/coming-soon-popup.directive';
 
 @Component({
     selector: 'app-header',
@@ -16,6 +17,7 @@ import { CommonModule } from '@angular/common';
         SvgIconComponent,
         BurgerButtonComponent,
         FormsModule,
+        ComingSoonPopupDirective
     ],
     templateUrl: './header.component.html',
     styleUrl: './header.component.scss',
