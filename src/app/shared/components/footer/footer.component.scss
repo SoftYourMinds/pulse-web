@@ -61,6 +61,14 @@ ul {
     }
 }
 
+.version {
+    position: absolute;
+    right: 8px;
+    margin-bottom: -54px;
+    font-weight: 500;
+    font-size: 14px;
+}
+
 
 @media screen and (max-width: 500px) {
     footer {

@@ -45,7 +45,6 @@ export class PulseService {
         return this.http.get<IPulse[]>(`${this.apiUrl}/topics` + paramUrl).pipe(
             tap((pulses) =>
                 pulses.forEach((pulse) => {
-                    console.log(pulse);
                     this.actualTopicsImageKeyMap[pulse.id] = pulse.icon;
                 })
             )
