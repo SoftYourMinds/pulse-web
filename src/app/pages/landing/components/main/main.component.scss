@@ -1,7 +1,7 @@
 :host {
     display: flex;
     justify-content: center;
-    padding: 24px 20px 0px 20px;
+    padding: 0px 20px 48px 20px;
 
     width: 100%;
 
@@ -23,6 +23,14 @@
     max-width: 1030px;
     width: 100%;
 }
+
+
+@media screen and (max-width: 650px) {
+    :host {
+        padding: 24px 20px 48px 20px;
+    }
+}
+
 
 @media screen and (max-width: 500px) {
 

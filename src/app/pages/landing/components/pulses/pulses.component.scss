@@ -4,6 +4,7 @@
 :host {
     display: flex;
     justify-content: center;
+    padding: 0 20px 48px 20px;
 }
 
 .wrap {
@@ -35,8 +36,16 @@ h1 {
 
 @media screen and (max-width: 650px) {
 
+    
+    :host {
+        display: flex;
+        justify-content: center;
+        padding:0px
+    }
+
+
     .wrap {
-        padding: 24px 20px;
+        padding: 24px 20px 48px 20px;
         border-radius: 0px;
     }
 
