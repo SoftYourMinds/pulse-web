@@ -170,6 +170,8 @@ ul {
                         width: 100%;
                         gap: 32px;
 
+                        transition: all .3s;
+
                         user-select: none;
                     
                         li {
@@ -208,6 +210,10 @@ ul {
                         }
                     }
 
+                    app-primary-button {
+                        transition: all .3s;
+                    }
+
                     app-primary-button::ng-deep button {
                         height: 48px;
                         width: calc(100vw - 40px);
@@ -219,4 +225,9 @@ ul {
         }
     }
 
+}
+
+.scale {
+    
+    scale: .5;
 }

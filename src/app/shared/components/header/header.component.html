@@ -74,7 +74,7 @@
                 
                 <div></div>
 
-                <ul>
+                <ul [ngClass]="{'scale': !isMobileDropdown}">
                     <li>
                         <a 
                             routerLink="/map"
@@ -112,7 +112,8 @@
                     </li>
                 </ul>
         
-                <app-primary-button>
+                <app-primary-button 
+                    [ngClass]="{'scale': !isMobileDropdown}">
                     Download App
                 </app-primary-button>
         
