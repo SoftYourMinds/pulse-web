@@ -3,10 +3,9 @@
     "apps": [],
     "details": [
       {
-        "appIDs": [
-          "F3NVCH942C.com.qnowing"
-        ],
+        "appID": "F3NVCH942C.com.qnowing",
         "paths": [
+          "*",
           "/*"
         ]
       }
