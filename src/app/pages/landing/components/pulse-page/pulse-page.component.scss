@@ -7,6 +7,20 @@
     padding: 48px 20px;
 }
 
+
+.pulse__info-description-text::ng-deep a {
+    &:hover {
+        opacity: .7;
+    }
+
+    &:active {
+        color: var(--accent-color);
+    }
+
+    cursor: pointer;
+    transition: all .2s;
+}
+
 .pulse {
     display: flex;
     flex-direction: column;
@@ -125,7 +139,6 @@
             &-text {
 
                 @include text-16px;
-                user-select: none;
                 color: black;
                 overflow: hidden;
                 text-overflow: ellipsis;
