@@ -1,9 +1,9 @@
+import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Component, inject } from '@angular/core';
 import { combineLatest, take } from 'rxjs';
 import { AuthenticationService } from './shared/services/api/authentication.service';
 import { PulseService } from './shared/services/api/pulse.service';
 import { LoadingService } from './shared/services/core/loading.service';
-import { animate, state, style, transition, trigger } from '@angular/animations';
 
 @Component({
     selector: 'app-root',
@@ -11,7 +11,7 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
 
             <!-- <div *ngIf="isLoading; else content" 
                 @fadeOut>
-                  <app-loading-page></app-loading-page>
+                    <app-loading-page></app-loading-page>
             </div>
 
             <ng-template #content>
@@ -27,12 +27,12 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
     `,
     animations: [
         trigger('fadeOut', [
-          state('void', style({
-            opacity: 0
-          })),
-          transition(':leave', [
-            animate('100ms ease-in')
-          ])
+            state('void', style({
+                opacity: 0
+            })),
+            transition(':leave', [
+                animate('100ms ease-in')
+            ])
         ])
     ],
 })
@@ -62,8 +62,8 @@ export class AppComponent {
             .pipe(take(1))
             .subscribe((_) => {
                 setTimeout(() => { 
-
                     this.loadingService.isLoading = false;
+
                     setTimeout(() => {
                         this.isLoading = false
                     }, 1000);
@@ -71,8 +71,4 @@ export class AppComponent {
                 
             });
     }
-
-    
-
-
 }
