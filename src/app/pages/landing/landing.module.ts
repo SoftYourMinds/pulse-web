@@ -30,6 +30,7 @@ import { HeartBeatDirective } from '../../shared/animations/heart-beat.directive
 import { GetAppButtonComponent } from '../../shared/components/ui-kit/buttons/get-app-button/get-app-button.component';
 import { MapPageComponent } from './components/map-page/map-page.component';
 import { ComingSoonPopupDirective } from '../../shared/components/popups/comming-soon-popup/coming-soon-popup.directive';
+import { FlatButtonDirective } from '../../shared/components/ui-kit/buttons/flat-button/flat-button.directive';
 
 @NgModule({
     declarations: [
@@ -65,6 +66,7 @@ import { ComingSoonPopupDirective } from '../../shared/components/popups/comming
         HeartBeatDirective,
         GetAppButtonComponent,
         ComingSoonPopupDirective,
+        FlatButtonDirective,
         
         NgxMapboxGLModule.withConfig({
             accessToken: environment.mapboxToken,
