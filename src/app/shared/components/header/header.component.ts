@@ -6,6 +6,7 @@ import { BurgerButtonComponent } from '../ui-kit/buttons/burger-button/burger-bu
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ComingSoonPopupDirective } from '../popups/comming-soon-popup/coming-soon-popup.directive';
+import { AppRoutes } from '../../enums/app-routes.enum';
 
 @Component({
     selector: 'app-header',
@@ -24,6 +25,7 @@ import { ComingSoonPopupDirective } from '../popups/comming-soon-popup/coming-so
 })
 export class HeaderComponent {
     public isMobileDropdown: boolean = false;
+    public AppRoutes =  AppRoutes;
 
 
     public toggleDropdown(): void {
