@@ -9,6 +9,8 @@ import { AppRoutes } from '../../shared/enums/app-routes.enum';
 import { FooterGuard } from '../../shared/guards/footer.guard';
 import { FooterCleanupGuard } from '../../shared/guards/footerCleanup.guard';
 import { MapPageComponent } from './components/map-page/map-page.component';
+import { PrivacyComponent } from '../privacy/privacy.component';
+import { TermsComponent } from '../terms/terms.component';
 
 const routes: Routes = [
     {
@@ -37,6 +39,15 @@ const routes: Routes = [
                 path: AppRoutes.PULSE,
                 component: PulsePageComponent,
                 // data: { animation: 'openClosePage' },
+            },
+            {
+                path: AppRoutes.PRIVACY,
+                component: PrivacyComponent,
+            },
+
+            {
+                path: AppRoutes.TERMS,
+                component: TermsComponent,
             },
             // {
             //     path: '**',

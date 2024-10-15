@@ -22,6 +22,7 @@ export class PulsePageComponent implements OnInit {
     public ngOnInit(): void {
         this.initPulseUrlIdListener();
     }
+ 
 
     public onReadMore(): void {
         this.isReadMore = true;
@@ -58,6 +59,7 @@ export class PulsePageComponent implements OnInit {
             .subscribe((pulse) => {
                 this.pulse = pulse;
                 this.determineIfNeedToRemoveShowMoreButton();
+                this.createLink(pulse.description);
             });
     }
 
@@ -73,5 +75,46 @@ export class PulsePageComponent implements OnInit {
             console.log(this.isReadMore, fullHeight, visibleHeight);
         }, 100);
     }
+
+    // private createLink(value: string): void {
+    //     let link = value.split(' ').find(word => word.startsWith('http'));
+    //     // if(!link) return;
+
+    //     this.pulse.description = value.split(' ').filter(el => el !== link).join(' ');
+
+    //     let a = document.createElement('a') as HTMLElement;
+    //     a.innerText = link;
+    //     a.href = link;
+
+    //     console.log(a);
+    //     this.description.nativeElement.appendChild(a);
+
+    // }
+
+    private createLink(value: string): void {
+
+        let link = this.extractUrl(value);
+        
+        // Update pulse description to exclude the link
+        if(!link) return
+
+        this.pulse.description = value.replace(link, '');
+
+        this.pulse.description = this.pulse.description + `<a href="${link}">${link}</a>`
+    
+        // Create an anchor element
+    }
+
+    private extractUrl(value: string): string | null {
+        // Regular expression to match URLs (basic version)
+        const urlRegex = /(https?:\/\/[^\s]+)/g;
+        const match = value.match(urlRegex);
+    
+        // If there's a match, return the first URL, otherwise return null
+        return match ? match[0] : null;
+    }
+    
+
+    
 }
 

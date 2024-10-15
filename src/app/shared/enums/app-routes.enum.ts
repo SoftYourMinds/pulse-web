@@ -2,5 +2,7 @@ export enum AppRoutes {
     HOME = '',
     MAP = 'map',
     PULSES = 'pulses',
-    PULSE = 'pulse/:id'
+    PULSE = 'pulse/:id',
+    PRIVACY = 'privacy-policy',
+    TERMS = 'terms-of-use'
 }

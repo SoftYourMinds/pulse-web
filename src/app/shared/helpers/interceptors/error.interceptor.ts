@@ -1,9 +1,8 @@
 import {
-    HttpErrorResponse,
     HttpEvent,
     HttpHandler,
     HttpInterceptor,
-    HttpRequest,
+    HttpRequest
 } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, throwError } from 'rxjs';
@@ -25,16 +24,14 @@ export class ErrorInterceptor implements HttpInterceptor {
         req: HttpRequest<any>,
         next: HttpHandler
     ): Observable<HttpEvent<any>> {
-        if (localStorage.getItem('token') == null) return next.handle(req);
+        // if (localStorage.getItem('token') == null) return next.handle(req);
         let authReq = req;
-        let token = this.authenticationService.isAuthenticatedUserValue;
 
-        if (token != null) {
-            authReq = this.addTokenHeader(req);
-        }
-
+        authReq = this.addTokenHeader(req);
+        
         return next.handle(authReq).pipe(
             catchError((error) => {
+                console.log(error);
                 if (error.status === 504) {
                     // this.snackBar.open(
                     //     'To use this admin panel fully, please, check your connection and try again.',
@@ -48,9 +45,7 @@ export class ErrorInterceptor implements HttpInterceptor {
 
                     return throwError(() => error);
                 } else if (
-                    error instanceof HttpErrorResponse &&
-                    (error.status === 401 ||
-                        error?.error?.error == 'unauthorized_client')
+                    (error.status === 401 || error?.error?.error == 'unauthorized_client')
                 ) {
                     // this.snackBar.open('Getting new token', 'Close', {
                     //     duration: 2500,
@@ -110,23 +105,31 @@ export class ErrorInterceptor implements HttpInterceptor {
     }
 
     private addTokenHeader(request: HttpRequest<any>) {
-        const authToken =
+        const anonymousUser = this.authenticationService.anonymousUserValue;
+        const isAuthenticatedUser =
             this.authenticationService.isAuthenticatedUserValue;
+
+        console.log('anonymousUser', anonymousUser)
+        if (isAuthenticatedUser) {
+            request = request.clone({
+                setHeaders: {
+                    Authorization: `Bearer ${isAuthenticatedUser}`,
+                },
+                withCredentials: true,
+            });
+        } else if (anonymousUser) {
+            request = request.clone({
+                setHeaders: {
+                    Authorization: `Bearer ${anonymousUser}`,
+                },
+                withCredentials: false,
+            });
+        }
+
+        return request;
             
         // const googleApi = request.url.startsWith(
         //     'https://maps.googleapis.com/maps/api'
         // );
-
-        if (authToken) { // && !googleApi
-            return (
-                request = request.clone({
-                    setHeaders: {
-                        Authorization: `Bearer ${authToken}`,
-                    },
-                })
-            );
-        } else {
-            return request;
-        }
     }
 }
