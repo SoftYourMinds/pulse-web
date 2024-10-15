@@ -11,6 +11,7 @@ import { FooterCleanupGuard } from '../../shared/guards/footerCleanup.guard';
 import { MapPageComponent } from './components/map-page/map-page.component';
 import { PrivacyComponent } from '../privacy/privacy.component';
 import { TermsComponent } from '../terms/terms.component';
+import { SupportComponent } from '../support/support.component';
 
 const routes: Routes = [
     {
@@ -44,11 +45,14 @@ const routes: Routes = [
                 path: AppRoutes.PRIVACY,
                 component: PrivacyComponent,
             },
-
             {
                 path: AppRoutes.TERMS,
                 component: TermsComponent,
             },
+            {
+                path: AppRoutes.SUPPORT,
+                component: SupportComponent,
+            }
             // {
             //     path: '**',
             //     redirectTo: '',

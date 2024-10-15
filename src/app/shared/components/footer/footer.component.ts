@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import { SvgIconComponent } from 'angular-svg-icon';
 import { version } from '../../../../assets/data/version';
 import { PrimaryButtonComponent } from '../ui-kit/buttons/primary-button/primary-button.component';
+import { AppRoutes } from '../../enums/app-routes.enum';
 
 @Component({
     selector: 'app-footer',
@@ -15,6 +16,7 @@ import { PrimaryButtonComponent } from '../ui-kit/buttons/primary-button/primary
 export class FooterComponent implements OnInit {
     private readonly http: HttpClient = inject(HttpClient);
     public version: { major: number; minor: number; patch: number };
+    public AppRoutes = AppRoutes;
 
     public ngOnInit(): void {
         this.getCurrentVersionOfApplication();

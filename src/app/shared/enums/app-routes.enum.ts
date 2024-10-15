@@ -4,5 +4,6 @@ export enum AppRoutes {
     PULSES = 'pulses',
     PULSE = 'pulse/:id',
     PRIVACY = 'privacy-policy',
-    TERMS = 'terms-of-use'
+    TERMS = 'terms-of-use',
+    SUPPORT = 'support',
 }
