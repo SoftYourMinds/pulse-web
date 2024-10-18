@@ -142,16 +142,16 @@ ul {
                     justify-content: space-between;
                     align-items: center;
                     flex-direction: column;
-                    gap: 24px;
+                    // gap: 24px;
                     height: 100%;
-                    padding-bottom: 24px;
+                    padding: 48px 20px;
 
                     transition: all .3s linear;
                     transition-delay: .2s;
 
                     background-color: var(--white-color);
 
-                    scale: 1.2;
+                    scale: 1.1;
                     // transform-origin: top;
                     opacity: 0;
                     // transform: translateY(-50vh);
@@ -169,23 +169,30 @@ ul {
                         flex-direction: column;
                         min-width: 220px;
                         width: 100%;
-                        gap: 32px;
+                        gap: 40px;
 
                         transition: all .3s;
 
                         user-select: none;
                     
                         li {
-                            font-size: 16px;
+                            font-size: 18px;
                             color: var(--black-color);
-                            font-weight: 600;
-                    
+                            font-weight: 400;
+
+                            
                             &:first-child{
                                 color: var(--accent-color);
+                                font-weight: 600;
                             }
 
                             &:nth-child(2){
                                 color: var(--accent-color);
+                                font-weight: 600;
+                            }
+
+                            &:nth-child(3){
+                                font-weight: 600;
                             }
                     
                             a {
@@ -217,8 +224,8 @@ ul {
 
                     app-primary-button::ng-deep button {
                         height: 48px;
-                        width: calc(100vw - 40px);
-                        max-width: 335px;
+                        width: 100%;
+                        min-width: calc(100dvw - 80px);
                     } 
 
                 }
