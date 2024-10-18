@@ -1,5 +1,5 @@
 import { Component, HostBinding } from '@angular/core';
-import { LogoComponent } from './components/logo/logo.component';
+import { LogoComponent } from './logo/logo.component';
 
 @Component({
   selector: 'app-loading-page',
@@ -7,7 +7,7 @@ import { LogoComponent } from './components/logo/logo.component';
   styleUrl: './loading-page.component.scss',
   standalone: true,
   imports: [
-    LogoComponent,
+    LogoComponent
   ]
 })
 export class LoadingPageComponent {

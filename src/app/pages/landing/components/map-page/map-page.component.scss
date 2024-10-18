@@ -15,10 +15,16 @@
 }
 
 
+
+
 @media screen and (max-width: 800px) {
 
     :host {
         padding: 0;
+    }
+
+    app-map {
+        height: 100%;
     }
 
     app-map::ng-deep .map-container {
@@ -37,10 +43,6 @@
 
 //this is because on the same screen size header becomes 80px height
 @media screen and (max-width: 650px) {
-
-    app-map {
-        height: 100%;
-    }
 
     .map-page {
         height: 100%;

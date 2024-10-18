@@ -9,9 +9,9 @@ import { AppRoutes } from '../../shared/enums/app-routes.enum';
 import { FooterGuard } from '../../shared/guards/footer.guard';
 import { FooterCleanupGuard } from '../../shared/guards/footerCleanup.guard';
 import { MapPageComponent } from './components/map-page/map-page.component';
-import { PrivacyComponent } from '../privacy/privacy.component';
-import { TermsComponent } from '../terms/terms.component';
-import { SupportComponent } from '../support/support.component';
+import { PrivacyComponent } from '../../shared/components/pages/privacy/privacy.component';
+import { TermsComponent } from '../../shared/components/pages/terms/terms.component';
+import { SupportComponent } from '../../shared/components/pages/support/support.component';
 
 const routes: Routes = [
     {

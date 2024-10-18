@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AdBannerComponent } from '../../shared/components/ad-banner/ad-banner/ad-banner.component';
+import { AdBannerComponent } from '../../banners/ad-banner/ad-banner.component';
 
 @Component({
   selector: 'app-support',
