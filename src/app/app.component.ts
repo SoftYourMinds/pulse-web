@@ -25,16 +25,16 @@ import { LoadingService } from './shared/services/core/loading.service';
         }
 
     `,
-    animations: [
-        trigger('fadeOut', [
-            state('void', style({
-                opacity: 0
-            })),
-            transition(':leave', [
-                animate('100ms ease-in')
-            ])
-        ])
-    ],
+    // animations: [
+    //     trigger('fadeOut', [
+    //         state('void', style({
+    //             opacity: 0
+    //         })),
+    //         transition(':leave', [
+    //             animate('100ms ease-in')
+    //         ])
+    //     ])
+    // ],
 })
 export class AppComponent {
     public isLoading: boolean = false;
@@ -67,6 +67,7 @@ export class AppComponent {
                     setTimeout(() => {
                         this.isLoading = false
                     }, 1000);
+
                 }, 2000);
                 
             });

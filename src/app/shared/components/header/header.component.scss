@@ -122,17 +122,18 @@ ul {
                 height: 100%;
                 // transform: translateY(100vh);
                 // background: var(--white-color);
-                backdrop-filter: blur(0px);
+                // backdrop-filter: blur(0px);
+                opacity: 0;
 
-
-                transition: all .2s;
+                transition: all .3s;
 
                 // opacity: .5;
                 
                 &.active {
                     // transform: translateY(0vh);
                     // opacity: 1;
-                    backdrop-filter: blur(4px);
+                    // backdrop-filter: blur(4px);
+                    opacity: 1;
                 }
                 
                 .right-side {
@@ -151,14 +152,14 @@ ul {
                     background-color: var(--white-color);
 
                     scale: 1.2;
-                    transform-origin: top;
+                    // transform-origin: top;
                     opacity: 0;
-                    transform: translateY(-50vh);
+                    // transform: translateY(-50vh);
 
                     &.active {
                         opacity: 1;
                         scale: 1;
-                        transform: translateY(0px);
+                        // transform: translateY(0px);
                     }
                                         
                     ul {
