@@ -12,6 +12,7 @@ import { MapPageComponent } from './components/map-page/map-page.component';
 import { PrivacyComponent } from '../../shared/components/pages/privacy/privacy.component';
 import { TermsComponent } from '../../shared/components/pages/terms/terms.component';
 import { SupportComponent } from '../../shared/components/pages/support/support.component';
+import { PulseHeatmapPageComponent } from './components/pulse-heatmap-page/pulse-heatmap-page.component';
 
 const routes: Routes = [
     {
@@ -39,6 +40,11 @@ const routes: Routes = [
             {
                 path: AppRoutes.PULSE,
                 component: PulsePageComponent,
+                // data: { animation: 'openClosePage' },
+            },
+            {
+                path: AppRoutes.HEATMAP,
+                component: PulseHeatmapPageComponent,
                 // data: { animation: 'openClosePage' },
             },
             {

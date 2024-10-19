@@ -31,6 +31,7 @@ import { GetAppButtonComponent } from '../../shared/components/ui-kit/buttons/ge
 import { MapPageComponent } from './components/map-page/map-page.component';
 import { ComingSoonPopupDirective } from '../../shared/components/popups/comming-soon-popup/coming-soon-popup.directive';
 import { FlatButtonDirective } from '../../shared/components/ui-kit/buttons/flat-button/flat-button.directive';
+import { PulseHeatmapPageComponent } from './components/pulse-heatmap-page/pulse-heatmap-page.component';
 
 @NgModule({
     declarations: [
@@ -44,6 +45,7 @@ import { FlatButtonDirective } from '../../shared/components/ui-kit/buttons/flat
         PromoteAdsComponent,
         PulsePageComponent,
         MapPageComponent,
+        PulseHeatmapPageComponent,
         
     ],
     imports: [

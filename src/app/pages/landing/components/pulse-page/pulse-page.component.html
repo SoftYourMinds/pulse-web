@@ -95,8 +95,8 @@
                     appLoadImgPath>
 
                 <div class="pulse__info-media__map"
-                
-                    routerLink="/map">
+
+                    [routerLink]="'/pulse/'+pulse.id+'/heatmap'">
 
                     <div class="pulse__info-media__map-clickbait">
                         <svg-icon src="assets/svg/time-icon-large.svg" />
@@ -112,5 +112,6 @@
             </div>
             
         </div>
+        
     </div>
 }

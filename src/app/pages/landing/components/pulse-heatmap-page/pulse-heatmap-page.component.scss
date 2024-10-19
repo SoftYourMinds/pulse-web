@@ -1,0 +1,110 @@
+@use '../../../../../styles/mixins' as *;
+
+:host {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 18px 20px;
+}
+
+.pulse {
+    display: flex;
+    flex-direction: column;
+    max-width: 1030px;
+    width: 100%;
+
+ 
+    &__header {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 24px;
+        margin-bottom: 24px;
+    
+        &-logo {
+    
+            max-width: 160px;
+            max-height: 160px;
+            width: 100%;
+            height: 160px;
+    
+            border-radius: 10px;
+            border: 1px solid var(--light-grey-color);
+        }
+    
+        &-title {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+    
+            h2 {
+                @include title-32px;
+            }
+    
+            div {
+                display: flex;
+                align-items: center;
+                gap: 9px;
+               
+                @include text-14px;
+                color: var(--dark-grey-color);
+            }
+        }
+    }
+
+    app-map::ng-deep .map-container {
+        height: 400px !important;
+        width: 100%;
+        overflow: hidden;
+        border-radius: 20px;
+        cursor: grab;
+        margin-top: 0px !important;
+    }
+
+    app-map {
+        margin-bottom: 32px;
+    }
+
+    &__button {
+        margin: 0 auto;
+    }
+
+    app-primary-button::ng-deep button{
+        width: 180px;
+        height: 48px;
+    }
+
+}
+
+
+@media screen and (max-width: 500px) {
+
+    .pulse__header {
+        gap: 16px;
+        margin-bottom: 16px;
+    
+        &-logo {
+    
+            max-width: 80px;
+            max-height: 80px;
+            width: 100%;
+            height: 80px;
+        }
+    
+        &-title {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+    
+            h2 {
+                @include title-20px;
+            }
+    
+        }
+    }
+
+    app-map {
+        margin-bottom: 24px !important;
+    }
+}
+
