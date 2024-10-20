@@ -32,6 +32,7 @@ import { MapPageComponent } from './components/map-page/map-page.component';
 import { ComingSoonPopupDirective } from '../../shared/components/popups/comming-soon-popup/coming-soon-popup.directive';
 import { FlatButtonDirective } from '../../shared/components/ui-kit/buttons/flat-button/flat-button.directive';
 import { PulseHeatmapPageComponent } from './components/pulse-heatmap-page/pulse-heatmap-page.component';
+import { FadeInDirective } from '../../shared/animations/fade-in.directive';
 
 @NgModule({
     declarations: [
@@ -69,6 +70,7 @@ import { PulseHeatmapPageComponent } from './components/pulse-heatmap-page/pulse
         GetAppButtonComponent,
         ComingSoonPopupDirective,
         FlatButtonDirective,
+        FadeInDirective,
         
         NgxMapboxGLModule.withConfig({
             accessToken: environment.mapboxToken,

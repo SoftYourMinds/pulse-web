@@ -12,6 +12,7 @@ import { PulseService } from '../../../../shared/services/api/pulse.service';
 export class PulsePageComponent implements OnInit {
     public pulse: IPulse;
     public isReadMore: boolean = false;
+    public isLoading: boolean = true;
 
     @ViewChild('description', {static: false}) public description: ElementRef<HTMLDivElement>;
 
@@ -58,6 +59,7 @@ export class PulsePageComponent implements OnInit {
             )
             .subscribe((pulse) => {
                 this.pulse = pulse;
+                this.isLoading = false;
                 this.determineIfNeedToRemoveShowMoreButton();
                 this.createLink(pulse.description);
             });

@@ -11,6 +11,7 @@ import { catchError, first, of, take } from 'rxjs';
 })
 export class PulseHeatmapPageComponent {  
     public pulse: IPulse;
+    public isLoading: boolean = true;
 
     private readonly router: Router = inject(Router);
     private readonly route: ActivatedRoute = inject(ActivatedRoute);
@@ -44,6 +45,7 @@ export class PulseHeatmapPageComponent {
             )
             .subscribe((pulse) => {
                 this.pulse = pulse;
+                this.isLoading = false;
             });
     }
 

@@ -1,4 +1,6 @@
-<div class="pulse">
+<div class="pulse"
+     fadeIn [childrenFadeIn]="true"
+     *ngIf="!isLoading">
 
     <div class="pulse__header">
         <img
