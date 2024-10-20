@@ -4,7 +4,7 @@
     display: flex;
     justify-content: center;
     width: 100%;
-    padding: 18px 20px;
+    padding: 18px 20px 48px;
 }
 
 
@@ -272,6 +272,10 @@
 
 @media screen and (max-width: 650px) {
 
+    :host {
+        padding: 24px 20px 48px;
+    }
+
     .pulse__info-media img {
         max-width: 100%;
 
@@ -290,6 +294,9 @@
 }
 
 @media screen and (max-width: 500px) {
+
+
+
     app-primary-button {
         svg-icon svg {
             transform: translateY(-1.5px);
