@@ -1,3 +1,5 @@
+@use '../../../../../../styles/mixins' as *;
+
 :host {
     display: flex;
     align-items: center;
@@ -69,12 +71,100 @@
     order: 2;
 }
 
-
-.name {
-    z-index: 0;
+.mobile {
+    display: none;
 }
 
-::ng-deep g path {
+@media screen and (max-width: 650px) {
+
+    .mobile {
+        display: flex !important;
+    }
+
+    .desktop {
+        display: none !important;
+    }
+ 
+    :host {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        gap: 32px;
+
+        overflow: unset;
+        min-width: auto;
+        height: auto;
+        width: auto;
+    }
+
+    .mobile-wrap {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 13.4px;
+        height: 80px;
+        min-width: 80px;
+        width: 248px;
+        // animation: .5s linear 1s shift forwards;
+        transition: width .5s ease;
+    }
+    
+    
+    .logo {
+        height: 80px;
+        min-width: 72.6px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    
+        overflow: hidden;
+    }
+    
+    #hexagon {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+    }
+    
+    .icons-wrap {
+    
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    
+        width: 58.62px;
+        height: 47.2px;
+    
+        overflow: hidden;
+        z-index: 1;
+    
+    }
+
+    #icons {
+
+        width: 58.62px;
+        height: 47.2px;
+        display: flex;
+        transition: transform 1s ease;
+    
+    }
+
+    #name {
+        z-index: 0;
+    }
+
+    p {
+        @include text-16px;
+        color: rgba(131, 134, 165, 1);
+        text-align: center;
+        max-width: 228px;
+    }
+}
+
+.icons-wrap::ng-deep path, ::ng-deep g path  {
     transform-origin: center;
     transition: transform .3s;
 

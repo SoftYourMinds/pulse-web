@@ -14,5 +14,4 @@ export class LoadingPageComponent {
 
   @HostBinding('style.opacity') hostOpacity = '1';
 
-  
 }

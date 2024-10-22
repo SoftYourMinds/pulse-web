@@ -16,8 +16,10 @@ export class LogoComponent implements AfterViewInit {
   private loadingService: LoadingService = inject(LoadingService);
 
   private stopLogoAnimationFunction: Function;
+  public window = window;
 
-  @HostBinding('style.width') hostWidth: string = '91px';
+  // @HostBinding('style.width') hostWidth: string = '91px';
+  // @HostBinding('style.width') hostWidth: string = '320px';
 
   ngOnInit(): void {
     
@@ -28,7 +30,7 @@ export class LogoComponent implements AfterViewInit {
     this.loadingService.isLoadingObservable.subscribe((val) => {
         if(val) return;
         this.stopLogoAnimation();
-        this.hostWidth = '320px'; // finish slide name animation
+        // this.hostWidth = '320px'; // finish slide name animation
     })
   }
 
