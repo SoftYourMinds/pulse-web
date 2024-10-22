@@ -41,7 +41,7 @@ export class AppComponent {
             .pipe(take(1))
             .subscribe((_) => {
                 setTimeout(() => { 
-                    this.loadingService.isLoading = false;
+                    // this.loadingService.isLoading = false;
                     this.isLoading = false;
                     // setTimeout(() => {
                     //     this.isLoading = false
