@@ -4,7 +4,8 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
 
 trigger:
-- release
+# NB! dev env: master, prod env: release
+- master
 
 pool:
   vmImage: ubuntu-latest
