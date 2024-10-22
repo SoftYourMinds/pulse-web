@@ -76,12 +76,12 @@ export class LogoComponent implements AfterViewInit {
         setTimeout(() => {
           icons.style.transition = 'transform 1s ease';
           icons.style.transform = 'translateX(-100%)';
-        }, 50); // Small delay to avoid flicker
+        }, 25); // Small delay to avoid flicker
       }, 0); // Match the duration of the transform animation
     }
     
     // Repeat every 2 seconds
-    let interval = setInterval(shuffleBlocks, 1000);
+    let interval = setInterval(shuffleBlocks, 1500);
 
     return () => {
       clearInterval(interval);

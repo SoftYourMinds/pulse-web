@@ -1,4 +1,3 @@
-import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Component, inject } from '@angular/core';
 import { combineLatest, take } from 'rxjs';
 import { AuthenticationService } from './shared/services/api/authentication.service';
