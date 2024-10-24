@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { SvgIconComponent } from 'angular-svg-icon';
 import { RippleEffectDirective } from '../../../../directives/ripple-effect';
+import { AppLinksEnum } from '../../../../enums/app-links.enum';
 
 @Component({
   selector: 'app-get-app-button',
@@ -22,7 +23,8 @@ export class GetAppButtonComponent {
     ) {}
 
     public onClick(): void {
-      window.open("https://www.google.com")
+      if(this.platformService.value == "iOS") window.open(AppLinksEnum.APP_STORE);
+      
     }
 
 }
