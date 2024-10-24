@@ -1,14 +1,17 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { PrivacyComponent } from './shared/components/pages/privacy/privacy.component';
+import { PageNotFoundComponent } from './shared/components/pages/page-not-found/page-not-found.component';
 
 const routes: Routes = [
     {
         path: '',
         loadChildren: () => import('./pages').then((m) => m.LandingModule),
     },
-
-    
+    {
+        path: '**',
+        pathMatch: 'full',
+        component: PageNotFoundComponent, 
+    }
 ];
 
 @NgModule({
