@@ -1,4 +1,4 @@
-@use '../../../../../styles/mixins' as *;
+@use '../../../../styles/mixins' as *;
 
 :host {
     display: flex;
@@ -6,7 +6,7 @@
     align-items: center;
     flex-direction: column;
     padding: 0 20px;
-    
+    height: 100%;
 }
 
 h1 {
@@ -19,7 +19,7 @@ h1 {
 p {
     margin-top: 16px;
     @include text-16px;
-    color: #8386A5;
+    color: var(--dark-grey-color);
     text-align: center;
     max-width: 406px;
     margin-bottom: 40px;

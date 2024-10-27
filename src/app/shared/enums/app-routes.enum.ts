@@ -7,4 +7,6 @@ export enum AppRoutes {
     PRIVACY = 'privacy-policy',
     TERMS = 'terms-of-use',
     SUPPORT = 'support',
+    NOT_FOUND = 'page-not-found',
+    INVALID_LINK = 'pulses/invalid-link',
 }

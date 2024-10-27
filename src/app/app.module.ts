@@ -12,7 +12,7 @@ import { HeaderComponent } from './shared/components/header/header.component';
 import { ErrorInterceptor } from './shared/helpers/interceptors/error.interceptor';
 import { MaterialModule } from './shared/modules/material.module';
 import { API_URL, FIREBASE_CONFIG, MAPBOX_ACCESS_TOKEN, MAPBOX_STYLE } from './shared/tokens/tokens';
-import { LoadingPageComponent } from './shared/components/pages/loading/loading-page.component';
+import { LoadingPageComponent } from './shared/components/loading/loading-page.component';
 
 @NgModule({
     declarations: [AppComponent],

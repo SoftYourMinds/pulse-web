@@ -3,6 +3,7 @@ import { IPulse } from '../../../../shared/interfaces';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { PulseService } from '../../../../shared/services/api/pulse.service';
 import { catchError, first, of, take } from 'rxjs';
+import { AppRoutes } from '../../../../shared/enums/app-routes.enum';
 
 @Component({
   selector: 'app-pulse-heatmap-page',
@@ -39,7 +40,7 @@ export class PulseHeatmapPageComponent {
             .pipe(
                 first(), 
                 catchError((error) => {
-                    this.router.navigateByUrl('/');
+                    this.router.navigateByUrl('/'+AppRoutes.INVALID_LINK);
                     return of(error);
                 })
             )

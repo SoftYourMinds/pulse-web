@@ -3,6 +3,7 @@ import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { catchError, first, of, take } from 'rxjs';
 import { IPulse } from '../../../../shared/interfaces';
 import { PulseService } from '../../../../shared/services/api/pulse.service';
+import { AppRoutes } from '../../../../shared/enums/app-routes.enum';
 
 @Component({
     selector: 'app-pulse-page',
@@ -53,7 +54,7 @@ export class PulsePageComponent implements OnInit {
             .pipe(
                 first(), 
                 catchError((error) => {
-                    this.router.navigateByUrl('/');
+                    this.router.navigateByUrl('/'+ AppRoutes.INVALID_LINK);
                     return of(error);
                 })
             )

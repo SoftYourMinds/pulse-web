@@ -1,4 +1,4 @@
-@use '../../../../../styles/mixins' as *;
+@use '../../../../styles/mixins' as *;
 
 :host {
     display: block;
@@ -21,7 +21,7 @@ h1 {
 
 small {
     @include text-16px;
-    color: #8386A5;
+    color: var(--dark-grey-color);
     text-align: left;
     display: inline-block;
     margin-bottom: 30px;

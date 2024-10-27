@@ -1,6 +1,5 @@
-import { AfterViewInit, Component, HostBinding, inject } from '@angular/core';
+import { Component, } from '@angular/core';
 import { SvgIconComponent } from 'angular-svg-icon';
-import { LoadingService } from '../../../../services/core/loading.service';
 
 @Component({
   selector: 'app-logo',
