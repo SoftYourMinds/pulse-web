@@ -16,7 +16,7 @@ import { AppRoutes } from '../../enums/app-routes.enum';
 export class FooterComponent implements OnInit {
     private readonly http: HttpClient = inject(HttpClient);
     public version: { major: number; minor: number; patch: number };
-    public AppRoutes = AppRoutes;
+    public CommunityRoutes = AppRoutes.Community;
 
     public ngOnInit(): void {
         this.getCurrentVersionOfApplication();

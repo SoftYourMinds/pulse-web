@@ -54,7 +54,7 @@ export class PulsePageComponent implements OnInit {
             .pipe(
                 first(), 
                 catchError((error) => {
-                    this.router.navigateByUrl('/'+ AppRoutes.INVALID_LINK);
+                    this.router.navigateByUrl('/'+ AppRoutes.Community.INVALID_LINK);
                     return of(error);
                 })
             )

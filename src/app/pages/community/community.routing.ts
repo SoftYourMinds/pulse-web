@@ -14,23 +14,23 @@ const routes: Routes = [
         component: CommunityComponent ,
         children: [
             {
-                path: AppRoutes.PRIVACY,
+                path: AppRoutes.Community.PRIVACY,
                 component: PrivacyComponent,
             },
             {
-                path: AppRoutes.TERMS,
+                path: AppRoutes.Community.TERMS,
                 component: TermsComponent,
             },
             {
-                path: AppRoutes.SUPPORT,
+                path: AppRoutes.Community.SUPPORT,
                 component: SupportComponent,
             },
             {
-                path: AppRoutes.INVALID_LINK,
+                path: AppRoutes.Community.INVALID_LINK,
                 component: InvalidLinkComponent,
             },
             {
-                path: AppRoutes.NOT_FOUND,
+                path: AppRoutes.Community.NOT_FOUND,
                 component: NotFoundComponent,
             },
             {

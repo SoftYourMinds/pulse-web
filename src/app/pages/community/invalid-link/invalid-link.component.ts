@@ -7,6 +7,6 @@ import { AppRoutes } from '../../../shared/enums/app-routes.enum';
   styleUrl: './invalid-link.component.scss',
 })
 export class InvalidLinkComponent {
-  public routes = AppRoutes;
+  public routes = AppRoutes.Landing;
 }
 

@@ -11,15 +11,15 @@
         <ul>
             <li>
                 <a 
-                    routerLink="/map"
-                    routerLinkActive="active">
+                    [routerLink]="'/' + AppRoutes.User.Topic.HOW_IT_WORKS"
+                    [routerLinkActive]=" AppRoutes.User.Topic.HOW_IT_WORKS">
                     Map
                 </a>
             </li>
             <li>
                 <a 
-                    routerLink="/pulses"
-                    routerLinkActive="active">
+                    [routerLink]="'/' + AppRoutes.Landing.PULSES"
+                    [routerLinkActive]="AppRoutes.Landing.PULSES">
                     Pulses
                 </a>
             </li>
@@ -76,15 +76,15 @@
                 <ul [ngClass]="{'scale': !isMobileDropdown}">
                     <li>
                         <a 
-                            routerLink="/map"
-                            routerLinkActive="active">
+                            [routerLink]="'/' + AppRoutes.Landing.MAP"
+                            [routerLinkActive]="AppRoutes.Landing.MAP">
                             Map
                         </a>
                     </li>
                     <li>
                         <a 
-                            routerLink="/pulses"
-                            routerLinkActive="active">
+                            [routerLink]="'/' + AppRoutes.Landing.PULSES"
+                            [routerLinkActive]="AppRoutes.Landing.PULSES">
                             Pulses
                         </a>
                     </li>
@@ -98,22 +98,22 @@
                     </li>
                     <li>
                         <a 
-                            routerLink="/terms-of-use"
-                            routerLinkActive="active">
+                            [routerLink]="'/' + AppRoutes.Community.TERMS"
+                            [routerLinkActive]="AppRoutes.Community.TERMS">
                             Terms of Use
                         </a>
                     </li>
                     <li>
                         <a 
-                            routerLink="/privacy-policy"
-                            routerLinkActive="active">
+                            [routerLink]="'/'+AppRoutes.Community.PRIVACY"
+                            [routerLinkActive]="AppRoutes.Community.PRIVACY">
                             Privacy Policy
                         </a>
                     </li>
                     <li>
                         <a 
-                            [routerLink]="'/'+AppRoutes.SUPPORT"
-                            [routerLinkActive]="AppRoutes.SUPPORT">
+                            [routerLink]="'/'+AppRoutes.Community.SUPPORT"
+                            [routerLinkActive]="AppRoutes.Community.SUPPORT">
                             Support
                         </a>
                     </li>

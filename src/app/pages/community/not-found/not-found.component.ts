@@ -7,5 +7,5 @@ import { AppRoutes } from '../../../shared/enums/app-routes.enum';
   styleUrl: './not-found.component.scss'
 })
 export class NotFoundComponent {
-  public routes = AppRoutes;
+  public routes = AppRoutes.Landing;
 }

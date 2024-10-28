@@ -10,31 +10,33 @@ import { PulseHeatmapPageComponent } from './components/pulse-heatmap-page/pulse
 import { FooterGuard } from '../../shared/components/footer/footer.guard';
 import { FooterCleanupGuard } from '../../shared/components/footer/footerCleanup.guard';
 
+let Landing = AppRoutes.Landing;
+
 const routes: Routes = [
     {
         path: '',
         component: LandingComponent,
         children: [
             {
-                path: AppRoutes.HOME,
+                path: Landing.HOME,
                 component: MainComponent,
             },
             {
-                path: AppRoutes.MAP,
+                path: Landing.MAP,
                 component: MapPageComponent,
                 canActivate: [FooterGuard],
                 canDeactivate: [FooterCleanupGuard],
             },
             {
-                path: AppRoutes.PULSES,
+                path: Landing.PULSES,
                 component: PulsesComponent,
             },
             {
-                path: AppRoutes.PULSE,
+                path: Landing.PULSE,
                 component: PulsePageComponent,
             },
             {
-                path: AppRoutes.HEATMAP,
+                path: Landing.HEATMAP,
                 component: PulseHeatmapPageComponent,
             },
 
