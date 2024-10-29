@@ -9,6 +9,8 @@ import { HowItWorksComponent } from './how-it-works/how-it-works.component';
 import { SubmittedComponent } from './submitted/submitted.component';
 import { ContactInfoComponent } from './contact-info/contact-info.component';
 import { SuggestComponent } from './suggest/suggest.component';
+import { TopicFormComponent } from '../components/topic-form/topic-form.component';
+import { UserModule } from '../user.module';
 
 
 @NgModule({
@@ -22,7 +24,7 @@ import { SuggestComponent } from './suggest/suggest.component';
   imports: [
     CommonModule,
     TopicRoutingModule,
-
+    UserModule,
 
     SvgIconComponent,
     PrimaryButtonComponent,
