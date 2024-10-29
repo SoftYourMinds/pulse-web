@@ -41,7 +41,8 @@
                 Suggest topic
             </app-secondary-button>
     
-            <app-primary-button>
+            <app-primary-button
+                openGetAppPopup>
                 Download App
             </app-primary-button>
     
@@ -130,7 +131,8 @@
                 </ul>
         
                 <app-primary-button 
-                    [ngClass]="{'scale': !isMobileDropdown}">
+                    [ngClass]="{'scale': !isMobileDropdown}"
+                    openGetAppPopup>
                     Download App
                 </app-primary-button>
         

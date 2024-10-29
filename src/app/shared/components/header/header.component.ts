@@ -10,6 +10,7 @@ import { AppRoutes } from '../../enums/app-routes.enum';
 import { SecondaryButtonComponent } from "../ui-kit/buttons/secondary-button/secondary-button.component";
 
 import { version } from '../../../../assets/data/version';
+import { OpenGetAppPopupDirective } from '../popups/get-app-popup/open-get-app-popup.directive';
 
 @Component({
     selector: 'app-header',
@@ -22,7 +23,8 @@ import { version } from '../../../../assets/data/version';
     BurgerButtonComponent,
     FormsModule,
     ComingSoonPopupDirective,
-    SecondaryButtonComponent
+    SecondaryButtonComponent,
+    OpenGetAppPopupDirective,
 ],
     templateUrl: './header.component.html',
     styleUrl: './header.component.scss',
