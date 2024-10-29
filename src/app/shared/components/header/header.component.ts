@@ -7,19 +7,21 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ComingSoonPopupDirective } from '../popups/comming-soon-popup/coming-soon-popup.directive';
 import { AppRoutes } from '../../enums/app-routes.enum';
+import { SecondaryButtonComponent } from "../ui-kit/buttons/secondary-button/secondary-button.component";
 
 @Component({
     selector: 'app-header',
     standalone: true,
     imports: [
-        CommonModule,
-        RouterModule,
-        PrimaryButtonComponent,
-        SvgIconComponent,
-        BurgerButtonComponent,
-        FormsModule,
-        ComingSoonPopupDirective
-    ],
+    CommonModule,
+    RouterModule,
+    PrimaryButtonComponent,
+    SvgIconComponent,
+    BurgerButtonComponent,
+    FormsModule,
+    ComingSoonPopupDirective,
+    SecondaryButtonComponent
+],
     templateUrl: './header.component.html',
     styleUrl: './header.component.scss',
 })

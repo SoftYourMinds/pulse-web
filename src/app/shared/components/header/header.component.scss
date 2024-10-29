@@ -13,6 +13,8 @@ header {
     width: 100%;
     max-width: 1170px;
     margin: 0 auto;
+
+    gap: 40px;
 }
 
 .right-side {
@@ -26,18 +28,22 @@ header {
 
 ul {
     display: flex;
-    justify-content: space-between;
-    min-width: 220px;
-    width: 100%;
+    justify-content: space-evenly;
+
+    column-gap: 40px;
+    row-gap: 10px;
+    flex-wrap: wrap;
+    // min-width: 220px;
+    // width: 100%;
 
     li {
         font-size: 16px;
         color: var(--accent-color);
         font-weight: 600;
 
-        &:last-child {
-            color: var(--black-color);
-        }
+        // &:last-child {
+        //     color: var(--black-color);
+        // }
 
         a {
             position: relative;
@@ -62,9 +68,29 @@ ul {
     }
 }
 
+.buttons {
+    display: flex;
+    gap: 10px;
+
+    app-secondary-button {
+        height: 40px;
+    }
+    app-secondary-button::ng-deep button{
+        height: 40px !important;
+        padding: 0 25px!important;
+        color: var(--accent-color) !important;
+        white-space: nowrap;
+    }
+    
+}
+
+
+
 .mobile {
     display: none;
 }
+
+
 
 @media (max-width: 650px) {
 

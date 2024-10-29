@@ -11,8 +11,8 @@
         <ul>
             <li>
                 <a 
-                    [routerLink]="'/' + AppRoutes.User.Topic.HOW_IT_WORKS"
-                    [routerLinkActive]=" AppRoutes.User.Topic.HOW_IT_WORKS">
+                    [routerLink]="'/' + AppRoutes.Landing.MAP"
+                    [routerLinkActive]="AppRoutes.Landing.MAP">
                     Map
                 </a>
             </li>
@@ -20,24 +20,34 @@
                 <a 
                     [routerLink]="'/' + AppRoutes.Landing.PULSES"
                     [routerLinkActive]="AppRoutes.Landing.PULSES">
-                    Pulses
+                    Topics
                 </a>
             </li>
-            <li>
+            <!-- <li>
                 <a 
                     routerLink="/login"
                     routerLinkActive="active"
                     openComingSoonPopup>
                     Sign In
                 </a>
-            </li>
+            </li> -->
         </ul>
 
-       
+        <div class="buttons">
 
-        <app-primary-button>
-            Download App
-        </app-primary-button>
+            <app-secondary-button
+                [routerLink]="'/' + AppRoutes.User.Topic.HOW_IT_WORKS"
+                [routerLinkActive]="AppRoutes.User.Topic.HOW_IT_WORKS">
+                Suggest topic
+            </app-secondary-button>
+    
+            <app-primary-button>
+                Download App
+            </app-primary-button>
+    
+        </div>
+
+        
 
     </div>
 
@@ -88,14 +98,14 @@
                             Pulses
                         </a>
                     </li>
-                    <li>
+                    <!-- <li>
                         <a 
                             routerLink="/login"
                             routerLinkActive="active"
                             openComingSoonPopup>
                             Sign In
                         </a>
-                    </li>
+                    </li> -->
                     <li>
                         <a 
                             [routerLink]="'/' + AppRoutes.Community.TERMS"
