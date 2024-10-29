@@ -18,11 +18,7 @@
         border-radius: 40px;
         transition: all .2s ease-in-out;
 
-        // :hover {
-        //     -webkit-box-shadow:0px 3px 10px 6px rgb(from var(--accent-color) r g b / .1);
-        //     -moz-box-shadow: 0px 3px 10px 6px rgb(from var(--accent-color) r g b / .1);
-        //     box-shadow: 0px 3px 10px 6px rgb(from var(--accent-color) r g b / .1);
-        // }
+   
 
 
         p {
@@ -55,33 +51,49 @@
 
 
 
-// button {
-//     width: 100%;
-//     min-height: 48px;
-//     height: 48px;
-//     box-shadow: 0px 3px 10px 0px #00000026;
-//     background: var(--white-color);
+button {
+    width: 100%;
+    min-height: 48px;
+    height: 48px;
+    box-shadow: 0px 3px 10px 0px #00000026;
+    background: var(--white-color);
 
-//     border-radius: 40px;
-//     padding: 15px 50px;
+    border-radius: 40px;
+    padding: 15px 20px;
+    text-align: center;
     
-//     transition: all .2s;
-//     display: flex;
-//     align-items: center;
-//     justify-content: center;
-//     gap: 10px;
-//     overflow: hidden;
-//     cursor: pointer;
+    transition: all .2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    overflow: hidden;
+    cursor: pointer;
 
-//     span {
-//         @include link-16px;
-//         text-overflow: ellipsis; 
-//         transition: all .3s;
-//     }
+    span {
+        @include link-16px;
+        text-overflow: ellipsis; 
+        transition: all .3s;
+    }
+
+    &:hover {
+            -webkit-box-shadow:0px 3px 10px 6px rgb(from var(--accent-color) r g b / .1);
+            -moz-box-shadow: 0px 3px 10px 6px rgb(from var(--accent-color) r g b / .1);
+            box-shadow: 0px 3px 10px 6px rgb(from var(--accent-color) r g b / .1);
+    }
 
     
 
-// }
+}
+
+@media screen and (max-width: 600px) {
+    button {
+        padding: 15px 20px;
+    }
+    
+}
+
+
 
 
 

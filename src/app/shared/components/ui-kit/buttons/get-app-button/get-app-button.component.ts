@@ -1,6 +1,6 @@
 import { PlatformService } from './../../../../services/core/platform.service';
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { SvgIconComponent } from 'angular-svg-icon';
 import { RippleEffectDirective } from '../../../../directives/ripple-effect';
 import { AppLinksEnum } from '../../../../enums/app-links.enum';
@@ -17,6 +17,7 @@ import { AppLinksEnum } from '../../../../enums/app-links.enum';
   styleUrl: './get-app-button.component.scss'
 })
 export class GetAppButtonComponent {
+  @Input() design: 'old' | 'new' = 'new';
 
     public links = AppLinksEnum;
     
