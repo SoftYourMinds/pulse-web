@@ -11,6 +11,7 @@ import { FooterComponent } from '../../shared/components/footer/footer.component
 import { TopicFormComponent } from './components/topic-form/topic-form.component';
 import { UserFormComponent } from './components/user-form/user-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { PulsePlaceholderComponent } from './components/pulse-placeholder/pulse-placeholder.component';
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     UserComponent,
     TopicFormComponent,
     UserFormComponent,
+    PulsePlaceholderComponent,
     
   ],
   imports: [
@@ -36,6 +38,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   ],
   exports: [
     TopicFormComponent,
+    UserFormComponent,
+    PulsePlaceholderComponent,
   ]
 })
 export class UserModule { }
