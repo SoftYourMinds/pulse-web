@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AppRoutes } from '../../../../shared/enums/app-routes.enum';
 
 @Component({
   selector: 'app-submitted',
@@ -6,5 +7,7 @@ import { Component } from '@angular/core';
   styleUrl: './submitted.component.scss'
 })
 export class SubmittedComponent {
+
+  public routes = AppRoutes;
 
 }

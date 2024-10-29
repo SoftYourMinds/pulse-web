@@ -1,5 +1,6 @@
 @import url('../topic-form/topic-form.component.scss');
 
-form {
-    justify-content: space-between;
+:host {
+    display: block;
+    height: 100%;
 }

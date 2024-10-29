@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AppRoutes } from '../../../../shared/enums/app-routes.enum';
 
 @Component({
   selector: 'app-topic-form',
@@ -7,6 +8,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrl: './topic-form.component.scss'
 })
 export class TopicFormComponent {
+    public routes = AppRoutes.User.Topic;
 
     public topicForm: FormGroup;
 

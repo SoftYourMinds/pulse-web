@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AppRoutes } from '../../../../shared/enums/app-routes.enum';
 
 @Component({
   selector: 'app-user-form',
@@ -7,6 +8,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrl: './user-form.component.scss'
 })
 export class UserFormComponent {
+    public routes = AppRoutes.User.Topic;
     
     public userForm: FormGroup;
 

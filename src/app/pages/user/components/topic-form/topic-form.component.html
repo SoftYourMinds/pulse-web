@@ -62,7 +62,9 @@
     
     </div>
 
-    <app-primary-button>
+    <app-primary-button
+        [routerLink]="'/' + routes.CONTACT_INFO"
+        [routerLinkActive]="routes.CONTACT_INFO">
         Next
     </app-primary-button>
     

@@ -13,11 +13,15 @@
     You’ll receive a notification once your topic is approved and live on the map. Thank you for contributing to the conversation and helping make your voice heard!
 </p>
 
-<app-primary-button> 
+<app-primary-button
+    [routerLink]="'/'+ routes.User.Topic.SUGGEST"
+    [routerLinkActive]="routes.User.Topic.SUGGEST"> 
     Submit Another Topic
 </app-primary-button>
 
- <app-secondary-button>
+ <app-secondary-button
+    [routerLink]="'/'+ routes.Landing.HOME"
+    [routerLinkActive]="routes.Landing.HOME">    
     Back to Home
  </app-secondary-button>
     
