@@ -8,7 +8,7 @@ const routes: Routes = [
       component: UserComponent,
       children: [
         {
-          path: '',
+          path: 'topic',
           loadChildren: () => import('./topic').then((m) => m.TopicModule)
         }
       ],
