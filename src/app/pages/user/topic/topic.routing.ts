@@ -13,19 +13,19 @@ const routes: Routes = [
       component: TopicComponent,
       children: [
         {
-          path: AppRoutes.User.Topic.HOW_IT_WORKS,
+          path: 'how-it-works',
           component: HowItWorksComponent,
         },
         {
-          path: AppRoutes.User.Topic.SUGGEST,
+          path: 'suggest',
           component: SuggestComponent,
         },
         {
-          path: AppRoutes.User.Topic.CONTACT_INFO,
+          path: 'contact-info',
           component: ContactInfoComponent,
         },
         {
-          path: AppRoutes.User.Topic.SUBMITTED,
+          path: 'submitted',
           component: SubmittedComponent,
         }
 
