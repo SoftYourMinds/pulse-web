@@ -17,6 +17,8 @@ import { AppLinksEnum } from '../../../../enums/app-links.enum';
   styleUrl: './get-app-button.component.scss'
 })
 export class GetAppButtonComponent {
+
+    public links = AppLinksEnum;
     
     constructor(
       public platformService: PlatformService,

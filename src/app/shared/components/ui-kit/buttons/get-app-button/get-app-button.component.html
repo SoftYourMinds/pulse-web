@@ -1,5 +1,5 @@
 
-<button (click)="onClick()" appRippleEffect>
+<!-- <button (click)="onClick()" appRippleEffect>
 
     @if (platformService.value === "iOS") {
         <svg-icon src="assets/svg/a-store.svg" id="icon"/>
@@ -10,4 +10,34 @@
         <span> Get it on Google Play </span>
     }
 
-</button>
+
+    <div class="flex social-btns">
+
+        <a class="app-btn blu flex vert" href="http:apple.com">
+           <svg-icon src="assets/svg/a-store.svg" id="icon"/>
+          <p>Available on the <br/> <span class="big-txt">App Store</span></p>
+        </a>
+      
+        <a class="app-btn blu flex vert" href="http:google.com">
+          <svg-icon src="assets/svg/g-play.svg" id="icon" />
+          <p>Get it on <br/> <span class="big-txt">Google Play</span></p>
+        </a>
+  
+    </div>
+      
+      
+
+</button> -->
+
+
+
+    <a class="btn" [href]="links.APP_STORE" >
+      <svg-icon src="assets/svg/a-store.svg" id="icon"/>
+      <p>Download on the <br/> <span class="big-txt">App Store</span></p>
+    </a>
+  
+    <a class="btn" href="google.com" >
+      <svg-icon src="assets/svg/g-play.svg" id="icon" />
+      <p>Get it on <br/> <span class="big-txt">Google Play</span></p>
+    </a>
+
