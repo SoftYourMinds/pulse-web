@@ -18,10 +18,10 @@ enum CommunityRoutes {
 
 
 enum TopicRoutes {
-    HOW_IT_WORKS = 'user/topic/how-it-works',
-    SUGGEST = 'user/topic/suggest',
-    CONTACT_INFO = 'user/topic/contact-info',
-    SUBMITTED = 'user/topic/submitted' // as idea /:status if respond fails we can show smth like error component 
+    HOW_IT_WORKS = 'how-it-works',
+    SUGGEST = 'suggest',
+    CONTACT_INFO = 'contact-info',
+    SUBMITTED = 'submitted' // as idea /:status if respond fails we can show smth like error component 
 }
 
 enum ProfileRoutes {
