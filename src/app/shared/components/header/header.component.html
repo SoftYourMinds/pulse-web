@@ -47,8 +47,6 @@
     
         </div>
 
-        
-
     </div>
 
 </header>
@@ -74,6 +72,8 @@
     <div class="mobile__dropdown"
         (click)="deligateCloseDropdown($event)"
         [ngClass]="{'active': isMobileDropdown}">
+
+     
 
         <div class="mobile__dropdown-container"
             [ngClass]="{'active': isMobileDropdown}">
@@ -136,6 +136,9 @@
         
             </div>
 
+            <div class="version">
+                {{ version.major }}.{{ version.minor }}.{{ version.patch }}
+            </div>
         </div>
 
     </div>

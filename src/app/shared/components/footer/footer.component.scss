@@ -68,10 +68,18 @@ ul {
     position: absolute;
     right: 8px;
     margin-bottom: -54px;
-    font-weight: 500;
+    font-weight: 400;
     font-size: 14px;
+    opacity: .4;
 }
 
+
+
+@media screen and (max-width: 650px) {
+    .version {
+        display: none;
+    }
+}
 
 @media screen and (max-width: 550px) {
     
@@ -88,9 +96,7 @@ ul {
     }
 
     
-    .version {
-        margin-bottom: 80px;
-    }
+
 
 
 }

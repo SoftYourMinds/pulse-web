@@ -9,6 +9,8 @@ import { ComingSoonPopupDirective } from '../popups/comming-soon-popup/coming-so
 import { AppRoutes } from '../../enums/app-routes.enum';
 import { SecondaryButtonComponent } from "../ui-kit/buttons/secondary-button/secondary-button.component";
 
+import { version } from '../../../../assets/data/version';
+
 @Component({
     selector: 'app-header',
     standalone: true,
@@ -28,7 +30,14 @@ import { SecondaryButtonComponent } from "../ui-kit/buttons/secondary-button/sec
 export class HeaderComponent {
     public isMobileDropdown: boolean = false;
     public AppRoutes =  AppRoutes;
+    public version: { major: number; minor: number; patch: number };
 
+
+    ngOnInit(): void {
+        //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
+        //Add 'implements OnInit' to the class.
+        this.getCurrentVersionOfApplication();
+    }
 
     public toggleDropdown(): void {
         this.isMobileDropdown = !this.isMobileDropdown;
@@ -75,6 +84,10 @@ export class HeaderComponent {
             top: 0,
             behavior: 'smooth',
         });
+    }
+
+    private getCurrentVersionOfApplication(): void {
+        this.version = version;
     }
 
  }
