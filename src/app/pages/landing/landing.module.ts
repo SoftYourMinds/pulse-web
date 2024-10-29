@@ -33,6 +33,7 @@ import { ComingSoonPopupDirective } from '../../shared/components/popups/comming
 import { FlatButtonDirective } from '../../shared/components/ui-kit/buttons/flat-button/flat-button.directive';
 import { PulseHeatmapPageComponent } from './components/pulse-heatmap-page/pulse-heatmap-page.component';
 import { FadeInDirective } from '../../shared/animations/fade-in.directive';
+import { AboutSectionComponent } from './components/main/components/about-section/about-section.component';
 
 @NgModule({
     declarations: [
@@ -47,6 +48,7 @@ import { FadeInDirective } from '../../shared/animations/fade-in.directive';
         PulsePageComponent,
         MapPageComponent,
         PulseHeatmapPageComponent,
+        AboutSectionComponent,
         
     ],
     imports: [
