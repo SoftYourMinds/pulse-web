@@ -11,6 +11,7 @@ import { ContactInfoComponent } from './contact-info/contact-info.component';
 import { SuggestComponent } from './suggest/suggest.component';
 import { TopicFormComponent } from '../components/topic-form/topic-form.component';
 import { UserModule } from '../user.module';
+import { SecondaryButtonComponent } from '../../../shared/components/ui-kit/buttons/secondary-button/secondary-button.component';
 
 
 @NgModule({
@@ -28,6 +29,7 @@ import { UserModule } from '../user.module';
 
     SvgIconComponent,
     PrimaryButtonComponent,
+    SecondaryButtonComponent,
 
   ]
 })
