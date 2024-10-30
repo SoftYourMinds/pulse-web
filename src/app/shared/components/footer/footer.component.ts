@@ -3,8 +3,8 @@ import { Component, inject, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { SvgIconComponent } from 'angular-svg-icon';
 import { version } from '../../../../assets/data/version';
-import { PrimaryButtonComponent } from '../ui-kit/buttons/primary-button/primary-button.component';
 import { AppRoutes } from '../../enums/app-routes.enum';
+import { PrimaryButtonComponent } from '../ui-kit/buttons/primary-button/primary-button.component';
 
 @Component({
     selector: 'app-footer',
@@ -17,6 +17,7 @@ export class FooterComponent implements OnInit {
     private readonly http: HttpClient = inject(HttpClient);
     public version: { major: number; minor: number; patch: number };
     public CommunityRoutes = AppRoutes.Community;
+    public isToShowVersionOfApp: boolean = !!localStorage.getItem('version');
 
     public ngOnInit(): void {
         this.getCurrentVersionOfApplication();

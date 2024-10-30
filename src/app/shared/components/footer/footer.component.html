@@ -24,7 +24,9 @@
         </ul>
     </div>
 
-    <div class="version">
-        {{ version.major }}.{{ version.minor }}.{{ version.patch }}
-    </div>
+    @if (isToShowVersionOfApp) {
+        <div class="version">
+            {{ version.major }}.{{ version.minor }}.{{ version.patch }}
+        </div>
+    }
 </footer>
