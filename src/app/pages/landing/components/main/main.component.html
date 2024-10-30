@@ -1,9 +1,13 @@
 <div class="container">
     <app-map
         [isHideDebugger]="true"
-        [isPreview]="true" />
+        [isPreview]="true" 
+        [routerLink]="'/'+ routes.Landing.MAP"
+        [routerLinkActive]="routes.Landing.MAP"/>
     
     <app-top-pulses />
+
+    <app-about-section />
 
     <app-main-banner />
 </div>

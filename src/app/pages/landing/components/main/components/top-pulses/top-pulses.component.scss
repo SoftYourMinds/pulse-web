@@ -8,8 +8,9 @@ h2 {
 
 .pulses {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
     flex-wrap: wrap;
+    align-items: center;
     gap: 30px;
 }
 
@@ -22,6 +23,12 @@ h2 {
     .pulses {
         gap: 16px;
     }
+}
+
+@media screen and (max-width: 1080px) {
+        .pulses {
+            flex-direction: column;
+        }
 }
 
 

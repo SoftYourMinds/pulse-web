@@ -1,0 +1,29 @@
+<div class="text">
+    <h1>Why We Built Go Pulse</h1>
+    
+    <p>
+        We understand that people are passionate and want to support what matters to them — whether it's sports, politics, or important causes like climate change. But some movements, even with good intentions, have ended up in violence, which isn’t the right way forward. Additionally, some causes are so sensitive that openly supporting them can lead to backlash, making people hesitant or even fearful about publicly standing up for what they believe in.
+    </p>
+
+    <div class="wrapper"
+        [ngClass]="{'is-open': isShowMore}">
+        <div class="inner" >
+            <p >
+                Not everyone feels comfortable displaying their views publicly, especially in today’s world, where fear of criticism or retaliation is real. For many, the traditional ways of showing support, like attending protests, displaying yard signs, or adding bumper stickers, may feel risky or come with unwanted friction and public stigma.
+            </p>    
+            <p >
+                So, what if there was a way to support what matters to you anonymously? A way to scale your support effortlessly by tapping a button—and in doing so, contribute to the collective voice of a movement. What if you could easily gauge how much support your cause or passion has compared to others, without fear of being judged or targeted?
+            </p>
+            <p >
+                That’s why we built Go Pulse.
+            </p>
+        </div>
+    </div>
+    
+    <button (click)="isShowMore = !isShowMore">
+        Show 
+        {{ !isShowMore ? 'more' : 'less'}}
+    </button>
+</div>
+
+<img [src]="'assets/svg/every-pulse-matters.svg'" />

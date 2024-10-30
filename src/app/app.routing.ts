@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { PrivacyComponent } from './pages/privacy/privacy.component';
 
 const routes: Routes = [
     {
@@ -8,7 +7,16 @@ const routes: Routes = [
         loadChildren: () => import('./pages').then((m) => m.LandingModule),
     },
 
-    
+    {
+        path: 'user',
+        loadChildren: () => import('./pages').then((m) => m.UserModule)
+    },
+
+    {
+        path: '',
+        loadChildren: () => import('./pages').then((m) => m.CommunityModule)
+    },
+
 ];
 
 @NgModule({

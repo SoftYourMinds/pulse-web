@@ -6,25 +6,40 @@ import { BurgerButtonComponent } from '../ui-kit/buttons/burger-button/burger-bu
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ComingSoonPopupDirective } from '../popups/comming-soon-popup/coming-soon-popup.directive';
+import { AppRoutes } from '../../enums/app-routes.enum';
+import { SecondaryButtonComponent } from "../ui-kit/buttons/secondary-button/secondary-button.component";
+
+import { version } from '../../../../assets/data/version';
+import { OpenGetAppPopupDirective } from '../popups/get-app-popup/open-get-app-popup.directive';
 
 @Component({
     selector: 'app-header',
     standalone: true,
     imports: [
-        CommonModule,
-        RouterModule,
-        PrimaryButtonComponent,
-        SvgIconComponent,
-        BurgerButtonComponent,
-        FormsModule,
-        ComingSoonPopupDirective
-    ],
+    CommonModule,
+    RouterModule,
+    PrimaryButtonComponent,
+    SvgIconComponent,
+    BurgerButtonComponent,
+    FormsModule,
+    ComingSoonPopupDirective,
+    SecondaryButtonComponent,
+    OpenGetAppPopupDirective,
+],
     templateUrl: './header.component.html',
     styleUrl: './header.component.scss',
 })
 export class HeaderComponent {
     public isMobileDropdown: boolean = false;
+    public AppRoutes =  AppRoutes;
+    public version: { major: number; minor: number; patch: number };
 
+
+    ngOnInit(): void {
+        //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
+        //Add 'implements OnInit' to the class.
+        this.getCurrentVersionOfApplication();
+    }
 
     public toggleDropdown(): void {
         this.isMobileDropdown = !this.isMobileDropdown;
@@ -71,6 +86,10 @@ export class HeaderComponent {
             top: 0,
             behavior: 'smooth',
         });
+    }
+
+    private getCurrentVersionOfApplication(): void {
+        this.version = version;
     }
 
  }

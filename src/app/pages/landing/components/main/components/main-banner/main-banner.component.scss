@@ -21,17 +21,3 @@ h1 {
    text-align: center;  
 }
 
-
-
-@media screen and (max-width: 500px) {
-    app-get-app-button  {
-        width: 100%;
-        padding: 0 20px;
-    }    
-}
-
-@media screen and (max-width: 400px) {
-    app-get-app-button  {
-        padding: 0;
-    }    
-}

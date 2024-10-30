@@ -1,17 +1,66 @@
 @use '../../../../../../styles/_mixins.scss' as *;
 
 :host {
-    display: block;
+    display: flex;
+    column-gap: 10px;
+    row-gap: 16px;
+    transition: all .3s ease-in-out;
+    
+    .btn {
+        box-shadow: 0px 3px 10px 0px #00000026;
+        min-width: 170px;
+        height: 48px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #FFFFFF;
+        border-radius: 40px;
+        transition: all .2s ease-in-out;
+
+   
+
+
+        p {
+            font-size: 10px;
+            font-weight: 500;
+            line-height: 11.93px;
+            letter-spacing: 0.05em;
+            text-align: left;
+            margin-left: 10px;
+
+            span {
+                @include link-16px;
+                font-weight: 600;
+            }
+
+        }
+
+ 
+    }
+
+    .btn:hover {
+        background: black;
+        color: white;
+
+        svg-icon {
+            filter: brightness(100);
+        }
+    }
 }
+
+
 
 button {
     width: 100%;
     min-height: 48px;
+    height: 48px;
     box-shadow: 0px 3px 10px 0px #00000026;
     background: var(--white-color);
 
     border-radius: 40px;
-    padding: 15px 50px;
+    padding: 15px 20px;
+    text-align: center;
     
     transition: all .2s;
     display: flex;
@@ -27,21 +76,13 @@ button {
         transition: all .3s;
     }
 
+    &:hover {
+            -webkit-box-shadow:0px 3px 10px 6px rgb(from var(--accent-color) r g b / .1);
+            -moz-box-shadow: 0px 3px 10px 6px rgb(from var(--accent-color) r g b / .1);
+            box-shadow: 0px 3px 10px 6px rgb(from var(--accent-color) r g b / .1);
+    }
+
     
-
-}
-
-button:hover {
-
-    -webkit-box-shadow:0px 3px 10px 6px rgb(from var(--accent-color) r g b / .1);
-    -moz-box-shadow: 0px 3px 10px 6px rgb(from var(--accent-color) r g b / .1);
-    box-shadow: 0px 3px 10px 6px rgb(from var(--accent-color) r g b / .1);
-
-    // span {
-    //     color: white;
-    // }
-    
-
 
 }
 
@@ -49,6 +90,23 @@ button:hover {
     button {
         padding: 15px 20px;
     }
+    
+}
+
+
+
+
+
+@media screen and (max-width: 500px) {
+    :host {
+        flex-direction: column;
+    
+        .btn {
+            min-width: 220px;
+        }
+        
+    }
+    
 
 }
 

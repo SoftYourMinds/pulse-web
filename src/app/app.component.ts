@@ -3,38 +3,17 @@ import { combineLatest, take } from 'rxjs';
 import { AuthenticationService } from './shared/services/api/authentication.service';
 import { PulseService } from './shared/services/api/pulse.service';
 import { LoadingService } from './shared/services/core/loading.service';
-import { animate, state, style, transition, trigger } from '@angular/animations';
 
 @Component({
     selector: 'app-root',
     template: `
-
-            <!-- <div *ngIf="isLoading; else content" 
-                @fadeOut>
-                  <app-loading-page></app-loading-page>
-            </div>
-
-            <ng-template #content>
-                <router-outlet></router-outlet>
-            </ng-template> -->
         @if (isLoading) { 
             <app-loading-page />
 
         } @else {
             <router-outlet></router-outlet>
         }
-
     `,
-    animations: [
-        trigger('fadeOut', [
-          state('void', style({
-            opacity: 0
-          })),
-          transition(':leave', [
-            animate('100ms ease-in')
-          ])
-        ])
-    ],
 })
 export class AppComponent {
     public isLoading: boolean = false;
@@ -62,17 +41,14 @@ export class AppComponent {
             .pipe(take(1))
             .subscribe((_) => {
                 setTimeout(() => { 
+                    // this.loadingService.isLoading = false;
+                    this.isLoading = false;
+                    // setTimeout(() => {
+                    //     this.isLoading = false
+                    // }, 1000);
 
-                    this.loadingService.isLoading = false;
-                    setTimeout(() => {
-                        this.isLoading = false
-                    }, 1000);
-                }, 2000);
+                }, 1000);
                 
             });
     }
-
-    
-
-
 }

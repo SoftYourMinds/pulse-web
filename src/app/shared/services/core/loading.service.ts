@@ -13,7 +13,7 @@ export class LoadingService {
     }
 
     public get isLoadingObservable(): Observable<boolean> {
-        return this.isLoading$.asObservable()
+        return this.isLoading$.asObservable();
     }
     
 }

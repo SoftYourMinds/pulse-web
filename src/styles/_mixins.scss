@@ -11,10 +11,17 @@
 
 @mixin title-20px {
     //styleName: Title 20px;
-    font-family: "SFProText", sans-serif;
     font-size: 20px;
     font-weight: 600;
     line-height: 23.87px;
+}
+
+@mixin link-18px {
+    //styleName: Link 18px;
+    font-family: "SFProText", sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 21.48px;
 }
 
 @mixin link-16px {
@@ -23,6 +30,15 @@
     font-size: 16px;
     font-weight: 600;
     line-height: 19.09px;
+}
+
+
+@mixin link-14px {
+    //styleName: Text 14px;
+    font-family: "SFProText", sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 16.71px;
 }
 
 @mixin text-16px {

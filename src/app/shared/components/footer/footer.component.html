@@ -7,13 +7,18 @@
     <div class="right-side">
         <ul>
             <li>
-                <a routerLink="/terms-of-use" routerLinkActive="terms-of-use">
+                <a [routerLink]="'/' + CommunityRoutes.TERMS" [routerLinkActive]="CommunityRoutes.TERMS">
                     Terms of Use
                 </a>
             </li>
             <li>
-                <a routerLink="/privacy-policy" routerLinkActive="privacy-policy">
+                <a [routerLink]="'/' + CommunityRoutes.PRIVACY" [routerLinkActive]="CommunityRoutes.PRIVACY">
                     Privacy Policy
+                </a>
+            </li>
+            <li>
+                <a [routerLink]="'/'+ CommunityRoutes.SUPPORT" [routerLinkActive]="CommunityRoutes.SUPPORT">
+                    Support
                 </a>
             </li>
         </ul>

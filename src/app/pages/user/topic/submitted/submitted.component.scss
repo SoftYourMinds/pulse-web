@@ -1,0 +1,29 @@
+@use '../../../../../styles/mixins' as *;
+
+@import url('../how-it-works/how-it-works.component.scss');
+
+
+
+p {
+    @include text-16px;
+    color: #131420 !important;
+    text-align: center;
+}
+
+p:last-of-type {
+    margin-top: 0px;
+}
+
+app-secondary-button {
+    margin-top: 24px;
+    width: 100%;
+
+}
+
+app-secondary-button::ng-deep button{
+        height: 48px;
+        width: 100% !important;
+}
+
+
+

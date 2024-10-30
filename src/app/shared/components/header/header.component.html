@@ -11,33 +11,42 @@
         <ul>
             <li>
                 <a 
-                    routerLink="/map"
-                    routerLinkActive="active">
+                    [routerLink]="'/' + AppRoutes.Landing.MAP"
+                    [routerLinkActive]="AppRoutes.Landing.MAP">
                     Map
                 </a>
             </li>
             <li>
                 <a 
-                    routerLink="/pulses"
-                    routerLinkActive="active">
-                    Pulses
+                    [routerLink]="'/' + AppRoutes.Landing.PULSES"
+                    [routerLinkActive]="AppRoutes.Landing.PULSES">
+                    Topics
                 </a>
             </li>
-            <li>
+            <!-- <li>
                 <a 
                     routerLink="/login"
                     routerLinkActive="active"
                     openComingSoonPopup>
                     Sign In
                 </a>
-            </li>
+            </li> -->
         </ul>
 
-       
+        <div class="buttons">
 
-        <app-primary-button>
-            Download App
-        </app-primary-button>
+            <app-secondary-button
+                [routerLink]="'/' + AppRoutes.User.Topic.HOW_IT_WORKS"
+                [routerLinkActive]="AppRoutes.User.Topic.HOW_IT_WORKS">
+                Suggest topic
+            </app-secondary-button>
+    
+            <app-primary-button
+                openGetAppPopup>
+                Download App
+            </app-primary-button>
+    
+        </div>
 
     </div>
 
@@ -65,6 +74,8 @@
         (click)="deligateCloseDropdown($event)"
         [ngClass]="{'active': isMobileDropdown}">
 
+     
+
         <div class="mobile__dropdown-container"
             [ngClass]="{'active': isMobileDropdown}">
 
@@ -76,49 +87,60 @@
                 <ul [ngClass]="{'scale': !isMobileDropdown}">
                     <li>
                         <a 
-                            routerLink="/map"
-                            routerLinkActive="active">
+                            [routerLink]="'/' + AppRoutes.Landing.MAP"
+                            [routerLinkActive]="AppRoutes.Landing.MAP">
                             Map
                         </a>
                     </li>
                     <li>
                         <a 
-                            routerLink="/pulses"
-                            routerLinkActive="active">
+                            [routerLink]="'/' + AppRoutes.Landing.PULSES"
+                            [routerLinkActive]="AppRoutes.Landing.PULSES">
                             Pulses
                         </a>
                     </li>
-                    <li>
+                    <!-- <li>
                         <a 
                             routerLink="/login"
                             routerLinkActive="active"
                             openComingSoonPopup>
                             Sign In
                         </a>
-                    </li>
+                    </li> -->
                     <li>
                         <a 
-                            routerLink="/terms-of-use"
-                            routerLinkActive="active">
+                            [routerLink]="'/' + AppRoutes.Community.TERMS"
+                            [routerLinkActive]="AppRoutes.Community.TERMS">
                             Terms of Use
                         </a>
                     </li>
                     <li>
                         <a 
-                            routerLink="/privacy-policy"
-                            routerLinkActive="active">
+                            [routerLink]="'/'+AppRoutes.Community.PRIVACY"
+                            [routerLinkActive]="AppRoutes.Community.PRIVACY">
                             Privacy Policy
+                        </a>
+                    </li>
+                    <li>
+                        <a 
+                            [routerLink]="'/'+AppRoutes.Community.SUPPORT"
+                            [routerLinkActive]="AppRoutes.Community.SUPPORT">
+                            Support
                         </a>
                     </li>
                 </ul>
         
                 <app-primary-button 
-                    [ngClass]="{'scale': !isMobileDropdown}">
+                    [ngClass]="{'scale': !isMobileDropdown}"
+                    openGetAppPopup>
                     Download App
                 </app-primary-button>
         
             </div>
 
+            <div class="version">
+                {{ version.major }}.{{ version.minor }}.{{ version.patch }}
+            </div>
         </div>
 
     </div>

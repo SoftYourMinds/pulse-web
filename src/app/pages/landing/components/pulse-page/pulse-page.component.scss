@@ -4,7 +4,7 @@
     display: flex;
     justify-content: center;
     width: 100%;
-    padding: 48px 20px;
+    padding: 18px 20px 48px;
 }
 
 
@@ -122,6 +122,13 @@
                 }
             }
         }
+    }
+
+    &__buttons {
+        width: 100%;
+        display: flex;
+        gap: 10px;
+        justify-content: center;
     }
 
     .divider {
@@ -265,9 +272,12 @@
 
 @media screen and (max-width: 650px) {
 
+    :host {
+        padding: 24px 20px 48px;
+    }
+
     .pulse__info-media img {
         max-width: 100%;
-
     }
 
     .pulse__info-media {
@@ -277,20 +287,27 @@
     }
 
     app-map::ng-deep .map-container {
-        height: auto;
         margin-top: 0px !important;
+        aspect-ratio: 16/9;
+        height: auto !important;
     }
 }
 
-@media screen and (max-width: 400px) {
-        app-primary-button {
-            display: block;
-            width: 100%;    
-        } 
+@media screen and (max-width: 500px) {
 
-        app-primary-button::ng-deep button {
-            width: 100% !important;
-            gap: unset !important;
+
+
+    app-primary-button {
+        svg-icon svg {
+            transform: translateY(-1.5px);
         }
+        display: block;
+        width: 100%;    
+    } 
+
+    app-primary-button::ng-deep button {
+        width: 100% !important;
+        gap: unset !important;
+    }
 
 }

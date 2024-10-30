@@ -2,6 +2,7 @@
 :host {
     display: block;
     padding: 0 20px;
+    height: calc(100%);
 }
 
 .map-page {
@@ -14,21 +15,27 @@
 }
 
 
+
+
 @media screen and (max-width: 800px) {
 
     :host {
         padding: 0;
     }
 
+    app-map {
+        height: 100%;
+    }
+
     app-map::ng-deep .map-container {
         padding: 0;
         border-radius: 0px;
         width: 100vw;
-        height: calc(100vh - 100px);
+        height: calc(100%);
     }
 
     .map-page {
-        height: calc(100vh - 100px);
+        height: calc(100%);
     }
 
 
@@ -38,13 +45,14 @@
 @media screen and (max-width: 650px) {
 
     .map-page {
-        height: calc(100vh - 80px);
+        height: 100%;
     }
 
     app-map::ng-deep .map-container {
         padding: 0;
         border-radius: 0px;
-        width: 100vw;
-        height: calc(100vh - 80px);
+        width: 100dvw;
+        height: 100%;
     }
+    
 }

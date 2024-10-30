@@ -147,15 +147,19 @@ export class PulseService {
                     const objH3Pulses = {};
                     response.forEach(
                         (res: { id: string; topics: any; votes: number }) => {
-                            const maxVotesOfTopicId = Object.entries(res.topics)
-                                .sort((a: any, b: any) => a[1] - b[1])
-                                .pop()![0];
+                            const sortedEntries = 
+                                Object.entries(res.topics)
+                                    .sort((a: any, b: any) => a[1] - b[1]);
+
+                            const maxVotesOfTopic = sortedEntries[sortedEntries.length - 1][1];
+                            const maxVotedTopicId = 
+                                sortedEntries.find(entry => entry[1] === maxVotesOfTopic)![0];
 
                             // @ts-ignore
                             objH3Pulses[res.id] = {
-                                topicId: maxVotesOfTopicId,
+                                topicId: maxVotedTopicId,
                                 icon: this.actualTopicsImageKeyMap[
-                                    maxVotesOfTopicId
+                                    maxVotedTopicId
                                 ],
                                 votes: res.votes,
                             };

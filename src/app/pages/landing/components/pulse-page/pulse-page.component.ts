@@ -3,6 +3,7 @@ import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { catchError, first, of, take } from 'rxjs';
 import { IPulse } from '../../../../shared/interfaces';
 import { PulseService } from '../../../../shared/services/api/pulse.service';
+import { AppRoutes } from '../../../../shared/enums/app-routes.enum';
 
 @Component({
     selector: 'app-pulse-page',
@@ -12,6 +13,7 @@ import { PulseService } from '../../../../shared/services/api/pulse.service';
 export class PulsePageComponent implements OnInit {
     public pulse: IPulse;
     public isReadMore: boolean = false;
+    public isLoading: boolean = true;
 
     @ViewChild('description', {static: false}) public description: ElementRef<HTMLDivElement>;
 
@@ -52,12 +54,13 @@ export class PulsePageComponent implements OnInit {
             .pipe(
                 first(), 
                 catchError((error) => {
-                    this.router.navigateByUrl('/');
+                    this.router.navigateByUrl('/'+ AppRoutes.Community.INVALID_LINK);
                     return of(error);
                 })
             )
             .subscribe((pulse) => {
                 this.pulse = pulse;
+                this.isLoading = false;
                 this.determineIfNeedToRemoveShowMoreButton();
                 this.createLink(pulse.description);
             });

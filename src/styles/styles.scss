@@ -3,6 +3,7 @@
 @import url('./_variables.scss');
 @import url('./_materials.scss');
 @import url('./animations/index.scss');
+@import url('./_uikit.scss');
 @import 'mapbox-gl/dist/mapbox-gl.css';
 
 *, html {
@@ -73,6 +74,7 @@ h3 {
 }
 
 @media screen and (max-width: 800px) {
+   
     .hide-footer  app-footer {
         display: none;
     }    

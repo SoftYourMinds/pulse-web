@@ -1,5 +1,7 @@
 @if (pulse) {
-    <div class="pulse">
+    <div class="pulse"
+        fadeIn [childrenFadeIn]="true">
+
         <div class="pulse__header">
             <img
                 class="pulse__header-logo"
@@ -35,13 +37,19 @@
                 </div>
             </div>
 
-            <app-primary-button 
-                class="pulse__stats-button"
-                openGetAppPopup >
-                <svg-icon src="assets/svg/heart.svg" />
-                <span>Tap to Pulse</span>
-                <svg-icon src="assets/svg/heart.svg" heartBeatAnimation />
-            </app-primary-button>
+            <div class="pulse__buttons">
+                <app-primary-button 
+                    class="pulse__stats-button"
+                    openGetAppPopup >
+                    <svg-icon src="assets/svg/heart.svg" />
+                    <span>Tap to Pulse</span>
+                    <svg-icon src="assets/svg/logo/logo-v2.svg" heartBeatAnimation />
+                </app-primary-button>
+                <button flatButton openComingSoonPopup>
+                    <svg-icon src="assets/svg/icon_share.svg"></svg-icon>
+                </button>
+            </div>
+            
         </div>
 
         <hr class="divider">
@@ -89,8 +97,8 @@
                     appLoadImgPath>
 
                 <div class="pulse__info-media__map"
-                
-                    routerLink="/map">
+
+                    [routerLink]="'/pulse/'+pulse.id+'/heatmap'">
 
                     <div class="pulse__info-media__map-clickbait">
                         <svg-icon src="assets/svg/time-icon-large.svg" />
@@ -106,5 +114,6 @@
             </div>
             
         </div>
+        
     </div>
 }
