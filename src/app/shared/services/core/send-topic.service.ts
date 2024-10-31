@@ -43,7 +43,7 @@ export class SendTopicService {
             title: this.currentTopic.value.headline,
             description: this.currentTopic.value.description,
             category: this.currentTopic.value.category,
-            keywords: this.currentTopic.value.keywords.split(','),
+            keywords: this.topicsArrayKeywords,
             author: {
                 name: this.userForm.value.name,
                 phoneNumber: this.userForm.value.phone,
@@ -61,10 +61,19 @@ export class SendTopicService {
             .pipe(first())
             .subscribe(({ requestId }) => {
                 this.resultId = requestId;
-                
+
                 this.userForm.reset();
                 this.currentTopic.reset();
                 this.router.navigateByUrl('user/topic/submitted');
             });
+    }
+
+    public get topicsArrayKeywords(): Array<string> {
+        const keywordsString = this.currentTopic.get('keywords')?.value || '';
+        const keywordsArray = keywordsString
+            .split(/[\s,]+/)
+            .filter((keyword: string) => keyword.trim().length > 0);
+
+        return keywordsArray;
     }
 }

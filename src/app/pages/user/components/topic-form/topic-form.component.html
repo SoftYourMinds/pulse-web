@@ -68,6 +68,14 @@
                 placeholder="Add up to 5 keywords"
                 id="keywords" name="keywords"
                 formControlName="keywords">
+                
+            <div class="keys">
+                @if (sendTopicService.topicsArrayKeywords.length) {
+                    @for (key of sendTopicService.topicsArrayKeywords; track key) {
+                        <span>{{ key }}</span>
+                    }
+                }
+            </div>
         </div>
     
     </div>

@@ -101,7 +101,7 @@ export class TopicFormComponent {
     ];
 
     private readonly router: Router = inject(Router);
-    private readonly sendTopicService: SendTopicService = inject(SendTopicService);
+    public readonly sendTopicService: SendTopicService = inject(SendTopicService);
     
 
     public ngOnInit(): void {

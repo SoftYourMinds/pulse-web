@@ -149,3 +149,22 @@ input::placeholder {
     @include text-16px;
     color: var(--dark-grey-color);
 }
+
+.keys {
+    display: flex;
+    height: 16px;
+    gap: 5px;
+
+    span {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        border-radius: 20px;
+        padding: 3px 8px;
+        font-size: 12px;
+
+        color: #fff;
+        background-color: var(--accent-color);
+    }
+}
