@@ -51,6 +51,49 @@ export class PulseService {
         );
     }
 
+    public create(params: {
+        icon: any;
+        title: string;
+        description: string;
+        keywords: string[];
+        category: string;
+        location: {
+            country: string;
+            state?: string;
+            city?: string;
+        };
+        author: {
+            name: string;
+            phoneNumber: string;
+            email?: string;
+        };
+    }): Observable<{ requestId: string }> {
+        const formData = new FormData();
+
+        formData.append('Location.Country', params.location.country);
+        if (params.location.state) {
+            formData.append('Location.State', params.location.state);
+        }
+        if (params.location.city) {
+            formData.append('Location.City', params.location.city);
+        }
+        formData.append('Author.Name', params.author.name);
+        formData.append('Author.PhoneNumber', params.author.phoneNumber);
+        if (params.author.email) {
+            formData.append('Author.Email', params.author.email);
+        }
+        formData.append('Title', params.title);
+        formData.append('Description', params.description);
+        formData.append('Category', params.category);
+        formData.append('Keywords', params.keywords.join(','));
+        formData.append('Icon', params.icon);
+
+        return this.http.post<{ requestId: string }>(
+            `${this.apiUrl}/topics/create`,
+            formData
+        );
+    }
+
     public getById(id: string | number): Observable<IPulse> {
         return this.http.get<IPulse>(`${this.apiUrl}/topics/${id}`);
     }
@@ -147,13 +190,15 @@ export class PulseService {
                     const objH3Pulses = {};
                     response.forEach(
                         (res: { id: string; topics: any; votes: number }) => {
-                            const sortedEntries = 
-                                Object.entries(res.topics)
-                                    .sort((a: any, b: any) => a[1] - b[1]);
+                            const sortedEntries = Object.entries(
+                                res.topics
+                            ).sort((a: any, b: any) => a[1] - b[1]);
 
-                            const maxVotesOfTopic = sortedEntries[sortedEntries.length - 1][1];
-                            const maxVotedTopicId = 
-                                sortedEntries.find(entry => entry[1] === maxVotesOfTopic)![0];
+                            const maxVotesOfTopic =
+                                sortedEntries[sortedEntries.length - 1][1];
+                            const maxVotedTopicId = sortedEntries.find(
+                                (entry) => entry[1] === maxVotesOfTopic
+                            )![0];
 
                             // @ts-ignore
                             objH3Pulses[res.id] = {

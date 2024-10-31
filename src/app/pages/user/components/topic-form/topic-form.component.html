@@ -1,13 +1,7 @@
-
-
 <form
-   
     [formGroup]="topicForm">
-
     <div class="wrap-inputs">
-   
         <div class="icon-group">
-        
             <label for="icon">Icon</label>
 
             <div class="iconAll custom-icon__wrap">
@@ -17,10 +11,17 @@
                     #customIcon
                     type="file"
                     accept=".jpg, .png, .jpeg"
-                    formControlName="icon">
+                    (change)="onFileSelected($event)">
             
                 <div class="custom-icon">
-                    <img src="assets/svg/plus.svg" alt="plus">
+                    <img
+                        *ngIf="topicForm.get('icon')?.value"
+                        [src]="topicForm.get('icon')?.value"
+                        alt="Selected Image">
+                    <img
+                        *ngIf="!topicForm.get('icon')?.value"
+                        src="assets/svg/plus.svg"
+                        alt="plus">
                 </div>
             </div>
 
@@ -43,11 +44,20 @@
         <div class="group">
             <label for="description">Description</label>
             <textarea
-              name="description"
-              placeholder="This is what will be seen when one clicks on the pulse"
-              formControlName="description"
-              tabindex="3">
+                name="description"
+                placeholder="This is what will be seen when one clicks on the pulse"
+                formControlName="description"
+                tabindex="3">
             </textarea>
+        </div>
+
+        <div class="group">
+            <app-select 
+                label="Category"
+                id="select"
+                [options]="topicsForForm" 
+                [info]="getCurrentTopicInfo()"
+                formControlName="category"/>
         </div>
     
         <div class="group">
@@ -63,8 +73,7 @@
     </div>
 
     <app-primary-button
-        [routerLink]="'/' + routes.CONTACT_INFO"
-        [routerLinkActive]="routes.CONTACT_INFO">
+        (handleClick)="onNextButtonClick()">
         Next
     </app-primary-button>
     

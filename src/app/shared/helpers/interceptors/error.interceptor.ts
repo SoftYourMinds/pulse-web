@@ -109,7 +109,6 @@ export class ErrorInterceptor implements HttpInterceptor {
         const isAuthenticatedUser =
             this.authenticationService.isAuthenticatedUserValue;
 
-        console.log('anonymousUser', anonymousUser)
         if (isAuthenticatedUser) {
             request = request.clone({
                 setHeaders: {

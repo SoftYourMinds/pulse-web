@@ -1,12 +1,5 @@
-
-
-<form
-   
-    [formGroup]="userForm">
-
+<form [formGroup]="userForm">
     <div class="wrap-inputs">
-   
-        
         <div class="group">
             <label for="name">Name</label>
             <input
@@ -45,15 +38,13 @@
                 tabindex="4"
                 type="text" required
                 placeholder="I'm not a robot"
-                id="robot" name="robot"
-                formControlName="robot">
+                id="robot" name="robot">
         </div>
     
     </div>
 
     <app-primary-button
-        [routerLink]="'/' + routes.SUBMITTED"
-        [routerLinkActive]="routes.SUBMITTED">
+        (handleClick)="onSubmitButtonClick()">
         Submit
     </app-primary-button>
     

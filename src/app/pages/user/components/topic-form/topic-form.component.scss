@@ -1,4 +1,4 @@
-@use '../../../../../styles/mixins' as *;
+@use '../../../../../styles/mixins'as *;
 
 form {
     width: 100%;
@@ -36,7 +36,9 @@ label {
 }
 
 :host ::ng-deep {
-    input:not(input[type="file"]), textarea {
+
+    input:not(input[type="file"]),
+    textarea {
         font-size: 18px;
         font-weight: 400;
         line-height: 24.59px;
@@ -47,7 +49,7 @@ label {
         padding: 15px 20px;
         width: 100%;
         height: 48px;
-    transition: all .2s;
+        transition: all .2s;
 
         &:focus {
             border: 1px solid var(--accent-color);
@@ -55,7 +57,7 @@ label {
     }
 }
 
-input.ng-dirty.ng-invalid textarea.ng-dirty.ng-invalid{
+input.ng-dirty.ng-invalid textarea.ng-dirty.ng-invalid {
     border: 1px solid red !important;
     color: red !important;
 }
@@ -64,9 +66,9 @@ app-primary-button {
     width: 100%;
 }
 
-app-primary-button::ng-deep button{
-        height: 48px;
-        width: 100% !important;
+app-primary-button::ng-deep button {
+    height: 48px;
+    width: 100% !important;
 }
 
 
@@ -103,7 +105,8 @@ textarea {
     width: 100px;
     height: 100px;
     border-radius: 10px;
-    border: 1px solid #E6E7ED;;
+    border: 1px solid #E6E7ED;
+    ;
     border-radius: 10px;
     transition: border .5s;
     background-color: #FFFFFF;
@@ -115,7 +118,7 @@ textarea {
 }
 
 .custom-icon__wrap {
-  position: relative;
+    position: relative;
 }
 
 .custom-icon {
@@ -123,6 +126,13 @@ textarea {
     flex-direction: column;
     align-items: center;
     pointer-events: none;
+    border-radius: 10px;
+    overflow: hidden;
+
+    img {
+        max-width: 100%;
+        max-height: 100%;
+    }
 }
 
 .custom-icon__wrap input {
@@ -134,11 +144,8 @@ textarea {
 }
 
 
-textarea::placeholder, 
+textarea::placeholder,
 input::placeholder {
     @include text-16px;
     color: var(--dark-grey-color);
 }
-
-
-
