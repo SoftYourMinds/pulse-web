@@ -1,4 +1,4 @@
-@use '../../../../../styles/mixins' as *;
+@use '../../../../../styles/mixins'as *;
 
 :host {
     display: flex;
@@ -61,25 +61,25 @@
                 display: flex;
                 align-items: center;
                 gap: 9px;
-               
+
                 @include text-14px;
                 color: var(--dark-grey-color);
             }
         }
     }
 
- 
+
     &__stats {
         display: flex;
         align-items: center;
         flex-direction: column;
         justify-content: space-between;
-        row-gap: 24px;        
-      
+        row-gap: 24px;
+
         .pulse__stats-wrap {
             display: flex;
             gap: 44px;
-        
+
             >div {
                 display: flex;
                 flex-direction: column;
@@ -153,6 +153,8 @@
                 -webkit-line-clamp: 3;
                 -webkit-box-orient: vertical;
 
+                white-space: pre-wrap;
+
                 &--read-more {
                     -webkit-line-clamp: unset;
                 }
@@ -165,7 +167,7 @@
                 margin-top: 4px;
                 font-weight: 600;
                 cursor: pointer;
-                
+
             }
 
             margin-bottom: 10px;
@@ -184,7 +186,7 @@
                 @include text-16px;
                 color: var(--accent-color);
                 font-weight: 400;
-                
+
             }
         }
 
@@ -234,7 +236,7 @@
                     flex-direction: column;
                     justify-content: center;
                     align-items: center;
-                    top:50%;
+                    top: 50%;
                     left: 50%;
                     transform: translate(-50%, -50%);
                     z-index: 5000;
@@ -244,10 +246,10 @@
                         color: var(--white-color);
                         font-weight: 600;
                         text-align: center;
-                        text-shadow:  #0000004D 5px 5px 10px ;
+                        text-shadow: #0000004D 5px 5px 10px;
                     }
                 }
-                
+
                 app-map {
                     pointer-events: none;
                     width: 100%;
@@ -256,11 +258,11 @@
                 }
             }
 
-            
-        }
-            
 
-       
+        }
+
+
+
     }
 
     ::ng-deep .map-container {
@@ -301,9 +303,10 @@
         svg-icon svg {
             transform: translateY(-1.5px);
         }
+
         display: block;
-        width: 100%;    
-    } 
+        width: 100%;
+    }
 
     app-primary-button::ng-deep button {
         width: 100% !important;

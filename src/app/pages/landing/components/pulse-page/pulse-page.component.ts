@@ -1,9 +1,9 @@
 import { Component, ElementRef, inject, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { catchError, first, of, take } from 'rxjs';
+import { AppRoutes } from '../../../../shared/enums/app-routes.enum';
 import { IPulse } from '../../../../shared/interfaces';
 import { PulseService } from '../../../../shared/services/api/pulse.service';
-import { AppRoutes } from '../../../../shared/enums/app-routes.enum';
 
 @Component({
     selector: 'app-pulse-page',
@@ -95,17 +95,13 @@ export class PulsePageComponent implements OnInit {
     // }
 
     private createLink(value: string): void {
-
         let link = this.extractUrl(value);
         
-        // Update pulse description to exclude the link
         if(!link) return
 
         this.pulse.description = value.replace(link, '');
 
         this.pulse.description = this.pulse.description + `<a href="${link}">${link}</a>`
-    
-        // Create an anchor element
     }
 
     private extractUrl(value: string): string | null {
