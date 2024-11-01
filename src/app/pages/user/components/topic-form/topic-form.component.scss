@@ -168,3 +168,7 @@ input::placeholder {
         background-color: var(--accent-color);
     }
 }
+
+.has-error {
+    border-color: var(--error-color);
+}

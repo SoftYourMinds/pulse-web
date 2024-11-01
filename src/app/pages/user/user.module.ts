@@ -6,6 +6,7 @@ import { SvgIconComponent } from 'angular-svg-icon';
 import { FooterComponent } from '../../shared/components/footer/footer.component';
 import { HeaderComponent } from '../../shared/components/header/header.component';
 import { PrimaryButtonComponent } from '../../shared/components/ui-kit/buttons/primary-button/primary-button.component';
+import { InputComponent } from '../../shared/components/ui-kit/input/input.component';
 import { SelectComponent } from '../../shared/components/ui-kit/select/select.component';
 import { PulsePlaceholderComponent } from './components/pulse-placeholder/pulse-placeholder.component';
 import { TopicFormComponent } from './components/topic-form/topic-form.component';
@@ -28,7 +29,7 @@ import { UserRoutingModule } from './user.routing';
         SelectComponent,
         HeaderComponent,
         FooterComponent,
-
+        InputComponent,
         SvgIconComponent,
         PrimaryButtonComponent,
     ],

@@ -32,13 +32,16 @@
         
         <div class="group">
             <label for="headline">Headline</label>
-            <input
+            <app-input
                 autocomplete="headline"
                 tabindex="2"
-                type="text" required
+                type="text"
                 placeholder="Add header text"
                 id="headline" name="headline"
-                formControlName="headline">
+                formControlName="headline" 
+                [hasErrorClass]="
+                    !!topicForm.get('headline')?.invalid && !!topicForm.get('headline')?.dirty
+                "/>
         </div>
     
         <div class="group">
@@ -47,7 +50,10 @@
                 name="description"
                 placeholder="This is what will be seen when one clicks on the pulse"
                 formControlName="description"
-                tabindex="3">
+                tabindex="3"
+                [class.has-error]="
+                    !!topicForm.get('description')?.invalid && !!topicForm.get('description')?.dirty
+                ">
             </textarea>
         </div>
 
@@ -62,12 +68,15 @@
     
         <div class="group">
             <label for="keywords">Keywords</label>
-            <input
+            <app-input
                 tabindex="4"
-                type="text" required
+                type="text"
                 placeholder="Add up to 5 keywords"
                 id="keywords" name="keywords"
-                formControlName="keywords">
+                formControlName="keywords"
+                [hasErrorClass]="
+                    !!topicForm.get('keywords')?.invalid && !!topicForm.get('keywords')?.dirty
+                "/>
                 
             <div class="keys">
                 @if (sendTopicService.topicsArrayKeywords.length) {

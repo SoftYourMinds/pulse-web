@@ -50,3 +50,7 @@ app-spinner {
     top: 50%;
     transform: translateY(-50%);
 }
+
+.app-ui-input--error {
+    border-color: var(--error-color) !important;
+}
