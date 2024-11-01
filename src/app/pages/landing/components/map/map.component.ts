@@ -23,9 +23,9 @@ export class MapComponent implements OnInit {
     @Input() public isZoomButton: boolean = false;
     @Input() public isLocationName: boolean = false;
 
-    @HostBinding('class.full-map')
-    public get isFullMap() {
-        return !this.isPreview;
+    @HostBinding('class.preview')
+    public get isPreviewMap() {
+        return this.isPreview;
     }
 
     public markers: any = [];

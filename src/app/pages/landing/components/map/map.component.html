@@ -2,7 +2,7 @@
     class="map-container"
     [style]="mapboxStylesUrl"
     [center]="center"
-    [interactive]="true"
+    [interactive]="!isPreview"
     [maxBounds]="[
         [-164, -85],
         [163, 85]
@@ -79,7 +79,7 @@
             </div>
             <div>
                 <span>Is for preview map</span>
-                <span>{{ !isFullMap }}</span>
+                <span>{{ isPreview }}</span>
             </div>
             <div>
                 <span>Center (lng/lat)</span>

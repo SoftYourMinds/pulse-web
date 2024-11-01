@@ -1,10 +1,53 @@
-@use '../../../../../styles/mixins' as *;
+@use '../../../../../styles/mixins'as *;
 
 :host {
     display: flex;
     justify-content: center;
     position: relative;
     // padding: 0 20px;
+
+    &.preview {
+        &:before {
+            content: 'Click to interact';
+            position: absolute;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            left: 0px;
+            top: 50%;
+
+            width: 100%;
+            height: 50px;
+
+            transform: translateY(-50%);
+
+            font-size: 25px;
+            font-weight: 600;
+            color: white;
+
+            background-color: #5e00cc4d;
+            backdrop-filter: blur(6px);
+
+            z-index: 1;
+
+            border-radius: 10px;
+            pointer-events: none;
+            opacity: 0;
+
+            transition: all .5s;
+            transition-delay: 0s;
+        }
+
+        &:hover {
+            &:before {
+                opacity: 1;
+                transition-delay: 0.8s;
+            }
+        }
+
+    }
 }
 
 .map-container {
@@ -156,119 +199,121 @@
 
 // FEATRURES: 
 
-    /*   SEARCH INPUT   */
+/*   SEARCH INPUT   */
 
-    #search::ng-deep input {
-        box-shadow: 0px 3px 10px 0px rgba(0, 0, 0, 0.15);
-        margin: 0;
-        height: 48px;
-    }
+#search::ng-deep input {
+    box-shadow: 0px 3px 10px 0px rgba(0, 0, 0, 0.15);
+    margin: 0;
+    height: 48px;
+}
 
-    #search::ng-deep app-input {
-        margin: 0;
-    }
+#search::ng-deep app-input {
+    margin: 0;
+}
 
+#search {
+    margin-bottom: 0px;
+    width: 300px;
+    max-width: 300px;
+    width: 100%;
+    position: absolute;
+    z-index: 1;
+    top: 30px;
+    left: 30px;
+}
+
+
+@media screen and (max-width: 500px) {
     #search {
-        margin-bottom: 0px;
-        width: 300px;
-        max-width: 300px;
+        left: 50%;
+        top: 20px;
+        transform: translateX(-50%);
         width: 100%;
-        position: absolute;
-        z-index: 1;
-        top: 30px;
-        left: 30px;
+        max-width: 100%;
+        padding: 0 20px;
+    }
+}
+
+
+/* LOCATION NAME / AREA NAME */
+
+#map-area-name {
+    position: absolute;
+    bottom: 30px;
+    left: 30px;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    justify-content: center;
+
+    h3 {
+        @include title-20px;
+        font-weight: 400;
+        color: var(--white-color);
+        text-shadow: 0px 0px 6px rgba(0, 0, 0, 0.35);
     }
 
 
-    @media screen and (max-width: 500px) {
-        #search {
-            left: 50%;
-            top: 20px;
-            transform: translateX(-50%);
-            width: 100%;
-            max-width: 100%;
-            padding: 0 20px;
-        }
-    }
+}
 
-    
-    /* LOCATION NAME / AREA NAME */
+@media screen and (max-width: 500px) {
 
     #map-area-name {
-        position: absolute;
-        bottom: 30px;
-        left: 30px;
-        display: flex;
-        gap: 12px;
-        align-items: center;
-        justify-content: center;
-
-        h3 {
-            @include title-20px;
-            font-weight: 400;
-            color: var(--white-color);
-            text-shadow: 0px 0px 6px rgba(0, 0, 0, 0.35);
-        }
-
-
+        bottom: 20px;
+        left: 20px;
     }
 
-    @media screen and (max-width: 500px) {
-        
-        #map-area-name {
-            bottom: 20px;
-            left: 20px; 
+    h3 {
+        @include text-16px;
+    }
+}
+
+/* ZOOM BUTTONS  */
+
+.zoom-button {
+    position: absolute;
+    right: 30px;
+    bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    &__icon {
+        transition: all .2s;
+        position: relative;
+        background: white;
+        border-radius: 50%;
+        width: 26px;
+        height: 26px;
+        min-height: 26px;
+        min-width: 26px;
+        box-shadow: 0px 3px 10px 0px #00000026;
+
+
+        &::after,
+        &::before {
+            content: "";
+            position: absolute;
+            z-index: 1;
+            width: 14px;
+            height: 2px;
+            border-radius: 1px;
+            background: var(--dark-grey-color);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
         }
 
-        h3 { @include text-16px;}
+        cursor: pointer;
     }
 
-    /* ZOOM BUTTONS  */
-
-    .zoom-button {
-        position: absolute;
-        right: 30px;
-        bottom: 30px;
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-
-        &__icon {
-            transition: all .2s;
-            position: relative;
-            background: white;
-            border-radius: 50%;
-            width: 26px;
-            height: 26px;
-            min-height: 26px;
-            min-width: 26px;
-            box-shadow: 0px 3px 10px 0px #00000026;
-
-            
-            &::after, &::before {
-                content: "";
-                position: absolute;
-                z-index: 1  ;
-                width: 14px;
-                height: 2px;
-                border-radius: 1px;
-                background: var(--dark-grey-color);
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-            }
-
-            cursor: pointer;
-        }
-        
-        &__icon:first-child::after {
-            height: 14px;
-            width: 2px;
-        }
-
-        &__icon:active {
-            scale: .8;
-        }
-        
+    &__icon:first-child::after {
+        height: 14px;
+        width: 2px;
     }
 
+    &__icon:active {
+        scale: .8;
+    }
+
+}
