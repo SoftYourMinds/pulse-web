@@ -8,7 +8,7 @@ header {
     justify-content: space-between;
     align-items: center;
     margin: 0 auto;
-    
+
     height: 40px;
     width: 100%;
     max-width: 1170px;
@@ -75,13 +75,14 @@ ul {
     app-secondary-button {
         height: 40px;
     }
-    app-secondary-button::ng-deep button{
+
+    app-secondary-button::ng-deep button {
         height: 40px !important;
-        padding: 0 25px!important;
+        padding: 0 25px !important;
         color: var(--accent-color) !important;
         white-space: nowrap;
     }
-    
+
 }
 
 
@@ -89,7 +90,6 @@ ul {
 .mobile {
     display: none;
 }
-
 
 
 @media (max-width: 760px) {
@@ -109,7 +109,7 @@ ul {
         height: 79px;
         display: flex;
         z-index: 1002;
-        
+
         border-bottom: 1px solid rgba(131, 134, 165, 0.2);
         // box-shadow: 0px 1px 0px 0px rgba(131, 134, 165, 0.2);
 
@@ -121,7 +121,7 @@ ul {
             height: 80px;
             width: 100%;
             padding: 0 20px;
-           
+
         }
 
         &__dropdown {
@@ -140,7 +140,7 @@ ul {
             &.active {
                 user-select: all;
                 pointer-events: all;
-            }    
+            }
 
             &-container {
                 position: relative;
@@ -154,14 +154,14 @@ ul {
                 transition: all .3s;
 
                 // opacity: .5;
-                
+
                 &.active {
                     // transform: translateY(0vh);
                     // opacity: 1;
                     // backdrop-filter: blur(4px);
                     opacity: 1;
                 }
-                
+
                 .right-side {
                     transform-origin: bottom;
                     display: flex;
@@ -187,7 +187,7 @@ ul {
                         scale: 1;
                         // transform: translateY(0px);
                     }
-                                        
+
                     ul {
                         display: flex;
                         justify-content: center;
@@ -200,30 +200,30 @@ ul {
                         transition: all .3s;
 
                         user-select: none;
-                    
+
                         li {
                             font-size: 18px;
                             color: var(--black-color);
                             font-weight: 400;
 
-                            
-                            &:first-child{
+
+                            &:first-child {
                                 color: var(--accent-color);
                                 font-weight: 600;
                             }
 
-                            &:nth-child(2){
+                            &:nth-child(2) {
                                 color: var(--accent-color);
                                 font-weight: 600;
                             }
 
-                            &:nth-child(3){
+                            &:nth-child(3) {
                                 font-weight: 600;
                             }
-                    
+
                             a {
                                 position: relative;
-                    
+
                                 &:before {
                                     content: "";
                                     position: absolute;
@@ -232,11 +232,11 @@ ul {
                                     width: 0%;
                                     background-color: var(--accent-color);
                                     transition: all .3s;
-                    
+
                                     bottom: -8px;
                                     text-align: right;
                                 }
-                    
+
                                 &.active:before {
                                     width: 100%;
                                 }
@@ -248,12 +248,21 @@ ul {
                         transition: all .3s;
                     }
 
-                    app-primary-button::ng-deep button {
+                    app-primary-button::ng-deep button,
+                    app-secondary-button::ng-deep button {
                         height: 48px;
                         width: 100%;
                         min-width: calc(100dvw - 80px);
-                    } 
+                    }
 
+                    app-secondary-button {
+                        margin-bottom: 15px;
+                        display: block;
+
+                        &::ng-deep button {
+                            color: var(--accent-color);
+                        }
+                    }
                 }
 
                 .version {
@@ -271,6 +280,6 @@ ul {
 }
 
 .scale {
-    
+
     scale: 0;
 }

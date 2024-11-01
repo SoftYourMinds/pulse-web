@@ -55,10 +55,9 @@
 <!-- MOBILE DESIGN -->
 
 <header class="mobile">
-
     <div class="mobile__top-bar">
-        
-        <a class="logo"
+        <a 
+            class="logo"
             (click)="closeDropdown()"
             routerLink="/">
             <svg-icon src="assets/svg/logo-mobile.svg" ></svg-icon>
@@ -70,21 +69,19 @@
     
     </div>
 
-    <div class="mobile__dropdown"
+    <div 
+        class="mobile__dropdown"
         (click)="deligateCloseDropdown($event)"
-        [ngClass]="{'active': isMobileDropdown}">
-
-     
-
-        <div class="mobile__dropdown-container"
-            [ngClass]="{'active': isMobileDropdown}">
-
-            <div class="right-side"
-                [ngClass]="{'active': isMobileDropdown}">
-                
+        [class.active]="isMobileDropdown">
+        <div 
+            class="mobile__dropdown-container"
+            [class.active]="isMobileDropdown">
+            <div 
+                class="right-side"
+                [class.active]="isMobileDropdown">
                 <div></div>
 
-                <ul [ngClass]="{'scale': !isMobileDropdown}">
+                <ul [class.scale]="!isMobileDropdown">
                     <li>
                         <a 
                             [routerLink]="'/' + AppRoutes.Landing.MAP"
@@ -130,11 +127,19 @@
                     </li>
                 </ul>
         
-                <app-primary-button 
-                    [ngClass]="{'scale': !isMobileDropdown}"
-                    openGetAppPopup>
-                    Download App
-                </app-primary-button>
+                <div>
+                    <app-secondary-button
+                        [routerLink]="'/' + AppRoutes.User.Topic.HOW_IT_WORKS"
+                        [routerLinkActive]="AppRoutes.User.Topic.HOW_IT_WORKS"
+                        [class.scale]="!isMobileDropdown">
+                        Suggest topic
+                    </app-secondary-button>
+                    <app-primary-button 
+                        [class.scale]="!isMobileDropdown"
+                        openGetAppPopup>
+                        Download App
+                    </app-primary-button>
+                </div>
         
             </div>
 
