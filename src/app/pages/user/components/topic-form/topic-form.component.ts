@@ -21,97 +21,25 @@ export class TopicFormComponent {
     public topicForm: FormGroup;
     public imageSrc: string | ArrayBuffer | null = null;
 
-    public topicsForForm: Array<string>;
-    public topics: Topic[] = [
-        {
-            name: 'Politics',
-            title: 'Topics about government policies and political events',
-            description: 'E.g: Elections, policy changes',
-        },
-        {
-            name: 'Social',
-            title: 'Topics related to social issues and trends',
-            description: 'E.g: Social media trends, public behavior',
-        },
-        {
-            name: 'Environment',
-            title: 'Topics focused on environmental concerns and ecology',
-            description: 'E.g: Climate change, wildlife conservation',
-        },
-        {
-            name: 'Health',
-            title: 'Topics on health and well-being',
-            description: 'E.g: Mental health, fitness, pandemic updates',
-        },
-        {
-            name: 'Technology',
-            title: 'Topics about tech advancements and digital culture',
-            description: 'E.g: AI developments, software innovations',
-        },
-        {
-            name: 'Economy',
-            title: 'Topics on economic developments and markets',
-            description: 'E.g: Stock market trends, inflation',
-        },
-        {
-            name: 'Education',
-            title: 'Topics concerning learning and academic trends',
-            description: 'E.g: Online learning, education policies',
-        },
-        {
-            name: 'Entertainment',
-            title: 'Topics in film, music, and other entertainment sectors',
-            description: 'E.g: Box office updates, celebrity news',
-        },
-        {
-            name: 'Lifestyle',
-            title: 'Topics related to personal lifestyle and hobbies',
-            description: 'E.g: Travel tips, fitness routines',
-        },
-        {
-            name: 'Rights',
-            title: 'Topics about human rights and legal matters',
-            description: 'E.g: Civil rights movements, legal updates',
-        },
-        {
-            name: 'Culture',
-            title: 'Topics on cultural practices and traditions',
-            description: 'E.g: Art, history, local customs',
-        },
-        {
-            name: 'Science',
-            title: 'Topics in scientific discoveries and research',
-            description: 'E.g: Space exploration, medical research',
-        },
-        {
-            name: 'Community',
-            title: 'Topics on community and local events',
-            description: 'E.g: Volunteer events, neighborhood news',
-        },
-        {
-            name: 'International',
-            title: 'Topics on global news and international relations',
-            description: 'E.g: Foreign policy, international trade',
-        },
-        {
-            name: 'Sports',
-            title: 'Topics related to various sports leagues, teams, events, and fan support',
-            description: 'E.g: NFL team support, MLB team rallies',
-        },
-    ];
+    public categoriesForForm: Array<string>;
+    public categories: Topic[] = categories;
 
     private readonly router: Router = inject(Router);
-    public readonly sendTopicService: SendTopicService = inject(SendTopicService);
-    
+    public readonly sendTopicService: SendTopicService =
+        inject(SendTopicService);
 
     public ngOnInit(): void {
         this.topicForm = this.sendTopicService.currentTopic;
-        this.topicsForForm = this.topics.map((topic) => topic.name);
+        this.categoriesForForm = this.categories.map(
+            (category) => category.name
+        );
     }
 
     public getCurrentTopicInfo(): { title: string; description: string } {
         const category = this.topicForm.get('category')?.value;
-        return this.topics.filter((topic) => topic.name === category)[0];
+        return this.categories.filter(
+            (categoryObj) => categoryObj.name === category
+        )[0];
     }
 
     public onFileSelected(event: Event): void {
@@ -133,3 +61,96 @@ export class TopicFormComponent {
         }
     }
 }
+
+const categories =[
+    {
+        name: 'Politics',
+        title: 'Topics related to government policies, political movements, elections, and political figures',
+        description:
+            'Examples: Election campaigns, policy reforms, political endorsements.',
+    },
+    {
+        name: 'Social',
+        title: 'Topics that address societal issues, community initiatives, and social movements',
+        description:
+            'Examples: Social justice campaigns, community events, public health initiatives.',
+    },
+    {
+        name: 'Environment',
+        title: 'Topics focused on environmental issues, sustainability, and conservation efforts',
+        description:
+            'Examples: Climate change initiatives, wildlife conservation, renewable energy projects.',
+    },
+    {
+        name: 'Health',
+        title: 'Topics related to public health, healthcare policies, medical advancements, and wellness',
+        description:
+            'Examples: Healthcare reforms, mental health awareness, medical research breakthroughs.',
+    },
+    {
+        name: 'Technology',
+        title: 'Topics covering advancements in technology, digital innovations, and tech-related policies',
+        description:
+            'Examples: Open source software support, data protection advocacy, tech industry news.',
+    },
+    {
+        name: 'Economy',
+        title: 'Topics concerning economic policies, financial initiatives, market trends, and economic reforms',
+        description:
+            'Examples: Wealth redistribution, financial literacy promotion, economic stability measures.',
+    },
+    {
+        name: 'Education',
+        title: 'Topics related to educational policies, reforms, initiatives, and advancements in learning',
+        description:
+            'Examples: STEM education expansion, student loan forgiveness, homeschooling support.',
+    },
+    {
+        name: 'Entertainment',
+        title: 'Topics covering the entertainment industry, media, celebrity culture, and related events',
+        description:
+            'Examples: Movie awards, reality TV discussions, celebrity endorsements.',
+    },
+    {
+        name: 'Lifestyle',
+        title: 'Topics that pertain to personal well-being, cultural trends, and lifestyle choices',
+        description:
+            'Examples: Body positivity, veganism promotion, volunteerism encouragement.',
+    },
+    {
+        name: 'Rights',
+        title: 'Topics focused on civil rights, human rights, and advocacy for individual freedoms',
+        description:
+            'Examples: Disability rights, reproductive rights, free speech defense.',
+    },
+    {
+        name: 'Culture',
+        title: 'Topics that celebrate diverse cultures, traditions, and cultural initiatives',
+        description:
+            "Examples: Cultural diversity support, indigenous peoples' rights, celebration of cultural figures.",
+    },
+    {
+        name: 'Science',
+        title: 'Topics related to scientific research, innovations, and advancements across various fields',
+        description:
+            'Examples: Climate science, medical research, technological innovations.',
+    },
+    {
+        name: 'Community',
+        title: 'Topics that emphasize community engagement, local initiatives, and community support',
+        description:
+            'Examples: Homelessness solutions, affordable housing, community volunteerism.',
+    },
+    {
+        name: 'International',
+        title: 'Topics that address global issues, international relations, and cross-border initiatives',
+        description:
+            'Examples: International oil markets stabilization, global immigration policies, data protection laws.',
+    },
+    {
+        name: 'Sports',
+        title: 'Topics related to various sports leagues, teams, events, and fan support',
+        description:
+            'Examples: NFL team support, MLB team rallies, NBA team pride, MLS team enthusiasm.',
+    },
+];
