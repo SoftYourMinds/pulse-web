@@ -81,7 +81,8 @@
     </div>
 
     <app-primary-button
-        (handleClick)="onNextButtonClick()">
+        (handleClick)="onNextButtonClick()"
+        [disabled]="topicForm.invalid">
         Next
     </app-primary-button>
     

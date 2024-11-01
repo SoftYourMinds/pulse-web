@@ -44,7 +44,8 @@
     </div>
 
     <app-primary-button
-        (handleClick)="onSubmitButtonClick()">
+        (handleClick)="onSubmitButtonClick()"
+        [disabled]="userForm.invalid">
         Submit
     </app-primary-button>
     

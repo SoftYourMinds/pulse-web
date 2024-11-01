@@ -17,10 +17,8 @@ interface Topic {
 })
 export class TopicFormComponent {
     public routes = AppRoutes.User.Topic;
-
     public topicForm: FormGroup;
     public imageSrc: string | ArrayBuffer | null = null;
-
     public categoriesForForm: Array<string>;
     public categories: Topic[] = categories;
 
