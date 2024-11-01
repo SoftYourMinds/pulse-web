@@ -71,8 +71,9 @@ export class SendTopicService {
     public get topicsArrayKeywords(): Array<string> {
         const keywordsString = this.currentTopic.get('keywords')?.value || '';
         const keywordsArray = keywordsString
-            .split(/[\s,]+/)
-            .filter((keyword: string) => keyword.trim().length > 0);
+            .split(/[,;]+/)
+            .map((keyword: string) => keyword.trim())
+            .filter((keyword: string) => keyword.length > 0);
 
         return keywordsArray;
     }
