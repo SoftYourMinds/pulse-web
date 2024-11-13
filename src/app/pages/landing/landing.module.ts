@@ -13,6 +13,7 @@ import { ComingSoonPopupDirective } from '../../shared/components/popups/comming
 import { OpenGetAppPopupDirective } from '../../shared/components/popups/get-app-popup/open-get-app-popup.directive';
 import { LargePulseComponent } from '../../shared/components/pulses/large-pulse/large-pulse.component';
 import { TopPulseCardComponent } from '../../shared/components/pulses/top-pulse/top-pulse-card.component';
+import { SliderComponent } from '../../shared/components/slider/slider.component';
 import { FlatButtonDirective } from '../../shared/components/ui-kit/buttons/flat-button/flat-button.directive';
 import { GetAppButtonComponent } from '../../shared/components/ui-kit/buttons/get-app-button/get-app-button.component';
 import { PrimaryButtonComponent } from '../../shared/components/ui-kit/buttons/primary-button/primary-button.component';
@@ -50,7 +51,6 @@ import { LandingRoutingModule } from './landing.routing';
         MapPageComponent,
         PulseHeatmapPageComponent,
         AboutSectionComponent,
-        
     ],
     imports: [
         CommonModule,
@@ -68,18 +68,18 @@ import { LandingRoutingModule } from './landing.routing';
         FormsModule,
         SpinnerComponent,
         FormatNumberPipe,
-        
+        SliderComponent,
         OpenGetAppPopupDirective,
         HeartBeatDirective,
         GetAppButtonComponent,
         ComingSoonPopupDirective,
         FlatButtonDirective,
         FadeInDirective,
-        
+
         NgxMapboxGLModule.withConfig({
             accessToken: environment.mapboxToken,
         }),
     ],
-    schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
+    schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class LandingModule {}

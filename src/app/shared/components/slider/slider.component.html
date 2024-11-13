@@ -1,0 +1,25 @@
+<section 
+    class="splide"
+    #splide>
+    <div class="splide__track">
+        <ul
+            class="splide__list"
+            #contentWrapper>
+            <ng-content></ng-content>
+        </ul>
+    </div>
+</section>
+
+<button
+    class="splide__arrow--prev"
+    (click)="goToPrev()"
+    [disabled]="splideInstance.index === 0">
+    <svg-icon src="assets/svg/arrow-left.svg" />
+</button>
+
+<button
+    class="splide__arrow--next"
+    (click)="goToNext()"
+    [disabled]="splideInstance.index === splideInstance.length - 1">
+    <svg-icon src="assets/svg/arrow-left.svg" />
+</button>

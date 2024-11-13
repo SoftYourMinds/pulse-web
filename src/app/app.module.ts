@@ -9,10 +9,10 @@ import { environment } from '../environments/environment';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app.routing';
 import { HeaderComponent } from './shared/components/header/header.component';
+import { LoadingPageComponent } from './shared/components/loading/loading-page.component';
 import { ErrorInterceptor } from './shared/helpers/interceptors/error.interceptor';
 import { MaterialModule } from './shared/modules/material.module';
 import { API_URL, FIREBASE_CONFIG, MAPBOX_ACCESS_TOKEN, MAPBOX_STYLE } from './shared/tokens/tokens';
-import { LoadingPageComponent } from './shared/components/loading/loading-page.component';
 
 @NgModule({
     declarations: [AppComponent],
@@ -24,7 +24,7 @@ import { LoadingPageComponent } from './shared/components/loading/loading-page.c
         HeaderComponent,
         AngularSvgIconModule.forRoot(),
         HttpClientModule,
-        LoadingPageComponent
+        LoadingPageComponent,
     ],
     providers: [
         // provideHttpClient(
@@ -50,9 +50,7 @@ import { LoadingPageComponent } from './shared/components/loading/loading-page.c
         { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
         provideAnimationsAsync(),
     ],
-    schemas: [
-        CUSTOM_ELEMENTS_SCHEMA,
-    ],
+    schemas: [CUSTOM_ELEMENTS_SCHEMA],
     bootstrap: [AppComponent],
 })
 export class AppModule {}

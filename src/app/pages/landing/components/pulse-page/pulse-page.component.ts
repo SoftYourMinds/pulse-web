@@ -14,17 +14,27 @@ export class PulsePageComponent implements OnInit {
     public pulse: IPulse;
     public isReadMore: boolean = false;
     public isLoading: boolean = true;
+    public topPulses: IPulse[] = [];
 
     @ViewChild('description', {static: false}) public description: ElementRef<HTMLDivElement>;
 
     private readonly router: Router = inject(Router);
     private readonly route: ActivatedRoute = inject(ActivatedRoute);
     private readonly pulseService: PulseService = inject(PulseService);
+    
 
     public ngOnInit(): void {
         this.initPulseUrlIdListener();
+        this.setTopPulses();
     }
- 
+
+    private setTopPulses(): void {
+        this.pulseService.get()
+            .pipe(first())
+                .subscribe(pulses => {
+                this.topPulses = pulses.slice(0, 3);
+            })
+    }
 
     public onReadMore(): void {
         this.isReadMore = true;

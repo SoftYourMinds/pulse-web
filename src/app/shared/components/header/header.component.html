@@ -12,14 +12,14 @@
             <li>
                 <a 
                     [routerLink]="'/' + AppRoutes.Landing.MAP"
-                    [routerLinkActive]="AppRoutes.Landing.MAP">
+                    routerLinkActive="active">
                     Map
                 </a>
             </li>
             <li>
                 <a 
                     [routerLink]="'/' + AppRoutes.Landing.PULSES"
-                    [routerLinkActive]="AppRoutes.Landing.PULSES">
+                    routerLinkActive="active">
                     Topics
                 </a>
             </li>
@@ -37,7 +37,7 @@
 
             <app-secondary-button
                 [routerLink]="'/' + AppRoutes.User.Topic.HOW_IT_WORKS"
-                [routerLinkActive]="AppRoutes.User.Topic.HOW_IT_WORKS">
+                routerLinkActive="active">
                 Suggest topic
             </app-secondary-button>
     
@@ -85,14 +85,14 @@
                     <li>
                         <a 
                             [routerLink]="'/' + AppRoutes.Landing.MAP"
-                            [routerLinkActive]="AppRoutes.Landing.MAP">
+                            routerLinkActive="active">
                             Map
                         </a>
                     </li>
                     <li>
                         <a 
                             [routerLink]="'/' + AppRoutes.Landing.PULSES"
-                            [routerLinkActive]="AppRoutes.Landing.PULSES">
+                            routerLinkActive="active">
                             Pulses
                         </a>
                     </li>
@@ -107,21 +107,21 @@
                     <li>
                         <a 
                             [routerLink]="'/' + AppRoutes.Community.TERMS"
-                            [routerLinkActive]="AppRoutes.Community.TERMS">
+                            routerLinkActive="active">
                             Terms of Use
                         </a>
                     </li>
                     <li>
                         <a 
                             [routerLink]="'/'+AppRoutes.Community.PRIVACY"
-                            [routerLinkActive]="AppRoutes.Community.PRIVACY">
+                            routerLinkActive="active">
                             Privacy Policy
                         </a>
                     </li>
                     <li>
                         <a 
                             [routerLink]="'/'+AppRoutes.Community.SUPPORT"
-                            [routerLinkActive]="AppRoutes.Community.SUPPORT">
+                            routerLinkActive="active">
                             Support
                         </a>
                     </li>
@@ -130,7 +130,7 @@
                 <div>
                     <app-secondary-button
                         [routerLink]="'/' + AppRoutes.User.Topic.HOW_IT_WORKS"
-                        [routerLinkActive]="AppRoutes.User.Topic.HOW_IT_WORKS"
+                        routerLinkActive="active"
                         [class.scale]="!isMobileDropdown">
                         Suggest topic
                     </app-secondary-button>

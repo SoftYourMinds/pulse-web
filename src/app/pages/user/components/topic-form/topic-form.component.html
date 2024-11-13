@@ -43,6 +43,15 @@
                     !!topicForm.get('headline')?.invalid && !!topicForm.get('headline')?.dirty
                 "/>
         </div>
+
+        <div class="group">
+            <app-select 
+                label="Category"
+                id="select"
+                [options]="categoriesForForm" 
+                [info]="getCurrentTopicInfo()"
+                formControlName="category"/>
+        </div>
     
         <div class="group">
             <label for="description">Description</label>
@@ -55,15 +64,6 @@
                     !!topicForm.get('description')?.invalid && !!topicForm.get('description')?.dirty
                 ">
             </textarea>
-        </div>
-
-        <div class="group">
-            <app-select 
-                label="Category"
-                id="select"
-                [options]="categoriesForForm" 
-                [info]="getCurrentTopicInfo()"
-                formControlName="category"/>
         </div>
     
         <div class="group">

@@ -2,13 +2,19 @@
 
     <h1>Trending Pulses</h1>
 
-    <app-input-search 
-        [isLoading]="isLoading"
-        (handleValueChange)="onSearchValueChange($event)" />
-        
-    <div class="wrap__large-pulses">
-        @for (pulse of pulses; track pulse.id) {
-            <app-large-pulse [pulse]="pulse" />
-        }
+    <div class="wrap__content">
+        <div>
+            <app-input-search 
+                [isLoading]="isLoading"
+                (handleValueChange)="onSearchValueChange($event)" />
+                
+            <div class="wrap__large-pulses">
+                @for (pulse of pulses; track pulse.id) {
+                    <app-large-pulse [pulse]="pulse" />
+                }
+            </div>
+        </div>
+
+        <app-promote-ads />
     </div>
 </div>

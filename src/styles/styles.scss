@@ -4,9 +4,10 @@
 @import url('./_materials.scss');
 @import url('./animations/index.scss');
 @import url('./_uikit.scss');
-@import 'mapbox-gl/dist/mapbox-gl.css';
+@import '@splidejs/splide/css';
 
-*, html {
+*,
+html {
     scroll-behavior: smooth;
 }
 
@@ -74,9 +75,8 @@ h3 {
 }
 
 @media screen and (max-width: 800px) {
-   
-    .hide-footer  app-footer {
-        display: none;
-    }    
-}
 
+    .hide-footer app-footer {
+        display: none;
+    }
+}
