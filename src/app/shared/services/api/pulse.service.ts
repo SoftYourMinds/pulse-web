@@ -29,11 +29,14 @@ export class PulseService {
             country?: string;
             state?: string;
             city?: string;
+            topicState?: string
         } = {}
     ): Observable<IPulse[]> {
         let paramUrl = '';
 
-        const keys = Object.keys(params) as Array<keyof typeof params>;
+        params['topicState'] = 'Active';
+        const keys = (Object.keys(params) as Array<keyof typeof params>)
+            .filter(key => !!params[key]);
 
         keys.forEach((param, index) => {
             if (params[param]) {
