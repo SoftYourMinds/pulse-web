@@ -101,7 +101,11 @@
             
         </div>
     
-        <div class="group">
+        <app-chips-input
+            formControlName="keywords"
+            [limit]="5">
+        </app-chips-input>
+        <!-- <div class="group">
             <label for="keywords">Keywords</label>
             <app-input
                 tabindex="4"
@@ -120,7 +124,7 @@
                     }
                 }
             </div>
-        </div>
+        </div> -->
     
     </div>
 
