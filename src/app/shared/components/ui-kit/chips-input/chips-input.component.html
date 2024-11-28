@@ -17,9 +17,11 @@
             id="chips-input"
             type="text"
             [(ngModel)]="inputValue"
+            [disabled]="chips.length === limit"
+            [hidden]="chips.length === limit"
             (keydown)="addChip($event)"
             maxlength="40"
-            [placeholder]="'Add a tag...'"
+            [placeholder]="chips.length === limit ? '' : 'Add a tag...'"
         />
     </div>
 </div>
